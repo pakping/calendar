@@ -33,7 +33,7 @@
 			
 
 			//*** Go to Main page
-			header("location:page1.php");
+			header("location:home.php");
 		}
 			
 	}

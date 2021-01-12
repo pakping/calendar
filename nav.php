@@ -11,7 +11,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="index.php">หน้าหลัก
+            <a class="nav-link" href="home.php">หน้าหลัก
                   
                 </a>
           </li>
@@ -22,7 +22,7 @@
             <a class="nav-link" href="form_calendar.php">จองห้อง</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">ออกจากระบบ</a>
+            <a class="nav-link" href="logout.php">ออกจากระบบ</a>
           </li>
         </ul>
       </div>

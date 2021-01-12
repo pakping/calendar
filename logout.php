@@ -8,5 +8,5 @@
 	$query = mysqli_query($con,$sql);
 
 	session_destroy();
-	header("location:login.html");
+	header("location:index.php");
 ?>
