@@ -9,7 +9,7 @@ $fullcalendar_path = "fullcalendar-4.4.2/packages/";
 
 	<link href='<?= $fullcalendar_path ?>/core/main.css' rel='stylesheet' />
 	<link href='<?= $fullcalendar_path ?>/daygrid/main.css' rel='stylesheet' />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+
 	<!--   ส่วนที่เพิ่มเข้ามาใหม่-->
 	<link href='<?= $fullcalendar_path ?>/timegrid/main.css' rel='stylesheet' />
 	<link href='<?= $fullcalendar_path ?>/list/main.css' rel='stylesheet' />
@@ -29,11 +29,15 @@ $fullcalendar_path = "fullcalendar-4.4.2/packages/";
 			margin: auto;
 		}
 	</style>
-
+	<?php
+	include 'bootstrap.php';
+	?>
 </head>
 
 <body>
-
+	<?php
+	include 'nav.php';
+	?>
 	<div id='calendar'></div>
 	<!-- Modal -->
 	<div class="modal fade" id="calendarmodal" tabindex="-1" role="dialog">

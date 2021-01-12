@@ -30,21 +30,28 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 <!DOCTYPE html>
 <html lang='en'>
 
-<head>
+<head
+><?php
+  include 'bootstrap.php';
+  ?>
     <meta charset='utf-8' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/css/tempusdominus-bootstrap-4.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
+
+
     <style type="text/css">
         .wrap-form {
             width: 800px;
             margin: auto;
         }
     </style>
+
+
 </head>
 
 <body>
-
+<?php 
+include 'nav.php';
+?>
     <br>
     <br>
     <div class="wrap-form">
@@ -157,9 +164,8 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
         </form>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment-with-locales.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.1.2/js/tempusdominus-bootstrap-4.min.js"></script>
+    
+   
 
     <script type="text/javascript">
         $(function() {
