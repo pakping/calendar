@@ -5,8 +5,8 @@
       <div class="col-lg-4">
         <div class="card mb-5 mb-lg-0">
           <div class="card-body">
-            <h5 class="card-title text-muted text-uppercase text-center">Free</h5>
-            <h6 class="card-price text-center">$0<span class="period">/month</span></h6>
+            <h5 class="card-title text-muted text-uppercase text-center">no 1 </h5>
+            <h6 class="card-price text-center">ห้อง 1 <span class="period">/month</span></h6>
             <hr>
             <ul class="fa-ul">
               <li><span class="fa-li"><i class="fas fa-check"></i></span>Single User</li>
