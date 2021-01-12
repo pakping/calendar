@@ -5,7 +5,12 @@
 
   <title>HOME</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <style type="text/css">
+        .wrap-form {
+            width: 800px;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>

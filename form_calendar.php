@@ -30,28 +30,25 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 <!DOCTYPE html>
 <html lang='en'>
 
-<head
-><?php
-  include 'bootstrap.php';
-  ?>
+<head>
+
     <meta charset='utf-8' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css">
 
-
+    <?php
+    include 'bootstrap.php';
+    ?>
     <style type="text/css">
         .wrap-form {
             width: 800px;
             margin: auto;
         }
     </style>
-
-
 </head>
 
 <body>
-<?php 
-include 'nav.php';
-?>
+    <?php
+    include 'nav.php';
+    ?>
     <br>
     <br>
     <div class="wrap-form">
@@ -164,8 +161,6 @@ include 'nav.php';
         </form>
     </div>
 
-    
-   
 
     <script type="text/javascript">
         $(function() {
