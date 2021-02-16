@@ -1,11 +1,15 @@
 <?php
 $fullcalendar_path = "fullcalendar-4.4.2/packages/";
 ?>
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset='utf-8' />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="../css/navbar.css" rel="stylesheet" crossorigin="anonymous">
 	<link href='<?= $fullcalendar_path ?>/core/main.css' rel='stylesheet' />
 	<link href='<?= $fullcalendar_path ?>/daygrid/main.css' rel='stylesheet' />
 

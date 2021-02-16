@@ -1,6 +1,6 @@
 <?php
 // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
-require_once("../DB/dbconnect.php");
+require_once("dbconnect.php");
 ?>
 <?php
 // การบันทึกข้อมูลอย่างง่ายเบื้องตั้น
@@ -27,12 +27,17 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang='en'>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<head>
-
-    <meta charset='utf-8' />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="../css/navbar.css" rel="stylesheet" crossorigin="anonymous">
+    <title>UP</title>
 
     <?php
     include '../components/cnd.php';

@@ -22,6 +22,9 @@
           <a class="nav-link " href="home.php">หน้าหลัก</a>
         </li>
         <li class="nav-item">
+        <a class="nav-link" href="calendar.php">ห้องประชุม</a>
+        </li>
+        <li class="nav-item">
         <a class="nav-link" href="calendar.php">ตารางปฏิทิน </a>
         </li>
         <li class="nav-item">
@@ -34,9 +37,8 @@
       <img src="avatar.png" alt="Avatar" class="avatar">
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li><a class="dropdown-item" href="#">ออกจากระบบ</a></li>
+    
     </ul>
     &emsp; &emsp; &emsp;
   </div>
