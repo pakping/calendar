@@ -1,6 +1,6 @@
 <?php
 // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
-require_once("dbconnect.php");
+require_once("../DB/dbconnect.php");
 ?>
 <?php
 // การบันทึกข้อมูลอย่างง่ายเบื้องตั้น
@@ -35,7 +35,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     <meta charset='utf-8' />
 
     <?php
-    include 'bootstrap.php';
+    include '../components/cnd.php';
     ?>
     <style type="text/css">
         .wrap-form {
@@ -47,7 +47,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 
 <body>
     <?php
-    include 'nav.php';
+    include '../components/nav.php';
     ?>
     <br>
     <br>
