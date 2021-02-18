@@ -29,14 +29,14 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <link href="../css/navbar.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>UP</title>
 
     <?php
@@ -56,7 +56,322 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     ?>
     <br>
     <br>
-    <div class="wrap-form">
+    <form action="" method="post">
+        <section class="section">
+            <div class="container">
+                <div class="notification is-primary">
+                    <strong>สร้างการประชุม</strong>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">หัวข้อกิจกรรม</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <input class="input" type="text" placeholder="กรอกหัวข้อการประชุม" required>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">ห้องประชุม</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                <div class="select is-fullwidth">
+                                    <select name="country" required>
+                                        <option value="">เลือกหัวข้อห้องประชุม</option>
+                                        <option value="Argentina">ห้องประชุมศาสตราจารย์พิเศษ ดร.มณฑล สงวนเสริมศรี (60ที่นั่ง)</option>
+                                        <option value="Bolivia">ห้องประชุม OPD 3 (30ที่นั่ง)</option>
+                                        <option value="Brazil">Brazil</option>
+                                        <option value="Chile">Chile</option>
+                                        <option value="Colombia">Colombia</option>
+                                        <option value="Ecuador">Ecuador</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control">
+                                <button type="submit" class="button is-primary">Choose</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">เลือกวันในการประชุม</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <label class="checkbox">
+                                เลือกวันเริ่ม
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="date" required>
+                            </p>
+
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                เลือกวันสิ้นสุด
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="date" required>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">จำนวนผู้เข้าร่วมการประชุม</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" type="number" placeholder="กรอกจำนวนผู้เข้าประชุม">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">รายละเอียดการประชุม</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">ชื่อผู้จอง</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <input class="input" type="text" placeholder="กรอกชื่อ" required>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">อุปกรณ์งานโสตฯ</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="answer">
+                                ใช้งาน ตามที่มีในห้อง
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="answer">
+                                ไม่ใช้งาน
+                            </label>
+                            <a href="">ดูรายละเอียดอุปกรณ์ในห้อง</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">อุปกรณ์ชุดกาแฟ</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วใหญ่)
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" value="">
+                            </p>
+
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วเล็ก)
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" value="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">อุปกรณ์แก้วน้ำดื่ม</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                แก้วก้านยาว
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="กรอกจำนวนแก้วก้านยาว" value="">
+                            </p>
+
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                แก้วน้ำดื่ม
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                แก้ว soft drink
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="กรอกจำนวนแก้ว soft drink" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                อื่นๆ
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="text" placeholder="อื่นๆ..." value="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">อุปกรณ์อื่นๆ</label>
+                    </div>
+                    <div class="field-body">
+                        
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                กระบอกน้ำร้อน
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนกระบอกน้ำร้อน" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                ถาด
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนถาด" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                จานรองแก้ว
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนจานรองแก้ว" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                            <input type="checkbox">
+                                เหยือกน้ำ
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนเหยือกน้ำ" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                            <input type="checkbox">
+                                ลังใส่แก้ว
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนลังใส่แก้ว" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                            <input type="checkbox">
+                                กาใส่ชา
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนกาใส่ชา" value="">
+                            </p>
+                        </div>
+                        <div class="field">
+                            <label class="checkbox">
+                            <input type="checkbox">
+                                หม้อต้มน้ำร้อน
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนหม้อต้มน้ำร้อน" value="">
+                            </p>
+                        </div>
+                        
+                        <div class="field">
+                            <label class="checkbox">
+                            <input type="checkbox">
+                                ตระกร้า
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="number" placeholder="จำนวนตระกร้า" value="">
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label"></label>
+                    </div>
+                    <div class="field-body">
+                    <div class="field">
+                            <label class="checkbox">
+                            <input type="checkbox">
+                                อื่นๆ
+                            </label>
+                            <p class="control is-expanded ">
+                                <input class="input" type="text" placeholder="อื่นๆ..." value="">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label">
+                        <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <button class="button is-primary" type="submit">
+                                    จองห้อง
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+    <!-- <div class="wrap-form">
         <form action="" method="post" accept-charset="utf-8">
             <div class="form-group row">
                 <label for="event_title" class="col-sm-2 col-form-label text-right">หัวข้อกิจกรรม</label>
@@ -164,30 +479,52 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                 </div>
             </div>
         </form>
-    </div>
+    </div> -->
 
 
     <script type="text/javascript">
-        $(function() {
-            // เมื่อเฃือกวันทำซ้ำ วนลูป สร้างชุดข้อมูล
-            $(document.body).on("change", ".repeatday_chk", function() {
-                $("#event_repeatday").val("");
-                var repeatday_chk = [];
-                $(".repeatday_chk:checked").each(function(k, ele) {
-                    repeatday_chk.push($(ele).val());
-                });
-                $("#event_repeatday").val(repeatday_chk.join(",")); // จะได้ค่าเปน เช่น 1,3,4
-            });
-            $('#event_startdate,#event_enddate').datetimepicker({
-                format: 'YYYY-MM-DD'
-            });
-            $('#event_starttime,#event_endtime').datetimepicker({
-                format: 'HH:mm'
-            });
-            $(".input-group-prepend").find("div").css("cursor", "pointer").click(function() {
-                $(this).parents(".input-group").find(":text").val("");
-            });
+        // $(function() {
+        //     // เมื่อเฃือกวันทำซ้ำ วนลูป สร้างชุดข้อมูล
+        //     $(document.body).on("change", ".repeatday_chk", function() {
+        //         $("#event_repeatday").val("");
+        //         var repeatday_chk = [];
+        //         $(".repeatday_chk:checked").each(function(k, ele) {
+        //             repeatday_chk.push($(ele).val());
+        //         });
+        //         $("#event_repeatday").val(repeatday_chk.join(",")); // จะได้ค่าเปน เช่น 1,3,4
+        //     });
+        //     $('#event_startdate,#event_enddate').datetimepicker({
+        //         format: 'YYYY-MM-DD'
+        //     });
+        //     $('#event_starttime,#event_endtime').datetimepicker({
+        //         format: 'HH:mm'
+        //     });
+        //     $(".input-group-prepend").find("div").css("cursor", "pointer").click(function() {
+        //         $(this).parents(".input-group").find(":text").val("");
+        //     });
+        // });
+
+        // Initialize all input of type date ของ bulma
+        var calendars = bulmaCalendar.attach('[type="date"]', {
+            startDate: new Date('10/24/2019')
         });
+
+        // Loop on each calendar initialized
+        for (var i = 0; i < calendars.length; i++) {
+            // Add listener to date:selected event
+            calendars[i].on('select', date => {
+                console.log(date);
+            });
+        }
+
+        // To access to bulmaCalendar instance of an element
+        var element = document.querySelector('#my-element');
+        if (element) {
+            // bulmaCalendar instance is available as element.bulmaCalendar
+            element.bulmaCalendar.on('select', function(datepicker) {
+                console.log(datepicker.data.value());
+            });
+        }
     </script>
 
 

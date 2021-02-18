@@ -21,17 +21,17 @@
 
   <div id="navbarBasicExample" class="navbar-menu">
     <div class="navbar is-warning">
-      <a class="navbar-item">
+      <a class="navbar-item" href="home.php">
         หน้าหลัก
       </a>
 
-      <a class="navbar-item">
+      <a class="navbar-item" href="">
         ห้องประชุม
       </a>
-      <a class="navbar-item">
+      <a class="navbar-item" href="calendar.php">
         ตารางปฏิทิน
       </a>
-      <a class="navbar-item">
+      <a class="navbar-item" href="form_calendar.php">
         จองห้อง
       </a>
     </div>
