@@ -87,9 +87,7 @@
   </div>
 
   <div class="field-body">
-    <div class="field">
-      <div class="control">
-      <div class="file has-name is-fullwidth">
+  <div id="file-js-example" class="file has-name">
   <label class="file-label">
     <input class="file-input" type="file" name="resume">
     <span class="file-cta">
@@ -101,12 +99,10 @@
       </span>
     </span>
     <span class="file-name">
-      Screen Shot 
+      No file uploaded
     </span>
   </label>
 </div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -119,7 +115,7 @@
     <div class="field">
       <div class="control">
         <button class="button is-primary">
-          Send message
+          Send 
         </button>
       </div>
     </div>
@@ -135,9 +131,10 @@
 
 <script>
 
+</script>
 
-    /* img */
-    const fileInput = document.querySelector('#file-js-example input[type=file]');
+<script>
+  const fileInput = document.querySelector('#file-js-example input[type=file]');
   fileInput.onchange = () => {
     if (fileInput.files.length > 0) {
       const fileName = document.querySelector('#file-js-example .file-name');
