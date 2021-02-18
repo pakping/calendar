@@ -10,39 +10,28 @@
 </head>
 
 <body>
+  <?php
+  include '../components/nav.php';
+  ?>
 
-
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
-      </p>
-    </div>
-  </section>
+  <br>
   <div class="container">
-    <div class="notification is-primary">
-      This container is <strong>centered</strong> on desktop and larger viewports.
+  <div class="notification is-primary">
+      <strong>ห้องประชุม</strong>
     </div>
   </div>
   <section class="section">
-    <h2 class="title is-size-6-mobile is-size-2-tablet">เบจิต้า</h2>
+    <h2 class="title is-size-6-mobile is-size-2-tablet"></h2>
     <div class="columns is-mobile is-multiline is-variable is-1">
 
 
-      <div class="column is-6-mobile is-4-tablet is-3-desktop">
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
         <div class="box has-background-warning">
           <div class="card">
-
-            <header class="card-header">
-              <p class=" title is-5 card-header-title ">ห้องประชุมที่1&emsp;&emsp;
-                <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
-              </p>
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่1</p>
             </header>
-
-            <div class="card-image">
+            <div class="image">
               <figure class="image is-4by3">
                 <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
               </figure>
@@ -50,9 +39,10 @@
             <div class="card-content">
               <div class="content">
                 <div class="tags are-medium">
-                  <span class="tag is-large is-primary">คอมพิวเตอร์</span>
-                  <span class="tag is-large is-link">จอทีวี</span>
-                  <span class="tag is-large is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
                 </div>
                 <br>
                 <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
@@ -69,22 +59,111 @@
 
 
 
-      <div class="column is-6-mobile is-4-tablet is-3-desktop">
-        <div class="box has-background-warning">ไข่ย้อย 2</div>
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
+        <div class="box has-background-warning">
+          <div class="card">
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่2</p>
+            </header>
+            <div class="image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="tags are-medium">
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
+                </div>
+                <br>
+                <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
       </div>
 
-      <div class="column is-6-mobile is-4-tablet is-3-desktop">
-        <div class="box has-background-warning">ไข่ย้อย 3</div>
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
+        <div class="box has-background-warning">
+          <div class="card">
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่3</p>
+            </header>
+            <div class="image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="tags are-medium">
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
+                </div>
+                <br>
+                <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
       </div>
 
-      <div class="column is-6-mobile is-4-tablet is-3-desktop">
-        <div class="box has-background-warning">ไข่ย้อย 4</div>
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
+        <div class="box has-background-warning">
+          <div class="card">
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่4</p>
+            </header>
+            <div class="image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="tags are-medium">
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
+                </div>
+                <br>
+                <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
       </div>
 
     </div>
   </section>
 
-
+  <footer class="footer" style="background-color:#ffb3b3">
+    <div class="content has-text-centered">
+      <p class="has-text-white-bis">
+        <strong class="has-text-white-bis">Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
 </body>
 
 </html>
@@ -94,16 +173,4 @@
     background-color: hsl(294, 71%, 79%);
     color: #fff;
   }
-  @media screen and (max-width: 900px) and (min-width: 600px) {
-    .card {
-        padding: 4rem;
-    }
-
-    .card-image {
-        min-height: 15rem;
-    }
-    .card-header{
-      padding:  4rem;
-    }
-}
 </style>
