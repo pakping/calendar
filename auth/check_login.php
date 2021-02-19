@@ -4,7 +4,7 @@
 	require_once("../DB/connect.php");
 	
 	$strUsername = $_POST['uname'];
-	$strPassword = $_POST['psw'];
+	$strPassword = hash('md5',$_POST['psw']);
 
 	$strSQL = "SELECT * FROM user WHERE Username = '".$strUsername."' 
 	and Password = '".$strPassword."'";
