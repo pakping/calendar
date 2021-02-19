@@ -1,11 +1,14 @@
 <?php
 $fullcalendar_path = "fullcalendar-4.4.2/packages/";
 ?>
-<!DOCTYPE html>
-<html lang='en'>
-
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset='utf-8' />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 	<link href='<?= $fullcalendar_path ?>/core/main.css' rel='stylesheet' />
 	<link href='<?= $fullcalendar_path ?>/daygrid/main.css' rel='stylesheet' />
 
