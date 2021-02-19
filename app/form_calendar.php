@@ -89,10 +89,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                         <option value="">เลือกหัวข้อห้องประชุม</option>
                                         <option value="Argentina">ห้องประชุมศาสตราจารย์พิเศษ ดร.มณฑล สงวนเสริมศรี (60ที่นั่ง)</option>
                                         <option value="Bolivia">ห้องประชุม OPD 3 (30ที่นั่ง)</option>
-                                        <option value="Brazil">Brazil</option>
-                                        <option value="Chile">Chile</option>
-                                        <option value="Colombia">Colombia</option>
-                                        <option value="Ecuador">Ecuador</option>
+                                        
                                     </select>
                                 </div>
                             </div>

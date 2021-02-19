@@ -1,5 +1,5 @@
 <?php
-$content = 'user';
+$content = 'admin';
 include '../auth/Sessionpersist.php';
 ?>
 <!DOCTYPE html>
@@ -8,7 +8,7 @@ include '../auth/Sessionpersist.php';
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hello Bulma!</title>
+  <title>Admin</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 
 </head>

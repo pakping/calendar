@@ -1,5 +1,6 @@
 <?php
 session_start();
+require '../DB/connect.php';
 if (isset($_SESSION)) {
     if ($_SESSION['type'] == 'admin') {
         $sql = "UPDATE user SET LastUpdate = NOW() WHERE Username = '" . $_SESSION["Username"] . "' ";

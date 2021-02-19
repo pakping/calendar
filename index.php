@@ -24,7 +24,7 @@
               <hr>
               <form action="auth/check_login.php" method="POST">
                 <div class="form-label-group">
-                  <input type="email" id="Username" name = "uname" class="form-control" placeholder="Username" required autofocus>
+                  <input type="text" id="Username" name = "uname" class="form-control" placeholder="Username" required autofocus>
                   <label for="Username">Username</label>
                 </div>
 
