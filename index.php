@@ -22,14 +22,14 @@
             <div class="col-md-9 col-lg-8 mx-auto">
               <h5 class="login-heading mb-4">ระบบจองห้องประชุม โรงพยาบาลมหาวิทยาลัยพะเยา</h5>
               <hr>
-              <form>
+              <form action="auth/check_login.php" method="POST">
                 <div class="form-label-group">
-                  <input type="email" id="Username" class="form-control" placeholder="Username" required autofocus>
+                  <input type="email" id="Username" name = "uname" class="form-control" placeholder="Username" required autofocus>
                   <label for="Username">Username</label>
                 </div>
 
                 <div class="form-label-group">
-                  <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                  <input type="password" id="inputPassword" name="psw" class="form-control" placeholder="Password" required>
                   <label for="inputPassword">Password</label>
                 </div>
 

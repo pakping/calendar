@@ -1,3 +1,7 @@
+<?php
+$content = 'user';
+include '../auth/Sessionpersist.php';
+?>
 <!doctype html>
 <html lang="en">
 

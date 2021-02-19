@@ -22,20 +22,32 @@
 			echo "'".$strUsername."' Exists login!";
 			exit();
 		}
-		else
-		{
+		else {
+			if ($_POST["uname"] == $objResult["Username"]){
 			//*** Update Status Login
-			$sql = "UPDATE User SET LoginStatus = '1' , LastUpdate = NOW() WHERE Username = '".$objResult["Username"]."' ";
-			$query = mysqli_query($con,$sql);
-
+			$sql = 'UPDATE User SET LoginStatus = "1" , LastUpdate = NOW() WHERE Username = $objResult["Username"]';
+			$query = mysqli_query($con, $sql);
 			//*** Session
 			$_SESSION["Username"] = $objResult["Username"];
-			
-
-			//*** Go to Main page
-			header("location:home.php");
+			if ($objResult["Access"] == "admin") {
+				$_SESSION['type'] = 'admin';
+				echo '<script>alert("Login Successfully!")
+    				window.location.href ="../admin/view-room.php"</script>';
+			} elseif ($objResult["Access"] == "user") {
+				$_SESSION['type'] = 'user';
+				echo '<script>alert("Login Successfully!")
+    				window.location.href ="../app/home.php"</script>';
+			}
+		} else {
+			?>
+		<script>	
+		alert("ชื่อผู้ใช้หรือรหัสผ่านผิด");
+		window.location.assign("../app/login.php");
+			</script>
+	
+	
+		<?php }
 		}
-			
 	}
 	mysqli_close($con);
 ?>
