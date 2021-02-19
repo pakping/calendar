@@ -82,8 +82,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access`) VALUES
 ('Jeerachon', '123456', '2021-02-19 13:16:11', 0, 'user'),
-('Sirichai', '654321', '0000-00-00 00:00:00', 0, 'admin');
-
+('Sirichai', '654321', '0000-00-00 00:00:00', 0, 'admin'),
+('ping', '11501150', '0000-00-00 00:00:00', 0, 'admin');
 --
 -- Indexes for dumped tables
 --

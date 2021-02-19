@@ -1,0 +1,51 @@
+html,
+body {
+    font-family: 'Quicksand', serif;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+html {
+    background-image: url('../media/background.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.hero.is-success {
+    background: #f2f6fa;
+}
+
+.hero .nav,
+.hero.is-success .nav {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+input {
+    font-weight: 300;
+}
+
+p {
+    font-weight: 700;
+}
+
+p.subtitle {
+    padding-top: 1rem;
+}
+
+a {
+    color: #fff;
+}
+
+a:hover {
+    color: #bababa;
+}
+
+.languages {
+    margin-top: 10px;
+}
+
+.footer-text {
+    font-weight: initial;
+}

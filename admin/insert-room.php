@@ -1,6 +1,6 @@
 <?php
-$content = 'admin';
-include '../auth/Sessionpersist.php';
+ $content = 'admin';
+include '../auth/Sessionpersist.php' ;
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,13 +17,13 @@ include '../auth/Sessionpersist.php';
 <body>
 
   <?php
-  include '../components/navbaradmin.php';
+  include '../components/nav.php';
   ?>
 
   <section class="section">
     <div class="container">
       <div class="notification is-primary">
-        <strong>Create a meeting room</strong>
+        <strong>เพิ่มห้องประชุม</strong>
       </div>
       
       <div class="field is-horizontal">
@@ -59,6 +59,79 @@ include '../auth/Sessionpersist.php';
           </div>
         </div>
       </div>
+
+      <div class="field is-horizontal">
+  <div class="field-label">
+
+    <label class="label">คอมพิวเตอร์มีหรือไม่</label>
+  </div>
+  <div class="field-body">
+    <div class="field is-narrow">
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="item">
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="item">
+          No
+        </label>
+
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+<div class="field is-horizontal">
+  <div class="field-label">
+
+    <label class="label">มีไมโครโฟนหรือ</label>
+  </div>
+  <div class="field-body">
+    <div class="field is-narrow">
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="item-1">
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="item-1">
+          No
+        </label>
+
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+<div class="field is-horizontal">
+  <div class="field-label">
+
+    <label class="label">มีจอทีวีหรือไม่</label>
+  </div>
+  <div class="field-body">
+    <div class="field is-narrow">
+      <div class="control">
+        <label class="radio">
+          <input type="radio" name="item-2">
+          Yes
+        </label>
+        <label class="radio">
+          <input type="radio" name="item-2">
+          No
+        </label>
+
+        
+      </div>
+    </div>
+    
+  </div>
+</div>
+
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">

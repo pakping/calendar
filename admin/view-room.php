@@ -18,12 +18,12 @@ include '../auth/Sessionpersist.php';
   include '../components/nav.php';
   ?>
 
-  <br>
-  <div class="container">
-  <div class="notification is-primary">
-      <strong>ห้องประชุม</strong>
+<section class="section">
+    <div class="container">
+      <h3 class="title"> ห้องประชุม</h3>
     </div>
-  </div>
+  </section>
+  
   <section class="section">
     <h2 class="title is-size-6-mobile is-size-2-tablet"></h2>
     <div class="columns is-mobile is-multiline is-variable is-1">
@@ -158,16 +158,6 @@ include '../auth/Sessionpersist.php';
 
     </div>
   </section>
-
-  <footer class="footer" style="background-color:#ffb3b3">
-    <div class="content has-text-centered">
-      <p class="has-text-white-bis">
-        <strong class="has-text-white-bis">Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
-    </div>
-  </footer>
 </body>
 
 </html>
