@@ -1,6 +1,6 @@
 <?php
 // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
-require_once("../DB/dbconnect.php");
+require_once("dbconnect.php");
 ?>
 <?php
 // การบันทึกข้อมูลอย่างง่ายเบื้องตั้น
