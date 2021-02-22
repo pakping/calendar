@@ -12,7 +12,13 @@
 	$objResult = mysqli_fetch_array($objQuery);
 	if(!$objResult)
 	{
-		echo "Username and Password Incorrect!";
+?>
+		<script>	
+		alert("ชื่อผู้ใช้หรือรหัสผ่านผิด");
+		window.location.assign("../index.php");
+			</script>
+<?php
+		
 		exit();
 	}
 	else
@@ -39,14 +45,14 @@
     				window.location.href ="../app/home.php"</script>';
 			}
 		} else {
-			?>
+?>
 		<script>	
 		alert("ชื่อผู้ใช้หรือรหัสผ่านผิด");
 		window.location.assign("../index.php");
 			</script>
 	
 	
-		<?php }
+<?php 	}
 		}
 	}
 	mysqli_close($con);

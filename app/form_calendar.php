@@ -1,7 +1,7 @@
 <?php
 // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
 require_once("dbconnect.php");
-$content = 'user';
+$content = 'everyone';
 include '../auth/Sessionpersist.php';
 ?>
 <?php
@@ -14,6 +14,9 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $p_event_endtime = (isset($_POST['event_endtime'])) ? $_POST['event_endtime'] : "00:00:00";
     $p_event_repeatday = (isset($_POST['event_repeatday'])) ? $_POST['event_repeatday'] : "";
     $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
+    
+
+
     $sql = "
     INSERT INTO tbl_event SET
     event_title='" . $p_event_title . "',

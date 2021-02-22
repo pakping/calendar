@@ -1,6 +1,6 @@
 <?php
 $fullcalendar_path = "fullcalendar-4.4.2/packages/";
-$content = 'user';
+$content = 'everyone';
 include '../auth/Sessionpersist.php';
 ?>
 <!doctype html>
