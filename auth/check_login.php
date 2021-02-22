@@ -5,7 +5,7 @@
 	
 	$strUsername = $_POST['uname'];
 	$strPassword = hash('md5',$_POST['psw']);
-
+	echo $strPassword.'<br>';
 	$strSQL = "SELECT * FROM user WHERE Username = '".$strUsername."' 
 	and Password = '".$strPassword."'";
 	$objQuery = mysqli_query($con,$strSQL);

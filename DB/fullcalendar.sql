@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2021 at 10:36 AM
+-- Generation Time: Feb 22, 2021 at 04:34 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -70,7 +70,7 @@ INSERT INTO `tbl_event` (`event_id`, `event_title`, `event_detail`, `event_start
 
 CREATE TABLE `user` (
   `Username` varchar(40) NOT NULL,
-  `Password` varchar(30) NOT NULL,
+  `Password` varchar(50) NOT NULL,
   `Lastupdate` datetime NOT NULL,
   `LoginStatus` int(1) NOT NULL,
   `Access` varchar(10) NOT NULL
@@ -81,9 +81,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access`) VALUES
-('Jeerachon', '123456', '2021-02-19 13:16:11', 0, 'user'),
-('Sirichai', '654321', '0000-00-00 00:00:00', 0, 'admin'),
-('ping', '11501150', '0000-00-00 00:00:00', 0, 'admin');
+('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00 00:00:00', 0, 'user'),
+('phoomin', 'e35cf7b66449df565f93c607d5a81d09', '0000-00-00 00:00:00', 0, 'user'),
+('sirichai', 'c33367701511b4f6020ec61ded352059', '2021-02-22 10:34:32', 0, 'admin');
+
 --
 -- Indexes for dumped tables
 --
