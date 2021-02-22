@@ -14,8 +14,85 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $p_event_endtime = (isset($_POST['event_endtime'])) ? $_POST['event_endtime'] : "00:00:00";
     $p_event_repeatday = (isset($_POST['event_repeatday'])) ? $_POST['event_repeatday'] : "";
     $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
-    
-
+    $peoplenum =  $_POST['people'];
+    $description = $_POST['desc'];
+    $regname = $_POST['reg'];
+    $tool = $_POST['tool'];
+    if (isset($_POST['coffeesmallcup'])){
+        $Scup = $_POST['Scup'];
+    }else{
+        $Scup = '0';
+    }
+    if (isset($_POST['coffeebigcup'])){
+        $Bcup = $_POST['Bcup'];
+    }else{
+        $Bcup = '0';
+    }
+    if (isset($_POST['islongcup'])){
+        $longcup = $_POST['longcup'];
+    }else{
+        $longcup = '0';
+    }
+    if (isset($_POST['isdrinkcup'])){
+        $drinkcup = $_POST['drinkcup'];
+    }else{
+        $drinkcup = '0';
+    }
+    if (isset($_POST['issoftdrink'])){
+        $softdrink = $_POST['softdrink'];
+    }else{
+        $softdrink = '0';
+    }
+    if (isset($_POST['isothercup'])){
+        $othercup = $_POST['othercup'];
+    }else{
+        $othercup = 'none';
+    }
+    if (isset($_POST['ishotbot'])){
+        $hotbot = $_POST['hotbot'];
+    }else{
+        $hotbot = '0';
+    }
+    if (isset($_POST['istray'])){
+        $tray = $_POST['tray'];
+    }else{
+        $tray = '0';
+    }
+    if (isset($_POST['isdishcup'])){
+        $dishcup = $_POST['dishcup'];
+    }else{
+        $dishcup = '0';
+    }
+    if (isset($_POST['isjug'])){
+        $jug = $_POST['jug'];
+    }else{
+        $jug = '0';
+    }
+    if (isset($_POST['isboxcup'])){
+        $boxcup = $_POST['boxcup'];
+    }else{
+        $boxcup = '0';
+    }
+    if (isset($_POST['istea'])){
+        $tea = $_POST['tea'];
+    }else{
+        $tea = '0';
+    }
+    if (isset($_POST['isboiler'])){
+        $boiler = $_POST['boiler'];
+    }else{
+        $boiler = '0';
+    }
+    if (isset($_POST['isbasket'])){
+        $basket = $_POST['basket'];
+    }else{
+        $basket = '0';
+    }
+    if (isset($_POST['isothertool'])){
+        $other = $_POST['other'];
+    }else{
+        $other = 'none';
+    }
 
     $sql = "
     INSERT INTO tbl_event SET
@@ -25,8 +102,28 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     event_starttime='" . $p_event_starttime . "',
     event_endtime='" . $p_event_endtime . "',
     event_repeatday='" . $p_event_repeatday . "',
-    event_allday='" . $p_event_allday . "'
+    event_allday='" . $p_event_allday . "',
+    people='" . $peoplenum . "',
+    description='" . $description . "',
+    reguser='" . $regname . "',
+    tool='" . $tool . "',
+    Scup='" . $Scup . "',
+    Bcup='" . $Bcup . "',
+    longcup='" . $longcup . "',
+    drinkcup='" . $drinkcup . "',
+    softdrink='" . $softdrink . "',
+    othercup='" . $othercup . "',
+    hotbot='" . $hotbot . "',
+    tray='" . $tray . "',
+    dishcup='" . $dishcup . "',
+    jug='" . $jug . "',
+    boxcup='" . $boxcup . "',
+    tea='" . $tea . "',
+    boiler='" . $boiler . "',
+    basket='" . $basket . "',
+    other='" . $other . "',
     ";
+    
     $mysqli->query($sql);
     header("Location:form_calendar.php");
     exit;
@@ -90,12 +187,18 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 <div class="select is-fullwidth">
                                     <select name="country" required>
                                         <option value="">เลือกหัวข้อห้องประชุม</option>
-                                        <option value="Argentina">ห้องประชุมศาสตราจารย์พิเศษ ดร.มณฑล สงวนเสริมศรี (60ที่นั่ง)</option>
-                                        <option value="Bolivia">ห้องประชุม OPD 3 (30ที่นั่ง)</option>
-                                        
+                                        <?php
+                                    require "../DB/connect.php";
+                                    $Squery = "SELECT * FROM room";
+                                    if ($result = mysqli_query($con, $Squery)) {
+                                        while ($room = mysqli_fetch_array($result)) {
+?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
+<?php }}
+?>                                       
                                     </select>
                                 </div>
                             </div>
+
                             <div class="control">
                                 <button type="submit" class="button is-primary">Choose</button>
                             </div>
