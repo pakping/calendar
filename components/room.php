@@ -1,170 +1,137 @@
 <main>
+  <section class="section">
+    <h2 class="title is-size-6-mobile is-size-2-tablet"></h2>
+    <div class="columns is-mobile is-multiline is-variable is-1">
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">Album example</h1>
-        <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely.</p>
-        <p>
-          <a href="#" class="btn btn-primary my-2">Main call to action</a>
-          <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-        </p>
+
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
+        <div class="box has-background-warning">
+          <div class="card">
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่1</p>
+            </header>
+            <div class="image">
+              <figure class="image is-4by3">
+                <a href="../app/room.php"><img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </a></figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="tags are-medium">
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
+                </div>
+                <br>
+                <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
       </div>
+
+
+
+
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
+        <div class="box has-background-warning">
+          <div class="card">
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่2</p>
+            </header>
+            <div class="image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="tags are-medium">
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
+                </div>
+                <br>
+                <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
+        <div class="box has-background-warning">
+          <div class="card">
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่3</p>
+            </header>
+            <div class="image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="tags are-medium">
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
+                </div>
+                <br>
+                <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-12-mobile is-4-tablet is-3-desktop">
+        <div class="box has-background-warning">
+          <div class="card">
+            <header class="header">
+              <p class=" title is-6 card-header-title ">ห้องประชุมที่4</p>
+            </header>
+            <div class="image">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="tags are-medium">
+                  <span class="tag is-normal is-primary">คอมพิวเตอร์</span>
+                  <span class="tag is-normal is-link">จอทีวี</span>
+                  <span class="tag is-normal is-purple">ไมโครโฟน</span>
+                  <span class="tag is-normal is-danger">รับได้ 50 ท่าน</span>
+                </div>
+                <br>
+                <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time>
+              </div>
+            </div>
+            <footer class="card-footer">
+              <a href="#" class="card-footer-item">Edit</a>
+              <a href="#" class="card-footer-item">Delete</a>
+            </footer>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-                <small class="text-muted">9 mins</small>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </main>
