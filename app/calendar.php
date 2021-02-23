@@ -5,10 +5,11 @@ include '../auth/Sessionpersist.php';
 ?>
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset='utf-8' />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 	<link href='<?= $fullcalendar_path ?>/core/main.css' rel='stylesheet' />
@@ -29,7 +30,7 @@ include '../auth/Sessionpersist.php';
 
 	<style type="text/css">
 		#calendar {
-			width: 800px;
+			width: 100%;
 			margin: auto;
 		}
 	</style>
@@ -44,7 +45,9 @@ include '../auth/Sessionpersist.php';
 	?>
 	<br>
 	<br>
-	<div id='calendar'></div>
+	<div class="container">
+		<div id='calendar'></div>
+	</div>
 	<!-- Modal -->
 	<div class="modal fade" id="calendarmodal" tabindex="-1" role="dialog">
 		<!--กำหนด id ให้กับ modal-->

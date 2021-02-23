@@ -1,135 +1,6 @@
 <?php
-// โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
-require_once("dbconnect.php");
-$content = 'everyone';
+$content = 'user';
 include '../auth/Sessionpersist.php';
-$today = date("Y-m-d");
-?>
-<?php
-// การบันทึกข้อมูลอย่างง่ายเบื้องตั้น
-if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
-    $p_event_title = (isset($_POST['event_title'])) ? $_POST['event_title'] : "";
-    $p_event_startdate = (isset($_POST['event_startdate'])) ? $_POST['event_startdate'] : "0000-00-00";
-    $p_event_enddate = (isset($_POST['event_enddate'])) ? $_POST['event_enddate'] : "0000-00-00";
-    $p_event_starttime = (isset($_POST['event_starttime'])) ? $_POST['event_starttime'] : "00:00:00";
-    $p_event_endtime = (isset($_POST['event_endtime'])) ? $_POST['event_endtime'] : "00:00:00";
-    $p_event_repeatday = (isset($_POST['event_repeatday'])) ? $_POST['event_repeatday'] : "";
-    $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
-    $peoplenum =  $_POST['people'];
-    $description = $_POST['desc'];
-    $regname = $_POST['reg'];
-    $tool = $_POST['tool'];
-    if (isset($_POST['coffeesmallcup'])){
-        $Scup = $_POST['Scup'];
-    }else{
-        $Scup = '0';
-    }
-    if (isset($_POST['coffeebigcup'])){
-        $Bcup = $_POST['Bcup'];
-    }else{
-        $Bcup = '0';
-    }
-    if (isset($_POST['islongcup'])){
-        $longcup = $_POST['longcup'];
-    }else{
-        $longcup = '0';
-    }
-    if (isset($_POST['isdrinkcup'])){
-        $drinkcup = $_POST['drinkcup'];
-    }else{
-        $drinkcup = '0';
-    }
-    if (isset($_POST['issoftdrink'])){
-        $softdrink = $_POST['softdrink'];
-    }else{
-        $softdrink = '0';
-    }
-    if (isset($_POST['isothercup'])){
-        $othercup = $_POST['othercup'];
-    }else{
-        $othercup = 'none';
-    }
-    if (isset($_POST['ishotbot'])){
-        $hotbot = $_POST['hotbot'];
-    }else{
-        $hotbot = '0';
-    }
-    if (isset($_POST['istray'])){
-        $tray = $_POST['tray'];
-    }else{
-        $tray = '0';
-    }
-    if (isset($_POST['isdishcup'])){
-        $dishcup = $_POST['dishcup'];
-    }else{
-        $dishcup = '0';
-    }
-    if (isset($_POST['isjug'])){
-        $jug = $_POST['jug'];
-    }else{
-        $jug = '0';
-    }
-    if (isset($_POST['isboxcup'])){
-        $boxcup = $_POST['boxcup'];
-    }else{
-        $boxcup = '0';
-    }
-    if (isset($_POST['istea'])){
-        $tea = $_POST['tea'];
-    }else{
-        $tea = '0';
-    }
-    if (isset($_POST['isboiler'])){
-        $boiler = $_POST['boiler'];
-    }else{
-        $boiler = '0';
-    }
-    if (isset($_POST['isbasket'])){
-        $basket = $_POST['basket'];
-    }else{
-        $basket = '0';
-    }
-    if (isset($_POST['isothertool'])){
-        $other = $_POST['other'];
-    }else{
-        $other = 'none';
-    }
-
-    $sql = "
-    INSERT INTO tbl_event SET
-    event_title='" . $p_event_title . "',
-    event_startdate='" . $p_event_startdate . "',
-    event_enddate='" . $p_event_enddate . "',
-    event_starttime='" . $p_event_starttime . "',
-    event_endtime='" . $p_event_endtime . "',
-    event_repeatday='" . $p_event_repeatday . "',
-    event_allday='" . $p_event_allday . "',
-    people='" . $peoplenum . "',
-    description='" . $description . "',
-    reguser='" . $regname . "',
-    tool='" . $tool . "',
-    Scup='" . $Scup . "',
-    Bcup='" . $Bcup . "',
-    longcup='" . $longcup . "',
-    drinkcup='" . $drinkcup . "',
-    softdrink='" . $softdrink . "',
-    othercup='" . $othercup . "',
-    hotbot='" . $hotbot . "',
-    tray='" . $tray . "',
-    dishcup='" . $dishcup . "',
-    jug='" . $jug . "',
-    boxcup='" . $boxcup . "',
-    tea='" . $tea . "',
-    boiler='" . $boiler . "',
-    basket='" . $basket . "',
-    other='" . $other . "',
-    ";
-
-    $mysqli->query($sql);
-    echo '<script>alert("ssss")
-        window.location.href ="../index.php"</script>';
-    exit;
-}
 ?>
 <!doctype html>
 <html lang="en">
@@ -142,39 +13,29 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <title>UP</title>
-
-    <?php
-    include '../components/cnd.php';
-    ?>
-    <style type="text/css">
-        .wrap-form {
-            width: 800px;
-            margin: auto;
-        }
-    </style>
 </head>
 
 <body>
+
+
     <?php
     include '../components/nav.php';
     ?>
-    <br>
-    <br>
+    <!-- Navigation -->
     <form action="" method="post">
         <section class="section">
             <div class="container">
                 <div class="notification is-primary">
-                    <strong>สร้างการประชุม</strong>
+                    <strong>รายละเอียดห้องการประชุม</strong>
+                    <strong>ห้องประชุม</strong>
                 </div>
-
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">หัวข้อกิจกรรม</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" type="text" name="event_title" placeholder="กรอกหัวข้อการประชุม" required>
-                            </p>
+                            <input class="input" type="text" name="event_title" value="This text is readonly" readonly>
                         </div>
                     </div>
                 </div>
@@ -184,26 +45,8 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         <label class="label">ห้องประชุม</label>
                     </div>
                     <div class="field-body">
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <div class="select is-fullwidth">
-                                    <select name="country" required>
-                                        <option value="">เลือกหัวข้อห้องประชุม</option>
-                                        <?php
-                                    require "../DB/connect.php";
-                                    $Squery = "SELECT * FROM room";
-                                    if ($result = mysqli_query($con, $Squery)) {
-                                        while ($room = mysqli_fetch_array($result)) {
-?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
-<?php }}
-?>                                       
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="control">
-                                <button type="submit" class="button is-primary">Choose</button>
-                            </div>
+                        <div class="field">
+                            <input class="input" type="text" name="event_title" value="This text is readonly" readonly>
                         </div>
                     </div>
                 </div>
@@ -218,7 +61,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31"  required>
+                                <input class="input" type="date" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" required>
                             </p>
 
                         </div>
@@ -227,7 +70,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_enddate" min="<?php echo $today;?>" max="2050-12-31" required>
+                                <input class="input" type="date" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" required>
                             </p>
                         </div>
                     </div>
@@ -243,7 +86,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกเวลาเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31"  required>
+                                <input class="input" type="time" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" required>
                             </p>
 
                         </div>
@@ -252,7 +95,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกเวลาสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_enddate" min="<?php echo $today;?>" max="2050-12-31" required>
+                                <input class="input" type="time" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" required>
                             </p>
                         </div>
                     </div>
@@ -332,7 +175,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="coffeesmallcup"> 
+                                <input type="checkbox" name="coffeesmallcup">
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วเล็ก)
                             </label>
                             <p class="control is-expanded ">
@@ -391,7 +234,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         <label class="label">อุปกรณ์อื่นๆ</label>
                     </div>
                     <div class="field-body">
-                        
+
                         <div class="field">
                             <label class="checkbox">
                                 <input type="checkbox" name="ishotbot">
@@ -421,7 +264,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isjug">
+                                <input type="checkbox" name="isjug">
                                 เหยือกน้ำ
                             </label>
                             <p class="control is-expanded ">
@@ -430,7 +273,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isboxcup">
+                                <input type="checkbox" name="isboxcup">
                                 ลังใส่แก้ว
                             </label>
                             <p class="control is-expanded ">
@@ -439,7 +282,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="istea">
+                                <input type="checkbox" name="istea">
                                 กาใส่ชา
                             </label>
                             <p class="control is-expanded ">
@@ -448,24 +291,24 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isboiler">
+                                <input type="checkbox" name="isboiler">
                                 หม้อต้มน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
                                 <input class="input" type="number" name="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="">
                             </p>
                         </div>
-                        
+
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isbasket">
+                                <input type="checkbox" name="isbasket">
                                 ตะกร้า
                             </label>
                             <p class="control is-expanded ">
                                 <input class="input" type="number" name="basket" placeholder="จำนวนตระกร้า" value="">
                             </p>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -474,9 +317,9 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         <label class="label"></label>
                     </div>
                     <div class="field-body">
-                    <div class="field">
+                        <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isothertool">
+                                <input type="checkbox" name="isothertool">
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
@@ -660,6 +503,20 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     </script>
 
 
+    <?php
+    include '../components/footer.php';
+    ?>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+    -->
 </body>
 
 </html>
