@@ -3,6 +3,7 @@
 require_once("dbconnect.php");
 $content = 'everyone';
 include '../auth/Sessionpersist.php';
+$today = date("Y-m-d");
 ?>
 <?php
 // การบันทึกข้อมูลอย่างง่ายเบื้องตั้น
@@ -14,8 +15,85 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $p_event_endtime = (isset($_POST['event_endtime'])) ? $_POST['event_endtime'] : "00:00:00";
     $p_event_repeatday = (isset($_POST['event_repeatday'])) ? $_POST['event_repeatday'] : "";
     $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
-    
-
+    $peoplenum =  $_POST['people'];
+    $description = $_POST['desc'];
+    $regname = $_POST['reg'];
+    $tool = $_POST['tool'];
+    if (isset($_POST['coffeesmallcup'])){
+        $Scup = $_POST['Scup'];
+    }else{
+        $Scup = '0';
+    }
+    if (isset($_POST['coffeebigcup'])){
+        $Bcup = $_POST['Bcup'];
+    }else{
+        $Bcup = '0';
+    }
+    if (isset($_POST['islongcup'])){
+        $longcup = $_POST['longcup'];
+    }else{
+        $longcup = '0';
+    }
+    if (isset($_POST['isdrinkcup'])){
+        $drinkcup = $_POST['drinkcup'];
+    }else{
+        $drinkcup = '0';
+    }
+    if (isset($_POST['issoftdrink'])){
+        $softdrink = $_POST['softdrink'];
+    }else{
+        $softdrink = '0';
+    }
+    if (isset($_POST['isothercup'])){
+        $othercup = $_POST['othercup'];
+    }else{
+        $othercup = 'none';
+    }
+    if (isset($_POST['ishotbot'])){
+        $hotbot = $_POST['hotbot'];
+    }else{
+        $hotbot = '0';
+    }
+    if (isset($_POST['istray'])){
+        $tray = $_POST['tray'];
+    }else{
+        $tray = '0';
+    }
+    if (isset($_POST['isdishcup'])){
+        $dishcup = $_POST['dishcup'];
+    }else{
+        $dishcup = '0';
+    }
+    if (isset($_POST['isjug'])){
+        $jug = $_POST['jug'];
+    }else{
+        $jug = '0';
+    }
+    if (isset($_POST['isboxcup'])){
+        $boxcup = $_POST['boxcup'];
+    }else{
+        $boxcup = '0';
+    }
+    if (isset($_POST['istea'])){
+        $tea = $_POST['tea'];
+    }else{
+        $tea = '0';
+    }
+    if (isset($_POST['isboiler'])){
+        $boiler = $_POST['boiler'];
+    }else{
+        $boiler = '0';
+    }
+    if (isset($_POST['isbasket'])){
+        $basket = $_POST['basket'];
+    }else{
+        $basket = '0';
+    }
+    if (isset($_POST['isothertool'])){
+        $other = $_POST['other'];
+    }else{
+        $other = 'none';
+    }
 
     $sql = "
     INSERT INTO tbl_event SET
@@ -25,10 +103,31 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     event_starttime='" . $p_event_starttime . "',
     event_endtime='" . $p_event_endtime . "',
     event_repeatday='" . $p_event_repeatday . "',
-    event_allday='" . $p_event_allday . "'
+    event_allday='" . $p_event_allday . "',
+    people='" . $peoplenum . "',
+    description='" . $description . "',
+    reguser='" . $regname . "',
+    tool='" . $tool . "',
+    Scup='" . $Scup . "',
+    Bcup='" . $Bcup . "',
+    longcup='" . $longcup . "',
+    drinkcup='" . $drinkcup . "',
+    softdrink='" . $softdrink . "',
+    othercup='" . $othercup . "',
+    hotbot='" . $hotbot . "',
+    tray='" . $tray . "',
+    dishcup='" . $dishcup . "',
+    jug='" . $jug . "',
+    boxcup='" . $boxcup . "',
+    tea='" . $tea . "',
+    boiler='" . $boiler . "',
+    basket='" . $basket . "',
+    other='" . $other . "',
     ";
+
     $mysqli->query($sql);
-    header("Location:form_calendar.php");
+    echo '<script>alert("ssss")
+        window.location.href ="../index.php"</script>';
     exit;
 }
 ?>
@@ -74,7 +173,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" type="text" placeholder="กรอกหัวข้อการประชุม" required>
+                            <input class="input" type="text" name="event_title" placeholder="กรอกหัวข้อการประชุม" required>
                             </p>
                         </div>
                     </div>
@@ -90,12 +189,18 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 <div class="select is-fullwidth">
                                     <select name="country" required>
                                         <option value="">เลือกหัวข้อห้องประชุม</option>
-                                        <option value="Argentina">ห้องประชุมศาสตราจารย์พิเศษ ดร.มณฑล สงวนเสริมศรี (60ที่นั่ง)</option>
-                                        <option value="Bolivia">ห้องประชุม OPD 3 (30ที่นั่ง)</option>
-                                        
+                                        <?php
+                                    require "../DB/connect.php";
+                                    $Squery = "SELECT * FROM room";
+                                    if ($result = mysqli_query($con, $Squery)) {
+                                        while ($room = mysqli_fetch_array($result)) {
+?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
+<?php }}
+?>                                       
                                     </select>
                                 </div>
                             </div>
+
                             <div class="control">
                                 <button type="submit" class="button is-primary">Choose</button>
                             </div>
@@ -113,7 +218,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" required>
+                                <input class="input" type="date" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31"  required>
                             </p>
 
                         </div>
@@ -122,7 +227,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" required>
+                                <input class="input" type="date" name="event_enddate" min="<?php echo $today;?>" max="2050-12-31" required>
                             </p>
                         </div>
                     </div>
@@ -135,7 +240,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" type="number" placeholder="กรอกจำนวนผู้เข้าประชุม">
+                                <input class="input" name="people" type="number" placeholder="กรอกจำนวนผู้เข้าประชุม">
                             </div>
                         </div>
                     </div>
@@ -148,7 +253,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea" placeholder="กรอกรายละเอียด"></textarea>
+                                <textarea class="textarea" name="desc" placeholder="กรอกรายละเอียด"></textarea>
                             </div>
                         </div>
                     </div>
@@ -160,7 +265,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" type="text" placeholder="กรอกชื่อ" required>
+                            <input class="input" name="reg" type="text" placeholder="กรอกชื่อ" required>
                             </p>
                         </div>
                     </div>
@@ -173,11 +278,11 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="control">
                             <label class="radio">
-                                <input type="radio" name="answer">
+                                <input type="radio" name="tool" value="yes">
                                 ใช้งาน ตามที่มีในห้อง
                             </label>
                             <label class="radio">
-                                <input type="radio" name="answer">
+                                <input type="radio" name="tool" value="no">
                                 ไม่ใช้งาน
                             </label>
                             <a href="">ดูรายละเอียดอุปกรณ์ในห้อง</a>
@@ -192,21 +297,21 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="coffeebigcup">
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วใหญ่)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" value="">
+                                <input class="input" type="number" name="Bcup" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" value="">
                             </p>
 
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="coffeesmallcup"> 
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วเล็ก)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" value="">
+                                <input class="input" type="number" name="Scup" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" value="">
                             </p>
                         </div>
                     </div>
@@ -219,38 +324,38 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="islongcup">
                                 แก้วก้านยาว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="กรอกจำนวนแก้วก้านยาว" value="">
+                                <input class="input" type="number" name="longcup" placeholder="กรอกจำนวนแก้วก้านยาว" value="">
                             </p>
 
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="isdrinkcup">
                                 แก้วน้ำดื่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="">
+                                <input class="input" type="number" name="drinkcup" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="">
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="issoftdrink">
                                 แก้ว soft drink
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="กรอกจำนวนแก้ว soft drink" value="">
+                                <input class="input" type="number" name="softdrink" placeholder="กรอกจำนวนแก้ว soft drink" value="">
                             </p>
                         </div>
                         <div class="field">
-                            <label class="checkbox">
+                            <label class="checkbox" name="isothercup">
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="text" placeholder="อื่นๆ..." value="">
+                                <input class="input" type="text" name="othercup" placeholder="อื่นๆ..." value="">
                             </p>
                         </div>
                     </div>
@@ -264,75 +369,75 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="ishotbot">
                                 กระบอกน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนกระบอกน้ำร้อน" value="">
+                                <input class="input" type="number" name="hotbot" placeholder="จำนวนกระบอกน้ำร้อน" value="">
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="istray">
                                 ถาด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนถาด" value="">
+                                <input class="input" type="number" name="tray" placeholder="จำนวนถาด" value="">
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="isdishcup">
                                 จานรองแก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนจานรองแก้ว" value="">
+                                <input class="input" type="number" name="dishcup" placeholder="จำนวนจานรองแก้ว" value="">
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" name="isjug">
                                 เหยือกน้ำ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนเหยือกน้ำ" value="">
+                                <input class="input" type="number" name="jug" placeholder="จำนวนเหยือกน้ำ" value="">
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" name="isboxcup">
                                 ลังใส่แก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนลังใส่แก้ว" value="">
+                                <input class="input" type="number" name="boxcup" placeholder="จำนวนลังใส่แก้ว" value="">
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" name="istea">
                                 กาใส่ชา
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนกาใส่ชา" value="">
+                                <input class="input" type="number" name="tea" placeholder="จำนวนกาใส่ชา" value="">
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" name="isboiler">
                                 หม้อต้มน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนหม้อต้มน้ำร้อน" value="">
+                                <input class="input" type="number" name="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="">
                             </p>
                         </div>
                         
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox">
-                                ตระกร้า
+                            <input type="checkbox" name="isbasket">
+                                ตะกร้า
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" placeholder="จำนวนตระกร้า" value="">
+                                <input class="input" type="number" name="basket" placeholder="จำนวนตระกร้า" value="">
                             </p>
                         </div>
                         
@@ -346,11 +451,11 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                     <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox">
+                            <input type="checkbox" name="isothertool">
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="text" placeholder="อื่นๆ..." value="">
+                                <input class="input" type="text" name="other" placeholder="อื่นๆ..." value="">
                             </p>
                         </div>
                     </div>
