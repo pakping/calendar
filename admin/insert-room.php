@@ -25,19 +25,16 @@ include '../auth/Sessionpersist.php' ;
       <div class="notification is-primary">
         <strong>เพิ่มห้องประชุม</strong>
       </div>
-      
+      <form action="../function/addnewroom.php" method="POST" enctype="multipart/form-data">
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Name-Room</label>
+          <label class="label">ชื่อ</label>
         </div>
         <div class="field-body">
           <div class="field">
-            <p class="control is-expanded has-icons-left">
-              <input class="input" type="text" placeholder="Name">
-              <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-              </span>
-            </p>
+            
+              <input class="input" type="text" name="roomname" placeholder="Name">
+             
           </div>
         </div>
       </div>
@@ -46,15 +43,14 @@ include '../auth/Sessionpersist.php' ;
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">
-          <label class="label">Capacity of people</label>
+          <label class="label">ความจุห้อง</label>
         </div>
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="number" placeholder="number">
+              <input class="input" type="number" name="roomcap" placeholder="number">
             </div>
             <p class="help-number">
-              please enter a number
             </p>
           </div>
         </div>
@@ -69,11 +65,11 @@ include '../auth/Sessionpersist.php' ;
     <div class="field is-narrow">
       <div class="control">
         <label class="radio">
-          <input type="radio" name="item">
+          <input type="radio" name="com" value='1'>
           Yes
         </label>
         <label class="radio">
-          <input type="radio" name="item">
+          <input type="radio" name="com" value='0'>
           No
         </label>
 
@@ -92,11 +88,11 @@ include '../auth/Sessionpersist.php' ;
     <div class="field is-narrow">
       <div class="control">
         <label class="radio">
-          <input type="radio" name="item-1">
+          <input type="radio" name="mic" value='1'>
           Yes
         </label>
         <label class="radio">
-          <input type="radio" name="item-1">
+          <input type="radio" name="mic" value='0'>
           No
         </label>
 
@@ -117,11 +113,11 @@ include '../auth/Sessionpersist.php' ;
     <div class="field is-narrow">
       <div class="control">
         <label class="radio">
-          <input type="radio" name="item-2">
+          <input type="radio" name="screen" value='1'>
           Yes
         </label>
         <label class="radio">
-          <input type="radio" name="item-2">
+          <input type="radio" name="screen" value='0'>
           No
         </label>
 
@@ -133,7 +129,7 @@ include '../auth/Sessionpersist.php' ;
 </div>
 
 
-      <div class="field is-horizontal">
+      <!-- <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">explain</label>
         </div>
@@ -144,7 +140,7 @@ include '../auth/Sessionpersist.php' ;
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="field is-horizontal">
         <div class="field-label is-normal">
@@ -188,7 +184,7 @@ include '../auth/Sessionpersist.php' ;
       </div>
     </div>
   </section>
-
+</form>
 
 </body>
 
@@ -196,7 +192,7 @@ include '../auth/Sessionpersist.php' ;
 
 
 
-<script>
+<!-- <script>
   const fileInput = document.querySelector('#file-js-example input[type=file]');
   fileInput.onchange = () => {
     if (fileInput.files.length > 0) {
@@ -204,4 +200,4 @@ include '../auth/Sessionpersist.php' ;
       fileName.textContent = fileInput.files[0].name;
     }
   }
-</script>
+</script> -->

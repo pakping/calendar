@@ -122,13 +122,12 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     tea='" . $tea . "',
     boiler='" . $boiler . "',
     basket='" . $basket . "',
-    other='" . $other . "',
+    other='" . $other . "'
     ";
 
     $mysqli->query($sql);
-    echo '<script>alert("ssss")
-        window.location.href ="../index.php"</script>';
-    exit;
+    echo $sql;
+    /* exit; */
 }
 ?>
 <!doctype html>
@@ -160,7 +159,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     ?>
     <br>
     <br>
-    <form action="" method="post">
+    <form action="" method="post" accept-charset="utf-8">
         <section class="section">
             <div class="container">
                 <div class="notification is-primary">
@@ -243,7 +242,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกเวลาเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31"  required>
+                                <input class="input" type="time" name="event_starttime"required>
                             </p>
 
                         </div>
@@ -252,7 +251,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกเวลาสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_enddate" min="<?php echo $today;?>" max="2050-12-31" required>
+                                <input class="input" type="time" name="event_endtime" required>
                             </p>
                         </div>
                     </div>
@@ -493,7 +492,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <button class="button is-primary" type="submit">
+                                <button class="button is-primary"name="btn_add" type="submit" value="1">
                                     จองห้อง
                                 </button>
                             </div>
