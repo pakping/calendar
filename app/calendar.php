@@ -46,32 +46,40 @@ include '../auth/Sessionpersist.php';
 	<br>
 	<br>
 	<div class="container">
-		<div id='calendar'></div>
-	</div>
-	<!-- Modal -->
-	<div class="modal fade" id="calendarmodal" tabindex="-1" role="dialog">
-		<!--กำหนด id ให้กับ modal-->
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="calendarmodal-title">Modal title</h5>
-					<!--กำหนด id ให้ส่วนหัวข้อ-->
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
+
+		<div class="box has-background">
+			<div class="container is-max-desktop">
+				<div class="notification is-link">
+				<strong>ห้องประชุมที่ 1 </strong>
 				</div>
-				<div class="modal-body" id="calendarmodal-detail"> ก
-					<!--ำหนด id ให้ส่วนรายละเอียด-->
-					Modal detail
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+			<br>
+			<div id='calendar'></div>
+		</div>
+		<!-- Modal -->
+		<div class="modal fade" id="calendarmodal" tabindex="-1" role="dialog">
+			<!--กำหนด id ให้กับ modal-->
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="calendarmodal-title">Modal title</h5>
+						<!--กำหนด id ให้ส่วนหัวข้อ-->
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="calendarmodal-detail"> ก
+						<!--ำหนด id ให้ส่วนรายละเอียด-->
+						Modal detail
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
 				</div>
 			</div>
 		</div>
+
 	</div>
-
-
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript">
@@ -122,8 +130,17 @@ include '../auth/Sessionpersist.php';
 			$("#calendarmodal").modal(); // แสดง modal
 		}
 	</script>
+<style>
+  .tag:not(body).is-purple {
+    background-color: hsl(294, 71%, 79%);
+    color: #fff;
+  }
+ 
+</style>
 
-
+<?php
+  include '../components/footer.php';
+  ?>
 </body>
 
 </html>
