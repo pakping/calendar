@@ -22,12 +22,15 @@ include '../auth/Sessionpersist.php';
   include '../components/nav.php';
   ?>
   <!-- Navigation -->
+
   <?php
   include '../components/room.php';
   ?>
+  
   <?php
   include '../components/footer.php';
   ?>
+  
 
 </body>
 
