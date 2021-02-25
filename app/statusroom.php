@@ -22,7 +22,7 @@ include '../auth/Sessionpersist.php';
     include '../components/nav.php';
     ?>
     <!-- Navigation -->
-    ิ<br><br>
+    <br><br>
     <div class="container is-fullhd">
         <p class="is-size-2">
             สถานะการจอง

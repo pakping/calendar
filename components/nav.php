@@ -1,26 +1,24 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
-  <div class="navbar" style="width: 100%; height: 75px; background-color: #673ab7;">
+  <div class="navbar is-White" style="width: 100%; height: 85px; background-color: #673ab7;">
     <h1 style="margin: 0 auto; padding: 25px; color: white;">
-      โรงพยาบาลมหาลัยพะเยา
+      <img src="../logo/logo-2.png" width="250" height="150">
     </h1>
   </div>
 </nav>
 
-<nav class="navbar is-warning" role="navigation" aria-label="main navigation" style="height: 75px;">
+<nav class="navbar is-light" role="navigation" aria-label="main navigation" style="height: 85px;">
   <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
-      <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
+    <a class="navbar-item" href="#">
+      <h6 class="title is-6 ">ระบบจองห้องประชุม UP-MED</h6>
     </a>
-
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
-
   <div id="navbarBasicExample" class="navbar-menu">
-    <div class="navbar is-warning">
+    <div class="navbar is-light">
       <a class="navbar-item" href="../app/home.php">
         หน้าหลัก
       </a>
@@ -34,12 +32,13 @@
       <a class="navbar-item" href="../app/form_calendar.php">
         จองห้อง
       </a>
-    </div>
-
-    <div class="navbar-end">
       <a class="navbar-item" href="../app/statusroom.php">
         สถานะการจอง
       </a>
+    </div>
+
+    <div class="navbar-end">
+    
       <div class="navbar-item">
 
         <div class="navbar-item has-dropdown is-hoverable">
@@ -54,7 +53,7 @@
             <!-- Other navbar items -->
             <form action="../auth/logout.php" method="post">
 
-              <button type="submit" class="button">ออกจากระบบ</button>
+              <button type="submit" class="button is-light">ออกจากระบบ</button>
             </form>
           </div>
         </div>
@@ -91,3 +90,8 @@
 
   });
 </script>
+<style>
+  .title {
+    color: rgba(141, 56, 201);
+  }
+</style>
