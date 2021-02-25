@@ -25,7 +25,19 @@ include '../auth/Sessionpersist.php' ;
       <div class="notification is-primary">
         <strong>เพิ่มห้องประชุม</strong>
       </div>
-      <form action="../function/addnewroom.php" method="POST" enctype="multipart/form-data">
+      <?php
+      if (isset($_POST['sentid'])){
+        $_SESSION['currentroom'] = $_POST['sentid'];
+      }
+        $CRid = $_SESSION['currentroom'];
+        $setid = '0';
+      require "../DB/connect.php";
+        $Squery = "SELECT * FROM room Where roomid = '$CRid'";
+          if ($result = mysqli_query($con, $Squery)) {
+            while ($room = mysqli_fetch_array($result)) {
+      
+      ?>
+      <form action="../function/editroom.php" method="POST" enctype="multipart/form-data">
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">ชื่อ</label>
@@ -33,7 +45,7 @@ include '../auth/Sessionpersist.php' ;
         <div class="field-body">
           <div class="field">
             
-              <input class="input" type="text" name="roomname" placeholder="Name">
+              <input class="input" type="text" name="roomname" value="<?php echo $room['roomname']  ?>">
              
           </div>
         </div>
@@ -48,7 +60,7 @@ include '../auth/Sessionpersist.php' ;
         <div class="field-body">
           <div class="field">
             <div class="control">
-              <input class="input" type="number" name="roomcap" placeholder="number">
+              <input class="input" type="number" name="roomcap" value="<?php echo $room['roomcap']  ?>">
             </div>
             <p class="help-number">
             </p>
@@ -65,11 +77,11 @@ include '../auth/Sessionpersist.php' ;
     <div class="field is-narrow">
       <div class="control">
         <label class="radio">
-          <input type="radio" name="com" value='1'>
+          <input type="radio" name="com" value='1' <?php if($room['com']=='1'){ echo "checked"; } ?>>
           Yes
         </label>
         <label class="radio">
-          <input type="radio" name="com" value='0'>
+          <input type="radio" name="com" value='0' <?php if($room['com']=='0'){ echo "checked"; } ?>>
           No
         </label>
 
@@ -88,11 +100,11 @@ include '../auth/Sessionpersist.php' ;
     <div class="field is-narrow">
       <div class="control">
         <label class="radio">
-          <input type="radio" name="mic" value='1'>
+          <input type="radio" name="mic" value='1' <?php if($room['mic']=='1'){ echo "checked"; } ?>>
           Yes
         </label>
         <label class="radio">
-          <input type="radio" name="mic" value='0'>
+          <input type="radio" name="mic" value='0' <?php if($room['mic']=='0'){ echo "checked"; } ?>>
           No
         </label>
 
@@ -113,61 +125,24 @@ include '../auth/Sessionpersist.php' ;
     <div class="field is-narrow">
       <div class="control">
         <label class="radio">
-          <input type="radio" name="screen" value='1'>
+          <input type="radio" name="screen" value='1' <?php if($room['screen']=='1'){ echo "checked"; } ?>>
           Yes
         </label>
         <label class="radio">
-          <input type="radio" name="screen" value='0'>
+          <input type="radio" name="screen" value='0' <?php if($room['screen']=='0'){ echo "checked"; } ?>>
           No
         </label>
-
+        <input type='hidden' name='roomid' value='<?php echo $room ['roomid']; ?>'>
         
       </div>
     </div>
     
   </div>
 </div>
-
-
-      <!-- <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">explain</label>
-        </div>
-        <div class="field-body">
-          <div class="field">
-            <div class="control">
-              <textarea class="textarea" placeholder="Explain how we can help you"></textarea>
-            </div>
-          </div>
-        </div>
-      </div> -->
-
-      <div class="field is-horizontal">
-        <div class="field-label is-normal">
-          <label class="label">Image</label>
-        </div>
-
-        <div class="field-body">
-          <div id="file-js-example" class="file has-name">
-            <label class="file-label">
-              <input class="file-input" type="file" name="resume">
-              <span class="file-cta">
-                <span class="file-icon">
-                  <i class="fas fa-upload"></i>
-                </span>
-                <span class="file-label">
-                  Choose a file…
-                </span>
-              </span>
-              <span class="file-name">
-                No file uploaded
-              </span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-
+<?php
+$setid = $room['roomid'];
+}}
+?>
       <div class="field is-horizontal">
         <div class="field-label">
           <!-- Left empty for spacing -->
@@ -185,19 +160,10 @@ include '../auth/Sessionpersist.php' ;
     </div>
   </section>
 </form>
+<form action="../function/deleteroom.php" method="POST">
+<input type="hidden" value ="<?php echo $setid;?>" name="delid">
+</form>
 
 </body>
 
 </html>
-
-
-
-<!-- <script>
-  const fileInput = document.querySelector('#file-js-example input[type=file]');
-  fileInput.onchange = () => {
-    if (fileInput.files.length > 0) {
-      const fileName = document.querySelector('#file-js-example .file-name');
-      fileName.textContent = fileInput.files[0].name;
-    }
-  }
-</script> -->

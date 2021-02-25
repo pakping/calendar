@@ -94,9 +94,9 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     }else{
         $other = 'none';
     }
-
+    $roomname=$_POST['roomname'];
     $sql = "
-    INSERT INTO tbl_event SET
+    INSERT INTO '$roomname' SET
     event_title='" . $p_event_title . "',
     event_startdate='" . $p_event_startdate . "',
     event_enddate='" . $p_event_enddate . "',
@@ -126,8 +126,10 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     ";
 
     $mysqli->query($sql);
-    echo $sql;
+    /* echo $sql; */
     /* exit; */
+    echo '<script>alert("New data inserted")
+                window.location.href ="../app/calendar.php"</script>';
 }
 ?>
 <!doctype html>
@@ -186,7 +188,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         <div class="field has-addons">
                             <div class="control is-expanded">
                                 <div class="select is-fullwidth">
-                                    <select name="country" required>
+                                    <select name="roomname" required>
                                         <option value="">เลือกหัวข้อห้องประชุม</option>
                                         <?php
                                     require "../DB/connect.php";

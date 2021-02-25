@@ -37,18 +37,23 @@
     </div>
 
     <div class="navbar-end">
+      <a class="navbar-item" href="../app/statusroom.php">
+        สถานะการจอง
+      </a>
       <div class="navbar-item">
+
         <div class="navbar-item has-dropdown is-hoverable">
+
           <a class="navbar-link">
             คุณ <?php
-            echo $_SESSION['Username'];
-            ?>
+                echo $_SESSION['Username'];
+                ?>
           </a>
 
           <div class="navbar-dropdown ">
             <!-- Other navbar items -->
             <form action="../auth/logout.php" method="post">
-              
+
               <button type="submit" class="button">ออกจากระบบ</button>
             </form>
           </div>

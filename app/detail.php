@@ -335,10 +335,9 @@ include '../auth/Sessionpersist.php';
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <div class="control">
-                                <button class="button is-primary" type="submit">
-                                    จองห้อง
-                                </button>
+                            <div class="buttons">
+                                <button class="button is-success" type="submit">ตกลง</button>
+                                <button class="button is-danger" onclick="back()">ยกเลิก</button>
                             </div>
                         </div>
                     </div>
@@ -458,6 +457,9 @@ include '../auth/Sessionpersist.php';
 
 
     <script type="text/javascript">
+        function back() {
+            window.location.href ="../app/statusroom.php"
+        }
         // $(function() {
         //     // เมื่อเฃือกวันทำซ้ำ วนลูป สร้างชุดข้อมูล
         //     $(document.body).on("change", ".repeatday_chk", function() {
