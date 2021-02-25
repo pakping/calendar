@@ -16,10 +16,9 @@ include '../auth/Sessionpersist.php' ;
 
 <body>
 
-  <?php
-  include '../components/nav.php';
+<?php
+  include '../components/navbaradmin.php';
   ?>
-
   <section class="section">
     <div class="container">
       <div class="notification is-primary">

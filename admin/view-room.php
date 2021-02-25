@@ -14,10 +14,9 @@ include '../auth/Sessionpersist.php';
 </head>
 
 <body>
-  <?php
-  include '../components/nav.php';
+<?php
+  include '../components/navbaradmin.php';
   ?>
-
 <section class="section">
     <div class="container">
       <h3 class="title"> ห้องประชุม</h3>
@@ -149,7 +148,7 @@ include '../auth/Sessionpersist.php';
               </div>
             </div>
             <footer class="card-footer">
-              <a href="#" class="card-footer-item">Edit</a>
+              <a href="Edit-room.php" class="card-footer-item">Edit</a>
               <a href="#" class="card-footer-item">Delete</a>
             </footer>
           </div>

@@ -13,7 +13,9 @@ include '../auth/sessionpersist.php';
 	/* include '../css/bootstrap.php'; */
 	?>
 </head>
-
+<?php
+  include '../components/navbaradmin.php';
+  ?>
 <body class="font-mali vh-100 d-flex justify-content-center align-items-center">
 	<div class="card mb-3">
 		<div class="card-header bg-primary text-white">
