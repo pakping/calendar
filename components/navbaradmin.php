@@ -29,10 +29,10 @@
        อนุมัติการจองห้องประชุม
       </a>
       <a class="navbar-item" href="../admin/register.php">
-        สมัครสมาชิค
+        สมัครสมาชิก
       </a>
       <a class="navbar-item" href="../admin/insert-room.php">
-        เพิ่มห้องประชุ่ม
+        เพิ่มห้องประชุม
       </a>
     </div>
 
