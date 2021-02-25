@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 03:03 AM
+-- Generation Time: Feb 25, 2021 at 08:09 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -33,16 +33,19 @@ CREATE TABLE `room` (
   `roomcap` int(11) NOT NULL,
   `com` int(11) NOT NULL,
   `screen` int(11) NOT NULL,
-  `mic` int(11) NOT NULL
+  `mic` int(11) NOT NULL,
+  `roomimg` varchar(255) NOT NULL,
+  `bgcolor` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `room`
 --
 
-INSERT INTO `room` (`roomid`, `roomname`, `roomcap`, `com`, `screen`, `mic`) VALUES
-(1, 'ห้องประชุมศาสตราจารย์พิเศษ ดร.มณฑล สงวนเสริมศรี (60ที่นั่ง)', 60, 0, 0, 0),
-(2, 'ห้องประชุม OPD 3 (30ที่นั่ง)', 30, 0, 0, 0);
+INSERT INTO `room` (`roomid`, `roomname`, `roomcap`, `com`, `screen`, `mic`, `roomimg`, `bgcolor`) VALUES
+(1, 'ห้องประชุมศาสตราจารย์พิเศษ ดร.มณฑล สงวนเสริมศรี (60ที่นั่ง)', 60, 1, 0, 1, '', ''),
+(2, 'ห้องประชุม OPD 3 (30ที่นั่ง)', 30, 0, 1, 0, '', ''),
+(12, 'Jeerachon01', 10, 0, 0, 1, '../img/roomimg/title_imgJeerachon01.jpeg', '#17e708');
 
 -- --------------------------------------------------------
 
@@ -53,6 +56,7 @@ INSERT INTO `room` (`roomid`, `roomname`, `roomcap`, `com`, `screen`, `mic`) VAL
 CREATE TABLE `tbl_event` (
   `event_id` int(11) NOT NULL,
   `event_title` varchar(256) NOT NULL,
+  `roomid` int(2) NOT NULL,
   `event_detail` text NOT NULL,
   `event_startdate` date NOT NULL,
   `event_enddate` date NOT NULL,
@@ -89,10 +93,10 @@ CREATE TABLE `tbl_event` (
 -- Dumping data for table `tbl_event`
 --
 
-INSERT INTO `tbl_event` (`event_id`, `event_title`, `event_detail`, `event_startdate`, `event_enddate`, `event_starttime`, `event_endtime`, `event_color`, `event_bgcolor`, `event_url`, `event_repeatday`, `event_allday`, `event_createdate`, `people`, `description`, `reguser`, `tool`, `Scup`, `Bcup`, `longcup`, `drinkcup`, `softdrink`, `othercup`, `hotbot`, `tray`, `dishcup`, `jug`, `boxcup`, `tea`, `boiler`, `basket`, `other`) VALUES
-(2, 'เทียว', '', '2021-01-13', '2021-01-14', '10:30:00', '14:30:00', '#FFFFFF', '#03a9f4', '', '', 1, '2021-01-12 04:31:03', 0, '', '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, ''),
-(4, 'da comrade', '', '2021-02-03', '2021-02-20', '06:00:00', '18:00:00', '#FFFFFF', '#03a9f4', '', '', 1, '2021-02-16 08:01:42', 0, '', '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, ''),
-(6, 'Humgee', '', '2021-02-26', '2021-02-28', '12:40:00', '16:40:00', '#FFFFFF', '#03a9f4', '', '', 0, '2021-02-23 07:41:12', 60, 'เล่นเกม', 'Jeerachon', 0, 0, 2, 51, 10, 0, 'none', 23, 5, 0, 0, 0, 0, 0, 0, 'none');
+INSERT INTO `tbl_event` (`event_id`, `event_title`, `roomid`, `event_detail`, `event_startdate`, `event_enddate`, `event_starttime`, `event_endtime`, `event_color`, `event_bgcolor`, `event_url`, `event_repeatday`, `event_allday`, `event_createdate`, `people`, `description`, `reguser`, `tool`, `Scup`, `Bcup`, `longcup`, `drinkcup`, `softdrink`, `othercup`, `hotbot`, `tray`, `dishcup`, `jug`, `boxcup`, `tea`, `boiler`, `basket`, `other`) VALUES
+(2, 'เทียว', 1, '', '2021-01-13', '2021-01-14', '10:30:00', '14:30:00', '#FFFFFF', '#03a9f4', '', '', 1, '2021-01-12 04:31:03', 0, '', '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(4, 'da comrade', 1, '', '2021-02-03', '2021-02-20', '06:00:00', '18:00:00', '#FFFFFF', '#03a9f4', '', '', 1, '2021-02-16 08:01:42', 0, '', '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, ''),
+(10, 'Games Review Today', 12, '', '2021-02-27', '2021-02-28', '05:48:00', '16:52:00', '#FFFFFF', '#17e708', '', '', 0, '2021-02-25 07:00:25', 3, 'aaa', 'Jeerachon', 0, 3, 0, 0, 3, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none');
 
 -- --------------------------------------------------------
 
@@ -115,7 +119,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access`) VALUES
 ('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00 00:00:00', 0, 'user'),
 ('phoomin', 'e35cf7b66449df565f93c607d5a81d09', '0000-00-00 00:00:00', 0, 'user'),
-('sirichai', 'c33367701511b4f6020ec61ded352059', '2021-02-25 09:03:01', 0, 'admin');
+('sirichai', 'c33367701511b4f6020ec61ded352059', '2021-02-25 14:06:25', 0, 'admin');
 
 --
 -- Indexes for dumped tables
@@ -131,7 +135,8 @@ ALTER TABLE `room`
 -- Indexes for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  ADD PRIMARY KEY (`event_id`);
+  ADD PRIMARY KEY (`event_id`),
+  ADD KEY `fk_roomid` (`roomid`);
 
 --
 -- Indexes for table `user`
@@ -147,13 +152,23 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `roomid` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `roomid` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `tbl_event`
+--
+ALTER TABLE `tbl_event`
+  ADD CONSTRAINT `fk_roomid` FOREIGN KEY (`roomid`) REFERENCES `room` (`roomid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

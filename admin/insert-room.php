@@ -37,9 +37,19 @@ include '../auth/Sessionpersist.php' ;
           </div>
         </div>
       </div>
-
-
-
+      
+      
+      
+      
+      <div>
+      <label for="favcolor">เลือกสีที่ใช้แสดงในปฏิทิน</label>
+      <input type="color" id="favcolor" name="bgcolor" value="#ff0000">
+      </div>
+      
+      
+      
+      
+      
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">ความจุห้อง</label>
@@ -149,7 +159,7 @@ include '../auth/Sessionpersist.php' ;
         <div class="field-body">
           <div id="file-js-example" class="file has-name">
             <label class="file-label">
-              <input class="file-input" type="file" name="resume">
+              <input class="file-input" type="file" name="resume" accept="image/*">
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
