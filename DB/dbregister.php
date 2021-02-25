@@ -5,12 +5,17 @@ $name = $_POST['uname'];
 $pass = hash('md5',$_POST['psw']);
 $pass2 = hash('md5',$_POST['psw-repeat']);
 $access = 'user';
-$checkuser="Select * From user where username = '$name' ";
 
+$fname = $_POST['fname'];
+$lname = $_POST['lname'];
+$email = $_POST['email'];
+$phonenum = $_POST['phone'];
+
+$checkuser="Select * From user where username = '$name' ";
 if ($result = mysqli_query($con, $Squery)){
 if ($pass == $pass2) {
     /* $uname =$_SESSION["Username"]; */
-    $adddata = "INSERT INTO user (Username,Password,LoginStatus,Access) VALUE ('$name','$pass','0','$access')";
+    $adddata = "INSERT INTO user (Username,Password,LoginStatus,Access,fname,lname,email,pnum) VALUE ('$name','$pass','0','$access','$fname','$lname','$email','$phonenum')";
     $result = mysqli_query($con, $adddata);
     if ($result) {
         echo "success";

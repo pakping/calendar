@@ -69,7 +69,7 @@ include '../components/navbaradmin.php';
 						<label class="label">ชื่อที่ใช้เข้าระบบ</label>
 						<div class="control has-icons-left has-icons-right">
 
-							<input class="input" name="uname" id="name" type="text" placeholder="abcd@up.ac.th" required>
+							<input class="input" name="uname" id="name" type="text" placeholder="exampleuser" required>
 							<span class="icon is-small is-left">
 								<i class="fa fa-user"></i>
 							</span>
