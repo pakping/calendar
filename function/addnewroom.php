@@ -9,16 +9,24 @@ $mic = $_POST['mic'];
 
 $filename = $_FILES['resume']['name'];
 $filetmp = $_FILES['resume']['tmp_name'];
+$path = "../img/roomimg/";
 $filepath = "../img/roomimg/" . $filename ;
-$filetype = $_FILES['resume']['type'];
-echo $filetype;
-/* move_uploaded_file($filetmp, $filepath);
-rename("$filepath",)
-$sql = "INSERT INTO room (roomname,roomcap,com,screen,mic) Value ('$roomname','$roomcap','$com','$screen','$mic')";
-$result=mysqli_query($con,$sql);
-if ($result){
-    echo '<script>alert("New data inserted")
-            window.location.href ="../admin/insert-room.php"</script>';
-} */
+$ext = pathinfo($filename, PATHINFO_EXTENSION);
+$namenoext = basename($filepath,"." . $ext);
 
+echo $ext . '<br>';
+echo $filetmp . '<br>';
+echo basename($filepath,"." . $ext);
+
+if (move_uploaded_file($filetmp, $filepath)){
+    $newpath = $path . "title_img" . $roomname . "." . $ext ;
+    echo $newpath;
+    rename($filepath,$newpath);
+    $sql = "INSERT INTO room (roomname,roomcap,com,screen,mic,roomimg) Value ('$roomname','$roomcap','$com','$screen','$mic','$newpath')";
+    $result=mysqli_query($con,$sql);
+    if ($result){
+        echo '<script>alert("New data inserted")
+                window.location.href ="../admin/insert-room.php"</script>';
+    }
+}
 ?>

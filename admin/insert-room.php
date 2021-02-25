@@ -192,7 +192,7 @@ include '../auth/Sessionpersist.php' ;
 
 
 
-<!-- <script>
+<script>
   const fileInput = document.querySelector('#file-js-example input[type=file]');
   fileInput.onchange = () => {
     if (fileInput.files.length > 0) {
@@ -200,4 +200,4 @@ include '../auth/Sessionpersist.php' ;
       fileName.textContent = fileInput.files[0].name;
     }
   }
-</script> -->
+</script>
