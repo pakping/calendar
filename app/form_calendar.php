@@ -94,16 +94,28 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     }else{
         $other = 'none';
     }
-    $roomname=$_POST['roomname'];
+    $roomname = $_POST['roomname'];
+    $bgcolor = '0';
+    $roomid = '0';
+    $sqlq = "Select * from room where roomname = '$roomname'";
+    if ($result = mysqli_query($con, $sqlq)) {
+        while ($ok = mysqli_fetch_array($result)) {
+            $bgcolor = $ok['bgcolor'] ;
+            $roomid = $ok['roomid'];
+            
+        }
+    }
     $sql = "
-    INSERT INTO '$roomname' SET
+    INSERT INTO tbl_event SET
     event_title='" . $p_event_title . "',
+    roomid ='" . $roomid . "',
     event_startdate='" . $p_event_startdate . "',
     event_enddate='" . $p_event_enddate . "',
     event_starttime='" . $p_event_starttime . "',
     event_endtime='" . $p_event_endtime . "',
     event_repeatday='" . $p_event_repeatday . "',
     event_allday='" . $p_event_allday . "',
+    event_bgcolor='" . $bgcolor . "',
     people='" . $peoplenum . "',
     description='" . $description . "',
     reguser='" . $regname . "',
@@ -124,12 +136,12 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     basket='" . $basket . "',
     other='" . $other . "'
     ";
-
-    $mysqli->query($sql);
+    if ($mysqli->query($sql)){
     /* echo $sql; */
     /* exit; */
     echo '<script>alert("New data inserted")
                 window.location.href ="../app/calendar.php"</script>';
+    }
 }
 ?>
 <!doctype html>
@@ -195,7 +207,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                     $Squery = "SELECT * FROM room";
                                     if ($result = mysqli_query($con, $Squery)) {
                                         while ($room = mysqli_fetch_array($result)) {
-?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
+?>                                            <option value="<?php echo $room['roomname']; ?>"><?php echo $room['roomname']; ?></option>
 <?php }}
 ?>                                       
                                     </select>

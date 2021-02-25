@@ -37,9 +37,19 @@ include '../auth/Sessionpersist.php' ;
           </div>
         </div>
       </div>
-
-
-
+      
+      
+      
+      
+      <div>
+      <label for="favcolor">เลือกสีที่ใช้แสดงในปฏิทิน</label>
+      <input type="color" id="favcolor" name="bgcolor" value="#ff0000">
+      </div>
+      
+      
+      
+      
+      
       <div class="field is-horizontal">
         <div class="field-label is-normal">
           <label class="label">ความจุห้อง</label>

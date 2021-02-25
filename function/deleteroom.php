@@ -11,8 +11,6 @@ if ($result = mysqli_query($con, $sql1)) {
     }
 }
 $sql2="delete from room where roomid ='$id'";
-/* mysqli_query($con,$sql2);
-$sql3="Drop Table '$name'"; */
 mysqli_query($con,$sql2);
 echo '<script> alert("Delete record successfully")
 window.location.href ="../admin/view-room.php"
