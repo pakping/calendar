@@ -50,7 +50,7 @@ include '../auth/Sessionpersist.php';
                 ?>
                     <tr>
                         <th><?php echo $a; ?></th>
-                        <td>Mark</td>
+                        <td>Mark</td> 
                         <td>Otto</td>
                         <td>@mdo</td>
                         <td>
