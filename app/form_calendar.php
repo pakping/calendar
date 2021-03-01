@@ -168,6 +168,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 </head>
 
 <body>
+
     <?php
     include '../components/nav.php';
     ?>
@@ -231,7 +232,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31"  required>
+                                <input class="input" type="date" id="startdate" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31" onchange="respondtodate()" required>
                             </p>
 
                         </div>
@@ -240,7 +241,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_enddate" min="<?php echo $today;?>" max="2050-12-31" required>
+                                <input class="input" type="date" id="enddate" name="event_enddate" max="2050-12-31" required>
                             </p>
                         </div>
                     </div>
@@ -671,7 +672,27 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
             });
         }
     </script>
+<script>
+var today = new Date();
+var dd = String(today.getDate()).padStart(2, '0');
+var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+var yyyy = today.getFullYear();
 
+today = yyyy + '-' + mm + '-' + dd;
+document.getElementById('enddate').setAttribute("min", today);
+console.log(today);
+
+function respondtodate(){
+    if (document.getElementById('enddate').value < document.getElementById('startdate').value){
+        document.getElementById('enddate').value = document.getElementById('startdate').value;
+    }
+    var da = new Date();
+    da = document.getElementById('startdate').value;
+    document.getElementById('enddate').setAttribute("min", da);
+}
+
+
+</script>
 
 </body>
 
