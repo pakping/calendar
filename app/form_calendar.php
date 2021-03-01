@@ -338,7 +338,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วใหญ่)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="Bcup" id="Bcup" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" value="" disabled>
+                                <input class="input" type="number" name="Bcup" id="Bcup" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" min="0" oninput="this.value = Math.round(this.value);" value="" disabled>
                             </p>
 
                         </div>
@@ -348,7 +348,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วเล็ก)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="Scup" id="Scup" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" value="" disabled>
+                                <input class="input" type="number" name="Scup" id="Scup" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" min="0" oninput="this.value = Math.round(this.value);" value="" disabled>
                             </p>
                         </div>
                     </div>
@@ -365,7 +365,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 แก้วก้านยาว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="longcup" id="longcup" placeholder="กรอกจำนวนแก้วก้านยาว" value="" disabled>
+                                <input class="input" type="number" name="longcup" id="longcup" placeholder="กรอกจำนวนแก้วก้านยาว" min="0" oninput="this.value = Math.round(this.value);" value="" disabled>
                             </p>
 
                         </div>
@@ -375,7 +375,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 แก้วน้ำดื่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="drinkcup" id="drinkcup" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="" disabled>
+                                <input class="input" type="number" name="drinkcup" id="drinkcup" placeholder="กรอกจำนวนแก้วน้ำดื่ม" min="0" oninput="this.value = Math.round(this.value);" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -384,7 +384,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 แก้ว soft drink
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="softdrink" id="softdrink" placeholder="กรอกจำนวนแก้ว soft drink" value="" disabled>
+                                <input class="input" type="number" name="softdrink" id="softdrink" placeholder="กรอกจำนวนแก้ว soft drink" min="0" oninput="this.value = Math.round(this.value);" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -411,7 +411,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 กระบอกน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="hotbot" id="hotbot" placeholder="จำนวนกระบอกน้ำร้อน" value="" disabled>
+                                <input class="input" type="number" name="hotbot" id="hotbot" placeholder="จำนวนกระบอกน้ำร้อน" min="0" oninput="this.value = Math.round(this.value);" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -420,7 +420,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 ถาด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="tray" id ="tray" placeholder="จำนวนถาด" value="" disabled>
+                                <input class="input" type="number" name="tray" id ="tray" placeholder="จำนวนถาด" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -429,7 +429,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 จานรองแก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="dishcup" id="dishcup" placeholder="จำนวนจานรองแก้ว" value="" disabled>
+                                <input class="input" type="number" name="dishcup" id="dishcup" placeholder="จำนวนจานรองแก้ว" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -438,7 +438,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เหยือกน้ำ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="jug" id="jug" placeholder="จำนวนเหยือกน้ำ" value="" disabled>
+                                <input class="input" type="number" name="jug" id="jug" placeholder="จำนวนเหยือกน้ำ" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -447,7 +447,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 ลังใส่แก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="boxcup" id="boxcup" placeholder="จำนวนลังใส่แก้ว" value="" disabled>
+                                <input class="input" type="number" name="boxcup" id="boxcup" placeholder="จำนวนลังใส่แก้ว" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -456,7 +456,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 กาใส่ชา
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="tea" id="tea" placeholder="จำนวนกาใส่ชา" value="" disabled>
+                                <input class="input" type="number" name="tea" id="tea" placeholder="จำนวนกาใส่ชา" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -465,7 +465,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 หม้อต้มน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="boiler" id="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="" disabled>
+                                <input class="input" type="number" name="boiler" id="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         
@@ -475,7 +475,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 ตะกร้า
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="basket" id="basket" placeholder="จำนวนตระกร้า" value="" disabled>
+                                <input class="input" type="number" name="basket" id="basket" placeholder="จำนวนตระกร้า" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         
@@ -493,7 +493,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="text" name="other" id="other" placeholder="อื่นๆ..." value="" disabled>
+                                <input class="input" type="text" name="other" id="other" placeholder="อื่นๆ..." value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                     </div>
@@ -506,7 +506,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <button class="button is-primary"name="btn_add" type="submit" value="1">
+                                <button class="button is-primary" name="btn_add" type="submit" value="1">
                                     จองห้อง
                                 </button>
                             </div>

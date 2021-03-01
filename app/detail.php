@@ -5,7 +5,9 @@ if (isset($_POST['eventid'])) {
     echo ($_POST['eventid']);
     $eventid = $_POST['eventid'];
 }
+$today = date("Y-m-d");
 ?>
+
 <!doctype html>
 <html lang="en">
 
@@ -32,7 +34,7 @@ if (isset($_POST['eventid'])) {
         $row = mysqli_fetch_array($result);
     }
     ?>
-    <form action="" method="post">
+    <form action="../function/update.php" method="post">
         <section class="section">
             <div class="container">
                 <div class="notification is-primary">
@@ -45,7 +47,7 @@ if (isset($_POST['eventid'])) {
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" type="text" name="event_title" value="<?php echo $row['event_title']; ?>" placeholder="กรอกหัวข้อการประชุม" >
+                            <input class="input" type="text" name="event_title" value="<?php echo $row['event_title']; ?>" placeholder="กรอกหัวข้อการประชุม">
 
                         </div>
                     </div>
@@ -60,7 +62,7 @@ if (isset($_POST['eventid'])) {
                             <div class="field has-addons">
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
-                                        <select name="roomname" >
+                                        <select name="roomname">
                                             <option value="<?php echo $row['roomname']; ?>"><?php echo $row['roomname']; ?></option>
                                             <?php
                                             require "../DB/connect.php";
@@ -94,7 +96,7 @@ if (isset($_POST['eventid'])) {
                                 เลือกวันเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" value="<?php echo $row['event_startdate']; ?>">
+                                <input class="input" type="date" id="startdate" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" onchange="respondtodate()" value="<?php echo $row['event_startdate']; ?>">
                             </p>
 
                         </div>
@@ -103,7 +105,7 @@ if (isset($_POST['eventid'])) {
                                 เลือกวันสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" value="<?php echo $row['event_enddate']; ?>">
+                                <input class="input" type="date" id="enddate" name="event_enddate" max="2050-12-31" value="<?php echo $row['event_enddate'] ?>">
                             </p>
                         </div>
                     </div>
@@ -119,7 +121,7 @@ if (isset($_POST['eventid'])) {
                                 เลือกเวลาเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" >
+                                <input class="input" type="time" name="event_starttime" min="<?php echo $today; ?>" max="2050-12-31" value="<?php echo $row['event_starttime'] ?>">
                             </p>
 
                         </div>
@@ -128,7 +130,7 @@ if (isset($_POST['eventid'])) {
                                 เลือกเวลาสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" >
+                                <input class="input" type="time" name="event_starttime" min="<?php echo $today; ?>" max="2050-12-31" value="<?php echo $row['event_endtime'] ?>">
                             </p>
                         </div>
                     </div>
@@ -141,7 +143,7 @@ if (isset($_POST['eventid'])) {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" name="people" type="number" placeholder="กรอกจำนวนผู้เข้าประชุม">
+                                <input class="input" name="people" type="number" placeholder="กรอกจำนวนผู้เข้าประชุม" value="<?php echo $row['people'] ?>">
                             </div>
                         </div>
                     </div>
@@ -154,7 +156,7 @@ if (isset($_POST['eventid'])) {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea" name="desc" placeholder="กรอกรายละเอียด"></textarea>
+                                <textarea class="textarea" name="desc" placeholder="กรอกรายละเอียด" value=""><?php echo $row['description'] ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -166,8 +168,8 @@ if (isset($_POST['eventid'])) {
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" name="reg" type="text" placeholder="กรอกชื่อ" >
-                            </p>
+                            <input class="input" name="reg" type="text" placeholder="กรอกชื่อ" value="<?php echo $row['reguser'] ?>">
+
                         </div>
                     </div>
                 </div>
@@ -179,11 +181,15 @@ if (isset($_POST['eventid'])) {
                     <div class="field-body">
                         <div class="control">
                             <label class="radio">
-                                <input type="radio" name="tool" value="yes">
+                                <input type="radio" name="tool" value="1" <?php if ($row['tool'] != 0) {
+                                                                                echo 'checked';
+                                                                            } ?>>
                                 ใช้งาน ตามที่มีในห้อง
                             </label>
                             <label class="radio">
-                                <input type="radio" name="tool" value="no">
+                                <input type="radio" name="tool" value="0" <?php if ($row['tool'] == 0) {
+                                                                                echo 'checked';
+                                                                            } ?>>
                                 ไม่ใช้งาน
                             </label>
                             <a href="">ดูรายละเอียดอุปกรณ์ในห้อง</a>
@@ -198,21 +204,29 @@ if (isset($_POST['eventid'])) {
                     <div class="field-body">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="coffeebigcup">
+                                <input type="checkbox" name="coffeebigcup" id="coffeebigcup" onchange="toggledisable('Bcup')" <?php if ($row['Bcup'] != 0) {
+                                                                                                                                    echo 'checked';
+                                                                                                                                } ?>>
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วใหญ่)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="Bcup" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" value="">
+                                <input class="input" type="number" name="Bcup" id="Bcup" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['Bcup']; ?>" <?php if ($row['Bcup'] == 0) {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>
                             </p>
 
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="coffeesmallcup">
+                                <input type="checkbox" name="coffeesmallcup" id="coffeesmallcup" onchange="toggledisable('Scup')"  <?php if ($row['Scup'] != 0) {
+                                                                                                                                        echo 'checked';
+                                                                                                                                    } ?>>
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วเล็ก)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="Scup" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" value="">
+                                <input class="input" type="number" name="Scup" id="Scup" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['Scup']; ?>" <?php if ($row['Scup'] == 0) {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>
                             </p>
                         </div>
                     </div>
@@ -225,38 +239,55 @@ if (isset($_POST['eventid'])) {
                     <div class="field-body">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="islongcup">
+                                <input type="checkbox" name="islongcup" id="islongcup" onchange="toggledisable('longcup')" <?php if ($row['longcup'] != 0) {
+                                                                                                                                echo 'checked';
+                                                                                                                            } ?>>
                                 แก้วก้านยาว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="longcup" placeholder="กรอกจำนวนแก้วก้านยาว" value="">
+                                <input class="input" type="number" name="longcup" id="longcup" placeholder="กรอกจำนวนแก้วก้านยาว" value="<?php echo $row['longcup']; ?>" <?php if ($row['longcup'] == 0) {
+                                                                                                                                                                                echo 'disabled';
+                                                                                                                                                                            } ?>>
                             </p>
 
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isdrinkcup">
+                                <input type="checkbox" name="isdrinkcup" onchange="toggledisable('drinkcup')" <?php if ($row['drinkcup'] != 0) {
+                                                                                                                    echo 'checked';
+                                                                                                                } ?>>
                                 แก้วน้ำดื่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="drinkcup" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="">
+                                <input class="input" type="number" name="drinkcup" id="drinkcup" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="<?php echo $row['drinkcup']; ?>" <?php if ($row['drinkcup'] == 0) {
+                                                                                                                                                                                echo 'disabled';
+                                                                                                                                                                            } ?>>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="issoftdrink">
+                                <input type="checkbox" name="issoftdrink" onchange="toggledisable('softdrink')" <?php if ($row['softdrink'] != 0) {
+                                                                                                                    echo 'checked';
+                                                                                                                } ?>>
                                 แก้ว soft drink
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="softdrink" placeholder="กรอกจำนวนแก้ว soft drink" value="">
+                                <input class="input" type="number" name="softdrink" id="softdrink" placeholder="กรอกจำนวนแก้ว soft drink" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['softdrink']; ?>" <?php if ($row['softdrink'] == 0) {
+                                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                                    } ?>>
                             </p>
                         </div>
                         <div class="field">
-                            <label class="checkbox" name="isothercup">
+                            <label class="checkbox">
+                                <input type="checkbox" name="isothercup" onchange="toggledisable('othercup')" <?php if ($row['othercup'] != 'none') {
+                                                                                                                    echo 'checked';
+                                                                                                                } ?>>
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="text" name="othercup" placeholder="อื่นๆ..." value="">
+                                <input class="input" type="text" name="othercup" id="othercup" placeholder="อื่นๆ..." value="<?php echo $row['othercup']; ?>" <?php if ($row['othercup'] == 'none') {
+                                                                                                                                                                    echo 'disabled';
+                                                                                                                                                                } ?>>
                             </p>
                         </div>
                     </div>
@@ -270,75 +301,107 @@ if (isset($_POST['eventid'])) {
 
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="ishotbot">
+                                <input type="checkbox" name="ishotbot" onchange="toggledisable('hotbot')" <?php if ($row['hotbot'] != 0) {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                                 กระบอกน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="hotbot" placeholder="จำนวนกระบอกน้ำร้อน" value="">
+                                <input class="input" type="number" name="hotbot" id="hotbot" placeholder="จำนวนกระบอกน้ำร้อน" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['hotbot']; ?>" <?php if ($row['hotbot'] == 0) {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="istray">
+                                <input type="checkbox" name="istray" onchange="toggledisable('tray')" <?php if ($row['tray'] != 0) {
+                                                                                                            echo 'checked';
+                                                                                                        } ?>>
                                 ถาด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="tray" placeholder="จำนวนถาด" value="">
+                                <input class="input" type="number" name="tray" id="tray" placeholder="จำนวนถาด" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['tray']; ?>" <?php if ($row['tray'] == 0) {
+                                                                                                                                                        echo 'disabled';
+                                                                                                                                                    } ?>>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isdishcup">
+                                <input type="checkbox" name="isdishcup" onchange="toggledisable('dishcup')" <?php if ($row['dishcup'] != 0) {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                                 จานรองแก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="dishcup" placeholder="จำนวนจานรองแก้ว" value="">
+                                <input class="input" type="number" name="dishcup" id="dishcup" placeholder="จำนวนจานรองแก้ว" value="<?php echo $row['dishcup']; ?>" <?php if ($row['dishcup'] == 0) {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isjug">
+                                <input type="checkbox" name="isjug" onchange="toggledisable('jug')" <?php if ($row['jug'] != 0) {
+                                                                                                        echo 'checked';
+                                                                                                    } ?>>
                                 เหยือกน้ำ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="jug" placeholder="จำนวนเหยือกน้ำ" value="">
+                                <input class="input" type="number" name="jug" id="jug" placeholder="จำนวนเหยือกน้ำ" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['jug']; ?>" <?php if ($row['jug'] == 0) {
+                                                                                                                                                            echo 'disabled';
+                                                                                                                                                        } ?>>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isboxcup">
+                                <input type="checkbox" name="isboxcup" onchange="toggledisable('boxcup')" <?php if ($row['boxcup'] != 0) {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                                 ลังใส่แก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="boxcup" placeholder="จำนวนลังใส่แก้ว" value="">
+                                <input class="input" type="number" name="boxcup" id="boxcup" placeholder="จำนวนลังใส่แก้ว" value="<?php echo $row['boxcup']; ?>" <?php if ($row['boxcup'] == 0) {
+                                                                                                                                                                        echo 'disabled';
+                                                                                                                                                                    } ?>>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="istea">
+                                <input type="checkbox" name="istea" onchange="toggledisable('tea')" <?php if ($row['tea'] != 0) {
+                                                                                                        echo 'checked';
+                                                                                                    } ?>>
                                 กาใส่ชา
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="tea" placeholder="จำนวนกาใส่ชา" value="">
+                                <input class="input" type="number" name="tea" id="tea" placeholder="จำนวนกาใส่ชา" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['tea']; ?>" <?php if ($row['tea'] == 0) {
+                                                                                                                                                            echo 'disabled';
+                                                                                                                                                        } ?>>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isboiler">
+                                <input type="checkbox" name="isboiler" onchange="toggledisable('boiler')" <?php if ($row['boiler'] != 0) {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                                 หม้อต้มน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="">
+                                <input class="input" type="number" name="boiler" id="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="<?php echo $row['boiler']; ?>" <?php if ($row['boiler'] == 0) {
+                                                                                                                                                                            echo 'disabled';
+                                                                                                                                                                        } ?>>
                             </p>
                         </div>
 
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isbasket">
+                                <input type="checkbox" name="isbasket" onchange="toggledisable('basket')" <?php if ($row['basket'] != 0) {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                                 ตะกร้า
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="basket" placeholder="จำนวนตระกร้า" value="">
+                                <input class="input" type="number" name="basket" id="basket" placeholder="จำนวนตระกร้า" min="0" oninput="this.value = Math.round(this.value);" value="<?php echo $row['basket']; ?>" <?php if ($row['basket'] == 0) {
+                                                                                                                                                                    echo 'disabled';
+                                                                                                                                                                } ?>>
                             </p>
                         </div>
 
@@ -352,11 +415,15 @@ if (isset($_POST['eventid'])) {
                     <div class="field-body">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isothertool">
+                                <input type="checkbox" name="isothertool" onchange="toggledisable('other')" <?php if ($row['other'] != 'none') {
+                                                                                                                echo 'checked';
+                                                                                                            } ?>>
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="text" name="other" placeholder="อื่นๆ..." value="">
+                                <input class="input" type="text" name="other" id="other" placeholder="อื่นๆ..." value="<?php echo $row['other']; ?>" <?php if ($row['other'] == 'none') {
+                                                                                                                                                            echo 'disabled';
+                                                                                                                                                        } ?>>
                             </p>
                         </div>
                     </div>
@@ -369,7 +436,8 @@ if (isset($_POST['eventid'])) {
                     <div class="field-body">
                         <div class="field">
                             <div class="buttons">
-                                <button class="button is-success" type="submit">ตกลง</button>
+                                <button class="button is-success" name="btn_add" type="submit">ตกลง</button>
+                                <input type="hidden" name="eid" value="<?php echo $eventid; ?>">
                                 <button class="button is-danger" onclick="back()">ยกเลิก</button>
                             </div>
                         </div>
@@ -536,8 +604,38 @@ if (isset($_POST['eventid'])) {
             });
         }
     </script>
+    <script>
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
 
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById('enddate').setAttribute("min", today);
+        console.log(today);
 
+        function respondtodate() {
+            if (document.getElementById('enddate').value < document.getElementById('startdate').value) {
+                document.getElementById('enddate').value = document.getElementById('startdate').value;
+            }
+            var da = new Date();
+            da = document.getElementById('startdate').value;
+            document.getElementById('enddate').setAttribute("min", da);
+        }
+    </script>
+    <!-- checkboc enable disible -->
+    <script>
+        function toggledisable(target) {
+            if (document.getElementById(target).hasAttribute("disabled")) {
+                document.getElementById(target).removeAttribute("disabled");
+                console.log("i did it")
+            } else {
+                document.getElementById(target).setAttribute("disabled", "true")
+                console.log("nani")
+            }
+
+        }
+    </script>
     <?php
     include '../components/footer.php';
     ?>
