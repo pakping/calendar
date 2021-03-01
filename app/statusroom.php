@@ -1,6 +1,7 @@
 <?php
-$content = 'user';
+$content = 'everyone';
 include '../auth/Sessionpersist.php';
+$user = $_SESSION['Username'];
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +26,7 @@ include '../auth/Sessionpersist.php';
     include '../components/nav.php';
     ?>
     <!-- Navigation -->
-    ิ<br><br>
+    <br><br>
     <div class="container is-fullhd">
         <p class="is-size-2">
             สถานะการจอง
@@ -38,35 +39,44 @@ include '../auth/Sessionpersist.php';
                     <th>ลำดับ</th>
                     <th>ห้องประชุม</th>
                     <th>หัวข้อกิจกรรม</th>
-                    <th>เวลาที่จอง</th>
                     <th>สถานะการจอง</th>
                     <th>action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $a = 1;
-                while ($a <= 10) {
+                require '../DB/connect.php';
+                $result = mysqli_query($con, "SELECT * FROM tbl_event left join room ON tbl_event.roomid=room.roomid left join stat ON tbl_event.statid=stat.statid Where reguser = '$user'");
+
+                if ($result) {
+                    while ($row = mysqli_fetch_array($result)) {
+                        $a = 1;
+
+                        if ($row['state'] == 'ผ่าน') {
+                            $stat = '<span class="tag is-success">ผ่าน</span>';
+                        } elseif ($row['state'] == 'รอดำเนินการ') {
+                            $stat = '<span class="tag is-warning">รออนุมัติ</span>';
+                        } elseif ($row['state'] == 'ยกเลิก') {
+                            $stat = '<span class="tag is-danger">ยกเลิก</span>';
+                        }
                 ?>
-                    <tr>
-                        <th><?php echo $a; ?></th>
-                        <td>Mark</td> 
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>
-                            <span class="tag is-success">ผ่าน</span>
-                            <span class="tag is-warning">รออนุมัติ</span>
-                            <span class="tag is-danger">ยกเลิก</span>
-                        </td>
-                        <td>
-                            <div class="buttons has-addons">
-                                <form action="../app/detail.php" method="post"><button class="button is-warning is-outlined" type="submit">แก้ไข</button></form>
-                                <form action="" method="post"><button class="button is-danger is-outlined" type="submit">ลบ</button></form>
-                            </div>
-                        </td>
-                    </tr>
+                        <tr>
+                            <th><?php echo $a; ?></th>
+                            <td><?php echo $row['roomname']; ?></td>
+                            <td><?php echo $row['event_title']; ?></td>
+                            <td>
+                                <?php echo $stat; ?>
+                            </td>
+                            <td>
+                                <div class="buttons has-addons">
+                                    <form action="../app/detail.php" method="post"><button class="button is-warning is-outlined" type="submit">แก้ไข</button></form>
+                                    <form action="" method="post"><button class="button is-danger is-outlined" type="submit">ลบ</button></form>
+                                </div>
+                            </td>
+                        </tr>
                 <?php
-                    $a += 1;
+                        $a += 1;
+                    }
                 }
                 ?>
             </tbody>
