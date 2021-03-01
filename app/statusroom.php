@@ -69,7 +69,7 @@ $user = $_SESSION['Username'];
                             </td>
                             <td>
                                 <div class="buttons has-addons">
-                                    <form action="../app/detail.php" method="post"><button class="button is-warning is-outlined" type="submit">แก้ไข</button></form>
+                                    <form action="../app/detail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-warning is-outlined" type="submit">แก้ไข</button></form>
                                     <form action="" method="post"><button class="button is-danger is-outlined" type="submit">ลบ</button></form>
                                 </div>
                             </td>

@@ -1,12 +1,16 @@
 <?php
 $content = 'user';
 include '../auth/Sessionpersist.php';
+if (isset($_POST['eventid'])) {
+    echo ($_POST['eventid']);
+    $eventid = $_POST['eventid'];
+}
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
+    <!--  meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,12 +20,18 @@ include '../auth/Sessionpersist.php';
 </head>
 
 <body>
-
-
     <?php
     include '../components/nav.php';
     ?>
     <!-- Navigation -->
+    <?php
+    require '../DB/connect.php';
+    $result = mysqli_query($con, "SELECT * FROM tbl_event left join room ON tbl_event.roomid=room.roomid left join stat ON tbl_event.statid=stat.statid Where event_id = '$eventid'");
+
+    if ($result) {
+        $row = mysqli_fetch_array($result);
+    }
+    ?>
     <form action="" method="post">
         <section class="section">
             <div class="container">
@@ -35,7 +45,8 @@ include '../auth/Sessionpersist.php';
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" type="text" name="event_title" value="This text is readonly" readonly>
+                            <input class="input" type="text" name="event_title" value="<?php echo $row['event_title']; ?>" placeholder="กรอกหัวข้อการประชุม" >
+
                         </div>
                     </div>
                 </div>
@@ -46,7 +57,29 @@ include '../auth/Sessionpersist.php';
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" type="text" name="event_title" value="This text is readonly" readonly>
+                            <div class="field has-addons">
+                                <div class="control is-expanded">
+                                    <div class="select is-fullwidth">
+                                        <select name="roomname" >
+                                            <option value="<?php echo $row['roomname']; ?>"><?php echo $row['roomname']; ?></option>
+                                            <?php
+                                            require "../DB/connect.php";
+                                            $room = $row['roomname'];
+                                            $Squery = "SELECT * FROM room Where roomname != '$room'";
+                                            if ($result = mysqli_query($con, $Squery)) {
+                                                while ($room = mysqli_fetch_array($result)) {
+                                            ?> <option value="<?php echo $room['roomname']; ?>"><?php echo $room['roomname']; ?></option>
+                                            <?php }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="control">
+                                    <button type="submit" class="button is-primary">Choose</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,7 +94,7 @@ include '../auth/Sessionpersist.php';
                                 เลือกวันเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" required>
+                                <input class="input" type="date" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" value="<?php echo $row['event_startdate']; ?>">
                             </p>
 
                         </div>
@@ -70,7 +103,7 @@ include '../auth/Sessionpersist.php';
                                 เลือกวันสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" required>
+                                <input class="input" type="date" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" value="<?php echo $row['event_enddate']; ?>">
                             </p>
                         </div>
                     </div>
@@ -86,7 +119,7 @@ include '../auth/Sessionpersist.php';
                                 เลือกเวลาเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" required>
+                                <input class="input" type="time" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" >
                             </p>
 
                         </div>
@@ -95,7 +128,7 @@ include '../auth/Sessionpersist.php';
                                 เลือกเวลาสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" required>
+                                <input class="input" type="time" name="event_enddate" min="<?php echo $today; ?>" max="2050-12-31" >
                             </p>
                         </div>
                     </div>
@@ -133,7 +166,7 @@ include '../auth/Sessionpersist.php';
                     </div>
                     <div class="field-body">
                         <div class="field">
-                            <input class="input" name="reg" type="text" placeholder="กรอกชื่อ" required>
+                            <input class="input" name="reg" type="text" placeholder="กรอกชื่อ" >
                             </p>
                         </div>
                     </div>
@@ -350,7 +383,7 @@ include '../auth/Sessionpersist.php';
             <div class="form-group row">
                 <label for="event_title" class="col-sm-2 col-form-label text-right">หัวข้อกิจกรรม</label>
                 <div class="col-12 col-sm-8">
-                    <input type="text" class="form-control" name="event_title" autocomplete="off" value="" required>
+                    <input type="text" class="form-control" name="event_title" autocomplete="off" value="" >
                     <div class="invalid-feedback">
                         กรุณากรอก หัวข้อกิจกรรม
                     </div>
@@ -360,7 +393,7 @@ include '../auth/Sessionpersist.php';
                 <label for="event_startdate" class="col-sm-2 col-form-label text-right">วันที่เริ่มต้น</label>
                 <div class="col-12 col-sm-8">
                     <div class="input-group date" id="event_startdate" data-target-input="nearest">
-                        <input type="text" class="form-control datetimepicker-input" name="event_startdate" data-target="#event_startdate" autocomplete="off" value="" required>
+                        <input type="text" class="form-control datetimepicker-input" name="event_startdate" data-target="#event_startdate" autocomplete="off" value="" >
                         <div class="input-group-append" data-target="#event_startdate" data-toggle="datetimepicker">
                             <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
                         </div>
@@ -458,7 +491,7 @@ include '../auth/Sessionpersist.php';
 
     <script type="text/javascript">
         function back() {
-            window.location.href ="../app/statusroom.php"
+            window.location.href = "../app/statusroom.php"
         }
         // $(function() {
         //     // เมื่อเฃือกวันทำซ้ำ วนลูป สร้างชุดข้อมูล

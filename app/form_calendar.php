@@ -171,8 +171,6 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     <?php
     include '../components/nav.php';
     ?>
-    <br>
-    <br>
     <form action="" method="post" accept-charset="utf-8">
         <section class="section">
             <div class="container">
@@ -187,7 +185,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <input class="input" type="text" name="event_title" placeholder="กรอกหัวข้อการประชุม" required>
-                            </p>
+    
                         </div>
                     </div>
                 </div>
