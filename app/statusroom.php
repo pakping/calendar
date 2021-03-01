@@ -52,11 +52,11 @@ $user = $_SESSION['Username'];
                     while ($row = mysqli_fetch_array($result)) {
                         $a = 1;
 
-                        if ($row['state'] == 'ผ่าน') {
+                        if ($row['statid'] == '1') {
                             $stat = '<span class="tag is-success">ผ่าน</span>';
-                        } elseif ($row['state'] == 'รอดำเนินการ') {
-                            $stat = '<span class="tag is-warning">รออนุมัติ</span>';
-                        } elseif ($row['state'] == 'ยกเลิก') {
+                        } elseif ($row['statid'] == '2') {
+                            $stat = '<span class="tag is-warning">รอดำเนินการ</span>';
+                        } elseif ($row['statid'] == '3') {
                             $stat = '<span class="tag is-danger">ยกเลิก</span>';
                         }
                 ?>
