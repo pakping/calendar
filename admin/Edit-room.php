@@ -106,17 +106,13 @@ include '../auth/Sessionpersist.php';
                     <label class="radio">
                       <input type="radio" name="mic" value='1' <?php if ($room['mic'] == '1') {
                                                                   echo "checked";
-                                                                } ?>>
-                      Yes
-                    </label>
+                                                                } ?>        
+                      >Yes</label>
                     <label class="radio">
                       <input type="radio" name="mic" value='0' <?php if ($room['mic'] == '0') {
                                                                   echo "checked";
-                                                                } ?>>
-                      No
-                    </label>
-
-
+                                                                } ?>
+                      >No</label>
                   </div>
                 </div>
 

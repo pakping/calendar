@@ -61,10 +61,10 @@ include '../auth/Sessionpersist.php';
             </div>
             <footer class="card-footer">
             <form action="Edit-room.php" method="POST">
-              <button type="submit" href="#" class="card-footer-item">Edit</button>
+              <button type="submit" href="#" class="card-footer-item">Edit/Delete</button>
               <input type="hidden" name='sentid' value="<?php echo $room['roomid'];?>">
             </form>
-              <a href="#" class="card-footer-item">Delete</a>
+              <!-- <a href="#" class="card-footer-item">Delete</a> -->
             </footer>
           </div>
         </div>

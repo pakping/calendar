@@ -336,21 +336,21 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="coffeebigcup">
+                                <input type="checkbox" name="coffeebigcup" id="coffeebigcup" onchange="toggledisable('Bcup')">
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วใหญ่)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="Bcup" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" value="">
+                                <input class="input" type="number" name="Bcup" id="Bcup" placeholder="กรอกจำนวนถาดรองแก้วใหญ่" value="" disabled>
                             </p>
 
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="coffeesmallcup"> 
+                                <input type="checkbox" name="coffeesmallcup" id="coffeesmallcup" onchange="toggledisable('Scup')"> 
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วเล็ก)
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="Scup" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" value="">
+                                <input class="input" type="number" name="Scup" id="Scup" placeholder="กรอกจำนวนถาดรองแก้วเล็ก" value="" disabled>
                             </p>
                         </div>
                     </div>
@@ -363,38 +363,39 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="islongcup">
+                                <input type="checkbox" name="islongcup" id="islongcup" onchange="toggledisable('longcup')">
                                 แก้วก้านยาว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="longcup" placeholder="กรอกจำนวนแก้วก้านยาว" value="">
+                                <input class="input" type="number" name="longcup" id="longcup" placeholder="กรอกจำนวนแก้วก้านยาว" value="" disabled>
                             </p>
 
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isdrinkcup">
+                                <input type="checkbox" name="isdrinkcup" onchange="toggledisable('drinkcup')">
                                 แก้วน้ำดื่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="drinkcup" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="">
+                                <input class="input" type="number" name="drinkcup" id="drinkcup" placeholder="กรอกจำนวนแก้วน้ำดื่ม" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="issoftdrink">
+                                <input type="checkbox" name="issoftdrink" onchange="toggledisable('softdrink')">
                                 แก้ว soft drink
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="softdrink" placeholder="กรอกจำนวนแก้ว soft drink" value="">
+                                <input class="input" type="number" name="softdrink" id="softdrink" placeholder="กรอกจำนวนแก้ว soft drink" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
-                            <label class="checkbox" name="isothercup">
+                        <label class="checkbox">
+                        <input type="checkbox" name="isothercup" onchange="toggledisable('othercup')">
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="text" name="othercup" placeholder="อื่นๆ..." value="">
+                                <input class="input" type="text" name="othercup" id="othercup" placeholder="อื่นๆ..." value="" disabled>
                             </p>
                         </div>
                     </div>
@@ -408,75 +409,75 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="ishotbot">
+                                <input type="checkbox" name="ishotbot" onchange="toggledisable('hotbot')">
                                 กระบอกน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="hotbot" placeholder="จำนวนกระบอกน้ำร้อน" value="">
+                                <input class="input" type="number" name="hotbot" id="hotbot" placeholder="จำนวนกระบอกน้ำร้อน" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="istray">
+                                <input type="checkbox" name="istray" onchange="toggledisable('tray')">
                                 ถาด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="tray" placeholder="จำนวนถาด" value="">
+                                <input class="input" type="number" name="tray" id ="tray" placeholder="จำนวนถาด" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="isdishcup">
+                                <input type="checkbox" name="isdishcup" onchange="toggledisable('dishcup')">
                                 จานรองแก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="dishcup" placeholder="จำนวนจานรองแก้ว" value="">
+                                <input class="input" type="number" name="dishcup" id="dishcup" placeholder="จำนวนจานรองแก้ว" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isjug">
+                            <input type="checkbox" name="isjug" onchange="toggledisable('jug')">
                                 เหยือกน้ำ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="jug" placeholder="จำนวนเหยือกน้ำ" value="">
+                                <input class="input" type="number" name="jug" id="jug" placeholder="จำนวนเหยือกน้ำ" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isboxcup">
+                            <input type="checkbox" name="isboxcup" onchange="toggledisable('boxcup')">
                                 ลังใส่แก้ว
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="boxcup" placeholder="จำนวนลังใส่แก้ว" value="">
+                                <input class="input" type="number" name="boxcup" id="boxcup" placeholder="จำนวนลังใส่แก้ว" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="istea">
+                            <input type="checkbox" name="istea" onchange="toggledisable('tea')">
                                 กาใส่ชา
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="tea" placeholder="จำนวนกาใส่ชา" value="">
+                                <input class="input" type="number" name="tea" id="tea" placeholder="จำนวนกาใส่ชา" value="" disabled>
                             </p>
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isboiler">
+                            <input type="checkbox" name="isboiler" onchange="toggledisable('boiler')">
                                 หม้อต้มน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="">
+                                <input class="input" type="number" name="boiler" id="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="" disabled>
                             </p>
                         </div>
                         
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isbasket">
+                            <input type="checkbox" name="isbasket" onchange="toggledisable('basket')">
                                 ตะกร้า
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="basket" placeholder="จำนวนตระกร้า" value="">
+                                <input class="input" type="number" name="basket" id="basket" placeholder="จำนวนตระกร้า" value="" disabled>
                             </p>
                         </div>
                         
@@ -490,11 +491,11 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                     <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isothertool">
+                            <input type="checkbox" name="isothertool" onchange="toggledisable('other')">
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="text" name="other" placeholder="อื่นๆ..." value="">
+                                <input class="input" type="text" name="other" id="other" placeholder="อื่นๆ..." value="" disabled>
                             </p>
                         </div>
                     </div>
@@ -689,6 +690,17 @@ function respondtodate(){
     var da = new Date();
     da = document.getElementById('startdate').value;
     document.getElementById('enddate').setAttribute("min", da);
+}
+function toggledisable(target){
+    if (document.getElementById(target).hasAttribute("disabled")){
+        document.getElementById(target).removeAttribute("disabled");
+        console.log("i did it")
+    }
+    else {
+        document.getElementById(target).setAttribute("disabled","true")
+        console.log("nani")
+    }
+    
 }
 
 
