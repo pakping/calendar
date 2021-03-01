@@ -61,7 +61,7 @@ include '../components/navbaradmin.php';
 								<i class="fa fa-check"></i>
 							</span>
 						</div>
-						<p class="help is-success">This First name and last name is available</p>
+						<!-- <p class="help is-success">This First name and last name is available</p> -->
 					</div>
 
 
@@ -77,7 +77,7 @@ include '../components/navbaradmin.php';
 								<i class="fa fa-check"></i>
 							</span>
 						</div>
-						<p class="help is-success">This username is available</p>
+						<!-- <p class="help is-success">This username is available</p> -->
 					</div>
 
 
@@ -108,7 +108,7 @@ include '../components/navbaradmin.php';
 								<i class="fa fa-check"></i>
 							</span>
 						</div>
-						<p class="help is-success">This password is available</p>
+						<!-- <p class="help is-success">This password is available</p> -->
 					</div>
 
 					<div class="field">
@@ -123,7 +123,7 @@ include '../components/navbaradmin.php';
 								<i class="fa fa-warning"></i>
 							</span>
 						</div>
-						<p class="help is-danger">This email is invalid</p>
+						<!-- <p class="help is-danger">This email is invalid</p> -->
 					</div>
 					<div class="field">
 						<label class="label">เบอร์โทรศัพท์ของคุณ</label>
@@ -137,13 +137,8 @@ include '../components/navbaradmin.php';
 
 
 						<div class="field">
-							<div class="control">
-								<label class="checkbox">
-									<input type="checkbox">
-									ฉันยอมรับ<a href="#">ข้อกำหนดและเงื่อนไข</a>
-								</label>
-							</div>
 						</div>
+						
 						<div class="field is-grouped">
 							<div class="control">
 								<button class="button is-link">สมัครสมาชิก</button>
