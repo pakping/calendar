@@ -19,133 +19,148 @@ include '../auth/sessionpersist.php';
 include '../components/navbaradmin.php';
 ?>
 
-<body class="font-mali vh-100 d-flex justify-content-center align-items-center">
+<body>
 
-
-	<section class="section">
-		<div class="container">
-			<div class="notification is-primary">
-				<strong>ระบบสมัครสมาชิก </strong>
-			</div>
-		</div>
-	</section>
 	<section class="section">
 		<form action="../DB/dbregister.php" class="mb-3" method="POST">
+			<div class="container">
+				<div class="notification is-primary">
+					<strong>ระบบสมัครสมาชิก </strong>
+				</div>
 
-			<div class="columns">
-				<div class="column is-4 is-offset-4">
-					<div class="field">
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
 						<label class="label">ชื่อของคุณ</label>
-						<div class="control has-icons-left has-icons-right">
-
-							<input class="input" name="fname" id="fname" type="text" placeholder="ชื่อจริง" required>
-							<span class="icon is-small is-left">
-								<i class="fa fa-user-edit"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fa fa-check"></i>
-							</span>
-						</div>
 					</div>
-
-
-					<div class="field">
-						<label class="label">ชื่อของคุณ</label>
-						<div class="control has-icons-left has-icons-right">
-
-							<input class="input" name="lname" id="lname" type="text" placeholder="นามสกุล" required>
-							<span class="icon is-small is-left">
-								<i class="fa fa-user-edit"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fa fa-check"></i>
-							</span>
-						</div>
-						<!-- <p class="help is-success">This First name and last name is available</p> -->
-					</div>
-
-
-					<div class="field">
-						<label class="label">ชื่อที่ใช้เข้าระบบ</label>
-						<div class="control has-icons-left has-icons-right">
-
-							<input class="input" name="uname" id="name" type="text" placeholder="exampleuser" required>
-							<span class="icon is-small is-left">
-								<i class="fa fa-user"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fa fa-check"></i>
-							</span>
-						</div>
-						<!-- <p class="help is-success">This username is available</p> -->
-					</div>
-
-
-					<div class="field">
-						<label class="label">สร้างรหัสผ่านใหม่</label>
-						<div class="control has-icons-left has-icons-right">
-
-							<input class="input" name="psw" id="password" type="password" placeholder="password" required>
-							<span class="icon is-small is-left">
-								<i class="fa fa-lock"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fa fa-check"></i>
-							</span>
-						</div>
-					</div>
-
-
-					<div class="field">
-						<label class="label">กรอกรหัสผ่านอีกครั้ง</label>
-						<div class="control has-icons-left has-icons-right">
-
-							<input class="input" name="psw-repeat" id="p-repeat" type="password" placeholder="password" required>
-							<span class="icon is-small is-left">
-								<i class="fa fa-lock"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fa fa-check"></i>
-							</span>
-						</div>
-						<!-- <p class="help is-success">This password is available</p> -->
-					</div>
-
-					<div class="field">
-						<label class="label">อีเมลของคุณ</label>
-						<div class="control has-icons-left has-icons-right">
-
-							<input class="input" name="email" id="email" type="email" placeholder="Email input" required>
-							<span class="icon is-small is-left">
-								<i class="fa fa-envelope"></i>
-							</span>
-							<span class="icon is-small is-right">
-								<i class="fa fa-warning"></i>
-							</span>
-						</div>
-						<!-- <p class="help is-danger">This email is invalid</p> -->
-					</div>
-					<div class="field">
-						<label class="label">เบอร์โทรศัพท์ของคุณ</label>
-						<div class="control has-icons-left has-icons-right">
-
-							<input class="input" name="phone" id="phone" type="tel" placeholder="09-1234-5678" required>
-							<span class="icon is-small is-left">
-							<i class="fas fa-phone-square-alt"></i>
-							</span>
-						</div>
-
-
+					<div class="field-body">
 						<div class="field">
+							<div class="control has-icons-left has-icons-right">
+								<input class="input" name="fname" id="fname" type="text" placeholder="ชื่อจริง" required>
+								<span class="icon is-small is-left">
+									<i class="fa fa-user-edit"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
 						</div>
-						
-						<div class="field is-grouped">
-							<div class="control">
-								<button class="button is-link">สมัครสมาชิก</button>
+						<div class="field">
+							<div class="control has-icons-left has-icons-right">
+
+								<input class="input" name="lname" id="lname" type="text" placeholder="นามสกุล" required>
+								<span class="icon is-small is-left">
+									<i class="fa fa-user-edit"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<!-- <p class="help is-success">This First name and last name is available</p> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">ชื่อที่ใช้เข้าระบบ</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="control has-icons-left has-icons-right">
+								<input class="input" name="uname" id="name" type="text" placeholder="exampleuser" required>
+								<span class="icon is-small is-left">
+									<i class="fa fa-user"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fa fa-check"></i>
+								</span>
+								<!-- <p class="help is-success">This username is available</p> -->
 							</div>
 						</div>
 					</div>
 				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">สร้างรหัสผ่านใหม่</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="control has-icons-left has-icons-right">
+
+								<input class="input" name="psw" id="password" type="password" placeholder="password" required>
+								<span class="icon is-small is-left">
+									<i class="fa fa-lock"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+						</div>
+						<div class="field">
+							<div class="control has-icons-left has-icons-right">
+
+								<input class="input" name="psw-repeat" id="p-repeat" type="password" placeholder="password" required>
+								<span class="icon is-small is-left">
+									<i class="fa fa-lock"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fa fa-check"></i>
+								</span>
+							</div>
+							<!-- <p class="help is-success">This password is available</p> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">อีเมลของคุณ</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="control has-icons-left has-icons-right">
+
+								<input class="input" name="email" id="email" type="email" placeholder="Email input" required>
+								<span class="icon is-small is-left">
+									<i class="fa fa-envelope"></i>
+								</span>
+								<span class="icon is-small is-right">
+									<i class="fa fa-warning"></i>
+								</span>
+							</div>
+							<!-- <p class="help is-danger">This email is invalid</p> -->
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+						<label class="label">เบอร์โทรศัพท์ของคุณ</label>
+					</div>
+					<div class="field-body">
+						<div class="field">
+							<div class="control has-icons-left has-icons-right">
+
+								<input class="input" name="phone" id="phone" type="tel" placeholder="09-1234-5678" required>
+								<span class="icon is-small is-left">
+									<i class="fas fa-phone-square-alt"></i>
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="field is-horizontal">
+					<div class="field-label is-normal">
+					</div>
+					<div class="field-body">
+						<div class="field">
+						<button type="submit" class="button is-link">สมัครสมาชิก</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</form>
 	</section>
 </body>
