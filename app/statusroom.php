@@ -49,9 +49,9 @@ $user = $_SESSION['Username'];
                 $result = mysqli_query($con, "SELECT * FROM tbl_event left join room ON tbl_event.roomid=room.roomid left join stat ON tbl_event.statid=stat.statid Where reguser = '$user'");
 
                 if ($result) {
+                    $a = 1;
                     while ($row = mysqli_fetch_array($result)) {
-                        $a = 1;
-
+                        
                         if ($row['statid'] == '1') {
                             $stat = '<span class="tag is-success">ผ่าน</span>';
                         } elseif ($row['statid'] == '2') {
@@ -70,7 +70,7 @@ $user = $_SESSION['Username'];
                             <td>
                                 <div class="buttons has-addons">
                                     <form action="../app/detail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-warning is-outlined" type="submit">แก้ไข</button></form>
-                                    <form action="" method="post"><button class="button is-danger is-outlined" type="submit">ลบ</button></form>
+                                    <form action="../function/delete.php" method="get"><input type="hidden" name="idevent" value="<?php echo $row['event_id']; ?>"><button class="button is-danger is-outlined" type="submit">ลบ</button></form>
                                 </div>
                             </td>
                         </tr>
