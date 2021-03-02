@@ -3,7 +3,7 @@
 session_start();
 require '../app/dbconnect.php';
 require '../DB/connect.php';
-$idevent = $_GET['idevent'];
+$idevent = $_POST['idevent'];
 echo $idevent;
 $sql1 ="DELETE From tbl_event where event_id = '$idevent'";
 mysqli_query($con,$sql1);
