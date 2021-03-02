@@ -59,13 +59,15 @@ include '../auth/Sessionpersist.php';
                 <!-- <time datetime="2016-1-1"><a href="#"># PM - 1 Jan 2021</a></time> -->
               </div>
             </div>
-            <footer class="card-footer">
-            <form action="Edit-room.php" method="POST">
-              <button type="submit" href="#" class="card-footer-item">Edit/Delete</button>
+
+            <form action="Edit-room.php" method="POST" >
+            <div class="box has-text-centered">
+              <button    class="button is-primary  " type="submit" href="#" >Edit/Delete</button>
               <input type="hidden" name='sentid' value="<?php echo $room['roomid'];?>">
+              </div>
             </form>
-              <!-- <a href="#" class="card-footer-item">Delete</a> -->
-            </footer>
+          
+
           </div>
         </div>
       </div>
