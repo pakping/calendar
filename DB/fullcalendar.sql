@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 25, 2021 at 08:09 AM
+-- Generation Time: Mar 03, 2021 at 07:42 AM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.0
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,6 +50,26 @@ INSERT INTO `room` (`roomid`, `roomname`, `roomcap`, `com`, `screen`, `mic`, `ro
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `stat`
+--
+
+CREATE TABLE `stat` (
+  `statid` int(11) NOT NULL,
+  `state` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stat`
+--
+
+INSERT INTO `stat` (`statid`, `state`) VALUES
+(1, 'ผ่าน'),
+(2, 'รอดำเนินกา'),
+(3, 'ยกเลิก');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_event`
 --
 
@@ -86,17 +106,17 @@ CREATE TABLE `tbl_event` (
   `tea` int(3) NOT NULL,
   `boiler` int(3) NOT NULL,
   `basket` int(3) NOT NULL,
-  `other` varchar(20) NOT NULL
+  `other` varchar(20) NOT NULL,
+  `statid` int(11) DEFAULT NULL,
+  `Username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tbl_event`
 --
 
-INSERT INTO `tbl_event` (`event_id`, `event_title`, `roomid`, `event_detail`, `event_startdate`, `event_enddate`, `event_starttime`, `event_endtime`, `event_color`, `event_bgcolor`, `event_url`, `event_repeatday`, `event_allday`, `event_createdate`, `people`, `description`, `reguser`, `tool`, `Scup`, `Bcup`, `longcup`, `drinkcup`, `softdrink`, `othercup`, `hotbot`, `tray`, `dishcup`, `jug`, `boxcup`, `tea`, `boiler`, `basket`, `other`) VALUES
-(2, 'เทียว', 1, '', '2021-01-13', '2021-01-14', '10:30:00', '14:30:00', '#FFFFFF', '#03a9f4', '', '', 1, '2021-01-12 04:31:03', 0, '', '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, ''),
-(4, 'da comrade', 1, '', '2021-02-03', '2021-02-20', '06:00:00', '18:00:00', '#FFFFFF', '#03a9f4', '', '', 1, '2021-02-16 08:01:42', 0, '', '', 0, 0, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 0, 0, 0, ''),
-(10, 'Games Review Today', 12, '', '2021-02-27', '2021-02-28', '05:48:00', '16:52:00', '#FFFFFF', '#17e708', '', '', 0, '2021-02-25 07:00:25', 3, 'aaa', 'Jeerachon', 0, 3, 0, 0, 3, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none');
+INSERT INTO `tbl_event` (`event_id`, `event_title`, `roomid`, `event_detail`, `event_startdate`, `event_enddate`, `event_starttime`, `event_endtime`, `event_color`, `event_bgcolor`, `event_url`, `event_repeatday`, `event_allday`, `event_createdate`, `people`, `description`, `reguser`, `tool`, `Scup`, `Bcup`, `longcup`, `drinkcup`, `softdrink`, `othercup`, `hotbot`, `tray`, `dishcup`, `jug`, `boxcup`, `tea`, `boiler`, `basket`, `other`, `statid`, `Username`) VALUES
+(16, 'fsfdsfsd', 2, '', '2021-03-06', '2021-03-06', '15:37:00', '18:35:00', '#FFFFFF', '', '', '', 0, '2021-03-03 06:35:26', 150, 'dsadsa', 'dsadadsadqw', 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'Mojung');
 
 -- --------------------------------------------------------
 
@@ -109,17 +129,22 @@ CREATE TABLE `user` (
   `Password` varchar(50) NOT NULL,
   `Lastupdate` datetime NOT NULL,
   `LoginStatus` int(1) NOT NULL,
-  `Access` varchar(10) NOT NULL
+  `Access` varchar(10) NOT NULL,
+  `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pnum` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access`) VALUES
-('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00 00:00:00', 0, 'user'),
-('phoomin', 'e35cf7b66449df565f93c607d5a81d09', '0000-00-00 00:00:00', 0, 'user'),
-('sirichai', 'c33367701511b4f6020ec61ded352059', '2021-02-25 14:06:25', 0, 'admin');
+INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access`, `fname`, `lname`, `email`, `pnum`) VALUES
+('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '2021-03-03 13:41:17', 0, 'user', '', '', '', 0),
+('Mojung', '81dc9bdb52d04dc20036dbd8313ed055', '0000-00-00 00:00:00', 0, 'user', 'Mr', 'Mojung', 'mojung@jung.com', 999999999),
+('phoomin', 'e35cf7b66449df565f93c607d5a81d09', '0000-00-00 00:00:00', 0, 'user', '', '', '', 0),
+('sirichai', 'c33367701511b4f6020ec61ded352059', '0000-00-00 00:00:00', 0, 'admin', '', '', '', 0);
 
 --
 -- Indexes for dumped tables
@@ -130,6 +155,12 @@ INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access
 --
 ALTER TABLE `room`
   ADD PRIMARY KEY (`roomid`);
+
+--
+-- Indexes for table `stat`
+--
+ALTER TABLE `stat`
+  ADD PRIMARY KEY (`statid`);
 
 --
 -- Indexes for table `tbl_event`
@@ -155,10 +186,16 @@ ALTER TABLE `room`
   MODIFY `roomid` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
+-- AUTO_INCREMENT for table `stat`
+--
+ALTER TABLE `stat`
+  MODIFY `statid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
