@@ -24,7 +24,11 @@
         จัดการห้องประชุม
       </a>
 
+<<<<<<< HEAD
+      <a class="navbar-item" href="../admin/event-admin.php">
+=======
       <a class="navbar-item" href="../admin/statusroomadmin.php">
+>>>>>>> 92c5c6acc74b470ee31e75a630947284d8b32d7b
         อนุมัติการจองห้องประชุม
       </a>
       <a class="navbar-item" href="../admin/register.php">
