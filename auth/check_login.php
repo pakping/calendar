@@ -35,6 +35,8 @@
 			$query = mysqli_query($con, $sql);
 			//*** Session
 			$_SESSION["Username"] = $objResult["Username"];
+			$_SESSION["fname"] = $objResult["fname"];
+			$_SESSION["lname"] = $objResult["lname"];
 			if ($objResult["Access"] == "admin") {
 				$_SESSION['type'] = 'admin';
 				echo '<script>alert("Login Successfully!")

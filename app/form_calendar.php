@@ -19,6 +19,13 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $description = $_POST['desc'];
     $regname = $_POST['reg'];
     $tool = $_POST['tool'];
+    $stat = $_POST['statid'];
+    if (isset($_POST['statid'])) {
+        $stat = 2;
+    }
+    if (isset($_POST['Username'])) {
+        $Username = $_POST['Username'];
+    }
     if (isset($_POST['coffeesmallcup'])){
         $Scup = $_POST['Scup'];
     }else{
@@ -134,6 +141,8 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     tea='" . $tea . "',
     boiler='" . $boiler . "',
     basket='" . $basket . "',
+    statid='" . $stat . "',
+    Username='" . $Username . "',
     other='" . $other . "'
     ";
     if ($mysqli->query($sql)){
@@ -501,6 +510,10 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 
                 <div class="field is-horizontal">
                     <div class="field-label">
+                    <!-- stat -->
+                    <input type="hidden" value="2" name="statid">
+                    <!-- Username -->
+                    <input type="hidden" name="Username" value="<?php echo $_SESSION['Username']; ?>">
                         <!-- Left empty for spacing -->
                     </div>
                     <div class="field-body">

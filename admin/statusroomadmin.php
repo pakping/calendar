@@ -22,14 +22,17 @@ include '../auth/Sessionpersist.php';
 
 
     <?php
-    include '../components/nav.php';
+    include '../components/navbaradmin.php';
     ?>
     <!-- Navigation -->
     <br><br>
     <div class="container is-fullhd">
-        <p class="is-size-2">
+        <div class="notification is-primary">
+            <strong>สถานะการจอง</strong>
+        </div>
+        <!-- <p class="is-size-2">
             สถานะการจอง
-        </p>
+        </p> -->
         <br>
 
         <table id="myTable" class="table is-fullwidth is-hoverable">
@@ -40,6 +43,7 @@ include '../auth/Sessionpersist.php';
                     <th>หัวข้อกิจกรรม</th>
                     <th>สถานะการจอง</th>
                     <th>action</th>
+                    <th>User</th>
                 </tr>
             </thead>
             <tbody>
@@ -124,8 +128,11 @@ include '../auth/Sessionpersist.php';
                                         </div>
                                     </form> -->
                                     <form action="../app/detail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-warning is-outlined control" type="submit">แก้ไข</button></form>
-                                    <form action="../function/delete.php" method="post"><input type="hidden" name="idevent" value="<?php echo $row['event_id']; ?>"><button class="button is-danger is-outlined control" type="submit">ลบ</button></form>
+                                    <form action="../function/delete.php" method="post"><input type="hidden" name="id_event" value="<?php echo $row['event_id']; ?>"><button class="button is-danger is-outlined control" type="submit">ลบ</button></form>
                                 </div>
+                            </td>
+                            <td>
+                                    <?php echo $row['Username']; ?>
                             </td>
                         </tr>
 
