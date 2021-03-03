@@ -1,8 +1,34 @@
 <?php
 $fullcalendar_path = "fullcalendar-4.4.2/packages/";
 $content = 'everyone';
+require "../DB/connect.php";
 include '../auth/Sessionpersist.php';
-?>
+if (isset($_SESSION['roomid'])){
+	if (isset($_POST['roomname'])){
+		$roomid = $_POST['roomname'];
+		$_SESSION['roomid'] = $roomid ;
+		
+		echo $_SESSION['roomid']."<br>";
+		echo $_SESSION['roomname'];
+	}else{
+		$roomid = $_SESSION['roomid'];
+	}
+	if ($roomid != '0'){
+		$Squery = "SELECT * FROM room where roomid = '$roomid' ";
+				if ($result = mysqli_query($con, $Squery)) {
+					while ($room = mysqli_fetch_array($result)) {
+						$roomname = $room['roomname'];
+					}
+				}
+		$_SESSION['roomname']=$roomname;
+			}
+}else{
+	$roomid = '0';
+	$_SESSION['roomid'] = '0';
+	$roomname = 'choose';
+}
+?>                                         
+
 <!doctype html>
 <html lang="en">
 
@@ -49,9 +75,24 @@ include '../auth/Sessionpersist.php';
 
 		<div class="box has-background">
 			<div class="container is-max-desktop">
-				<div class="notification is-link">
-				<strong>ห้องประชุมที่ 1 </strong>
-				</div>
+			<div class="control is-expanded">
+                                <div class="select is-fullwidth">
+                                   <form action="" method="POST">
+								<select name="roomname" onchange="this.form.submit()">
+                                        <option value="<?php echo $roomid;?>"><?php echo $roomname;?></option>
+                                        <?php
+                                    
+                                    $Squery = "SELECT * FROM room where roomid !='$roomid' ";
+                                    if ($result = mysqli_query($con, $Squery)) {
+                                        while ($room = mysqli_fetch_array($result)) {
+?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
+											  
+<?php }}
+?>                                       
+                                    </select>
+								   </form>
+								</div>
+                            </div>
 			</div>
 			<br>
 			<div id='calendar'></div>

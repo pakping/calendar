@@ -1,6 +1,6 @@
 <?php
 // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
-require_once("dbconnect.php");
+require_once("../DB/dbconnect.php");
 $content = 'everyone';
 include '../auth/Sessionpersist.php';
 $today = date("Y-m-d");

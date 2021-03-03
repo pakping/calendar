@@ -3,12 +3,12 @@ header("Content-type:application/json; charset=UTF-8");
 header("Cache-Control: no-store, no-cache, must-revalidate");         
 header("Cache-Control: post-check=0, pre-check=0", false); 
 // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
- require_once("dbconnect.php");
+ require_once("../DB/dbconnect.php");
+ session_start();
 $json_data = array();
- 
+$x=$_SESSION['roomid'];
 $sql ="
-SELECT * FROM tbl_event WHERE event_startdate>='".$_GET['start']."'
-AND event_enddate<='".$_GET['end']."'
+SELECT * FROM tbl_event where roomid='$x'
 ";
 $result = $mysqli->query($sql);
 if(isset($result) && $result->num_rows>0){
