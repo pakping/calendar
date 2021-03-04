@@ -7,9 +7,11 @@ header("Cache-Control: post-check=0, pre-check=0", false);
  session_start();
 $json_data = array();
 $x=$_SESSION['roomid'];
-$sql ="
-SELECT * FROM tbl_event where roomid='$x'
-";
+if ($x != '0'){ 
+    $sql ="SELECT * FROM tbl_event where roomid='$x'";
+}else{
+    $sql ="SELECT * FROM tbl_event";
+}
 $result = $mysqli->query($sql);
 if(isset($result) && $result->num_rows>0){
     while($row = $result->fetch_assoc()){

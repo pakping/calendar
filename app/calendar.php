@@ -3,30 +3,30 @@ $fullcalendar_path = "fullcalendar-4.4.2/packages/";
 $content = 'everyone';
 require "../DB/connect.php";
 include '../auth/Sessionpersist.php';
-if (isset($_SESSION['roomid'])){
-	if (isset($_POST['roomname'])){
-		$roomid = $_POST['roomname'];
-		$_SESSION['roomid'] = $roomid ;
-		
-		echo $_SESSION['roomid']."<br>";
-		echo $_SESSION['roomname'];
-	}else{
-		$roomid = $_SESSION['roomid'];
-	}
-	if ($roomid != '0'){
+
+if (isset($_POST['roomid'])){
+	$roomid = $_POST['roomid'];
+	if ($_POST['roomid']!= '0'){
 		$Squery = "SELECT * FROM room where roomid = '$roomid' ";
-				if ($result = mysqli_query($con, $Squery)) {
-					while ($room = mysqli_fetch_array($result)) {
-						$roomname = $room['roomname'];
-					}
+			if ($result = mysqli_query($con, $Squery)) {
+				while ($room = mysqli_fetch_array($result)) {
+					$roomname = $room['roomname'];
 				}
-		$_SESSION['roomname']=$roomname;
 			}
+	}else{
+		$roomname = 'ห้องทั้งหมด';
+	}
+	$_SESSION['roomid'] = $roomid;
+	$_SESSION['roomname'] = $roomname;
+}else if(isset($_SESSION['roomid'])){
+	$roomid = $_SESSION['roomid'];
+	$roomname = $_SESSION['roomname'];
 }else{
 	$roomid = '0';
-	$_SESSION['roomid'] = '0';
-	$roomname = 'choose';
+	$roomname = 'เลือกห้องที่ต้องการดู';
 }
+/* echo 'roomid =' . $roomid . '<br>';
+echo 'roomname ='  . $roomname ; */
 ?>                                         
 
 <!doctype html>
@@ -37,6 +37,7 @@ if (isset($_SESSION['roomid'])){
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset='utf-8' />
+	<title>UP Calendar</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 	<link href='<?= $fullcalendar_path ?>/core/main.css' rel='stylesheet' />
 	<link href='<?= $fullcalendar_path ?>/daygrid/main.css' rel='stylesheet' />
@@ -78,8 +79,13 @@ if (isset($_SESSION['roomid'])){
 			<div class="control is-expanded">
                                 <div class="select is-fullwidth">
                                    <form action="" method="POST">
-								<select name="roomname" onchange="this.form.submit()">
-                                        <option value="<?php echo $roomid;?>"><?php echo $roomname;?></option>
+								<select name="roomid" onchange="this.form.submit()">
+									<?php  if ($roomid == '0'){ ?>
+									<option value="0" selected>ห้องทั้งหมด</option>
+									<?php }else{ ?>
+									<option value="<?php echo $roomid;?>" selected><?php echo $roomname;?></option>
+									<option value="0">ห้องทั้งหมด</option>
+									<?php } ?>
                                         <?php
                                     
                                     $Squery = "SELECT * FROM room where roomid !='$roomid' ";
@@ -181,7 +187,7 @@ if (isset($_SESSION['roomid'])){
 
 <?php
   include '../components/footer.php';
-  ?>
+?>
 </body>
 
 </html>
