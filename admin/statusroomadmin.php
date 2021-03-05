@@ -14,6 +14,7 @@ include '../auth/Sessionpersist.php';
     <!-- bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="../DataTables/datatables.css">
+    <link rel="stylesheet" type="text/css" href="../css/color.css">
 
 </head>
 

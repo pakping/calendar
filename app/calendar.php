@@ -45,6 +45,8 @@ echo 'roomname ='  . $roomname ; */
 	<meta charset='utf-8' />
 	<title>UP Calendar</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/color.css">
+
 	<link href='<?= $fullcalendar_path ?>/core/main.css' rel='stylesheet' />
 	<link href='<?= $fullcalendar_path ?>/daygrid/main.css' rel='stylesheet' />
 

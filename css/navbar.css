@@ -1,9 +1,0 @@
-.notification.is-primary {
-    background-color: #00d1b2;
-    color: #fff;
-}
-
-.tag:not(body).is-purple {
-    background-color: hsl(294, 71%, 79%);
-    color: #fff;
-}
