@@ -1,7 +1,7 @@
 <!-- update -->
 <?php
 session_start();
-require '../app/dbconnect.php';
+require '../DB/dbconnect.php';
 require '../DB/connect.php';
 $eid = $_POST['eid'];
 $p_event_title = (isset($_POST['event_title'])) ? $_POST['event_title'] : "";

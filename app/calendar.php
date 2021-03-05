@@ -26,9 +26,9 @@ if (isset($_POST['roomid'])){
 	$roomname = 'เลือกห้องที่ต้องการดู';
 }
 if ($roomid == '0'){ 
-	$sql ="SELECT * FROM tbl_event";
+	$sql ="SELECT * FROM tbl_event where (statid = '1' or statid = '3')";
 }else{
-	$sql ="SELECT * FROM tbl_event where roomid='$roomid'";   
+	$sql ="SELECT * FROM tbl_event where roomid='$roomid' and (statid = '1' and statid = '3')";   
 }
 $_SESSION['sql'] =$sql;
 /* echo 'roomid =' . $roomid . '<br>';

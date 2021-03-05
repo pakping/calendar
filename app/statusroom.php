@@ -46,7 +46,7 @@ $user = $_SESSION['Username'];
             <tbody>
                 <?php
                 require '../DB/connect.php';
-                $result = mysqli_query($con, "SELECT * FROM tbl_event left join room ON tbl_event.roomid=room.roomid left join stat ON tbl_event.statid=stat.statid Where Username = '$user'");
+                $result = mysqli_query($con, "SELECT * FROM tbl_event left join room ON tbl_event.roomid=room.roomid left join stat ON tbl_event.statid=stat.statid Where Username = '$user' and state != 'ยกเลิก' ");
 
                 if ($result) {
                     $a = 1;
@@ -71,7 +71,7 @@ $user = $_SESSION['Username'];
                                 <div class="buttons has-addons">
                                     <form action="../app/detail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-primary is-outlined" type="submit">รายละเอียด</button></form>
                                     <form action="../app/editdetail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-warning is-outlined" type="submit">แก้ไข</button></form>
-                                    <form action="../function/delete.php" method="post"><input type="hidden" name="id_event" value="<?php echo $row['event_id']; ?>"><button class="button is-danger is-outlined" type="submit">ลบ</button></form>
+                                    <form action="../function/updatestatus.php" method="post"><input type="hidden" name="idstatus" value="<?php echo $row['event_id']; ?>"><input type="hidden" name="idstat" value="5"><button class="button is-danger is-outlined" type="submit">ลบ</button></form>
                                 </div>
                             </td>
                         </tr>

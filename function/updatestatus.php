@@ -1,6 +1,5 @@
 <?php
 session_start();
-require '../app/dbconnect.php';
 require '../DB/connect.php';
 $idevent = $_POST['idstatus'];
 $idstat = $_POST['idstat'];
@@ -9,8 +8,14 @@ echo $idstat;
 
 $sql1 = "UPDATE tbl_event SET statid='$idstat' Where event_id = '$idevent'";
 mysqli_query($con,$sql1);
-
+if ($_SESSION['type']=='admin'){
 echo '<script> alert("Update status successfully")
 window.location.href ="../admin/statusroomadmin.php"
-</script>'
+</script>';
+}else if ($_SESSION['type']=='user'){
+    echo '<script> alert("Update status successfully")
+window.location.href ="../app/statusroom.php"
+</script>';
+}
+
 ?>

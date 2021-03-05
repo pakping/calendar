@@ -5,7 +5,31 @@
     </h1>
   </div>
 </nav>
+<style>
+.notification {
+  background-color: #555;
+  color: white;
+  text-decoration: none;
+  padding: 15px 26px;
+  position: relative;
+  display: inline-block;
+  border-radius: 2px;
+}
 
+.notification:hover {
+  background: red;
+}
+
+.navbar-item .badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background-color: red;
+  color: white;
+}
+</style>
 <nav class="navbar is-light" role="navigation" aria-label="main navigation" style="height: 85px;">
   <div class="navbar-brand">
     <a class="navbar-item" href="#">
@@ -23,9 +47,20 @@
       <a class="navbar-item" href="../admin/view-room.php">
         จัดการห้องประชุม
       </a>
-
+      
       <a class="navbar-item" href="../admin/statusroomadmin.php">
         อนุมัติการจองห้องประชุม
+      <?php 
+        require '../DB/connect.php';
+        $result=mysqli_query($con,"SELECT count(*) as total from tbl_event where statid = '2'");
+        $data=mysqli_fetch_assoc($result);
+        if ($data['total'] >0 ){
+        ?><span class="badge"><?php echo $data['total']; ?></span>
+        <?php
+        }     
+      
+      ?>
+        
       </a>
       <a class="navbar-item" href="../admin/register.php">
         สมัครสมาชิก

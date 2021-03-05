@@ -1,3 +1,15 @@
+<?php
+session_start();
+if (isset($_SESSION['Username'])){
+    if ($_SESSION['type'] == 'user'){
+      header('location:app/home.php');
+    }
+    else if ($_SESSION['type']=='admin'){
+      header('location:admin/view-room.php');
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html>
 

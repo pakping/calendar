@@ -82,7 +82,7 @@ include '../auth/Sessionpersist.php';
                                         </form>
                                         <form action="../function/updatestatus.php" method="post">
                                             <input type="hidden" name="idstatus" value="<?php echo $row['event_id']; ?>">
-                                            <input type="hidden" name="idstat" value="3">
+                                            <input type="hidden" name="idstat" value="4">
                                             <button class="button control" type="submit">ไม่ผ่าน</button>
                                         </form>
                                     <?php

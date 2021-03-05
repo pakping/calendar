@@ -1,7 +1,6 @@
 <!-- delete -->
 <?php
 session_start();
-require '../app/dbconnect.php';
 require '../DB/connect.php';
 $idevent = $_POST['id_event'];
 echo $idevent;

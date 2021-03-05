@@ -143,7 +143,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     Username='" . $Username . "',
     other='" . $other . "'
     ";    
-    $sqla = "Select * from tbl_event where (event_startdate Between '$p_event_startdate' and '$p_event_enddate') and (event_enddate Between '$p_event_startdate' and '$p_event_enddate') and (event_starttime Between '$p_event_starttime' and '$p_event_endtime')and (event_endtime Between '$p_event_starttime' and '$p_event_endtime') and (statid ='2' or '1') ";
+    $sqla = "Select * from tbl_event where (event_startdate Between '$p_event_startdate' and '$p_event_enddate') and (event_enddate Between '$p_event_startdate' and '$p_event_enddate') and (event_starttime Between '$p_event_starttime' and '$p_event_endtime')and (event_endtime Between '$p_event_starttime' and '$p_event_endtime') and (statid ='2' or statid = '1') ";
     $result2 = mysqli_query($con, $sqla);
     /* echo $sqla; */
     
