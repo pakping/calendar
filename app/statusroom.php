@@ -58,8 +58,12 @@ $user = $_SESSION['Username'];
                         } elseif ($row['statid'] == '2') {
                             $stat = '<span class="tag is-warning">รอดำเนินการ</span>';
                         } elseif ($row['statid'] == '3') {
+                            $stat = '<span class="tag is-danger">สิ้นสุด</span>';
+                        } elseif ($row['statid'] == '4') {
+                            $stat = '<span class="tag is-danger">ไม่ผ่าน</span>';
+                        } elseif ($row['statid'] == '5') {
                             $stat = '<span class="tag is-danger">ยกเลิก</span>';
-                        } 
+                        }
                 ?>
                         <tr>
                             <th><?php echo $a; ?></th>
