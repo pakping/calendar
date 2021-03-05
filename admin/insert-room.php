@@ -33,7 +33,7 @@ include '../auth/Sessionpersist.php';
           </div>
           <div class="field-body">
             <div class="field">
-              <input class="input" type="text" name="roomname" placeholder="Name">
+              <input class="input" type="text" name="roomname" placeholder="Name" required>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ include '../auth/Sessionpersist.php';
           </div>
           <div class="field-body">
             <div class="field">
-              <input type="color" id="favcolor" name="bgcolor" value="#ff0000">
+              <input type="color" id="favcolor" name="bgcolor" value="#ff0000" required>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@ include '../auth/Sessionpersist.php';
           <div class="field-body">
             <div class="field">
               <div class="control">
-                <input class="input" type="number" name="roomcap" placeholder="number">
+                <input class="input" type="number" name="roomcap" placeholder="number" min="0"  oninput="this.value = Math.round(this.value);" required>
               </div>
               <p class="help-number">
               </p>
@@ -73,7 +73,7 @@ include '../auth/Sessionpersist.php';
             <div class="field is-narrow">
               <div class="control">
                 <label class="radio">
-                  <input type="radio" name="com" value='1'>
+                  <input type="radio" name="com" value='1' required>
                   Yes
                 </label>
                 <label class="radio">
@@ -92,7 +92,7 @@ include '../auth/Sessionpersist.php';
             <div class="field is-narrow">
               <div class="control">
                 <label class="radio">
-                  <input type="radio" name="mic" value='1'>
+                  <input type="radio" name="mic" value='1' required>
                   Yes
                 </label>
                 <label class="radio">
@@ -112,7 +112,7 @@ include '../auth/Sessionpersist.php';
             <div class="field is-narrow">
               <div class="control">
                 <label class="radio">
-                  <input type="radio" name="screen" value='1'>
+                  <input type="radio" name="screen" value='1' required>
                   Yes
                 </label>
                 <label class="radio">
@@ -146,7 +146,7 @@ include '../auth/Sessionpersist.php';
           <div class="field-body">
             <div id="file-js-example" class="file has-name">
               <label class="file-label">
-                <input class="file-input" type="file" name="resume" accept="image/*">
+                <input class="file-input" type="file" name="resume" accept="image/*" required>
                 <span class="file-cta">
                   <span class="file-icon">
                     <i class="fas fa-upload"></i>

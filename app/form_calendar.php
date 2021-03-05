@@ -1,9 +1,13 @@
 <?php
+date_default_timezone_set("Asia/Bangkok");
 // โค้ดไฟล์ dbconnect.php ดูได้ที่ http://niik.in/que_2398_5642
 require_once("../DB/dbconnect.php");
 $content = 'everyone';
 include '../auth/Sessionpersist.php';
 $today = date("Y-m-d");
+
+$starttime = date("08:30:00");
+$endtime = date("21:00:00");
 ?>
 <?php
 // การบันทึกข้อมูลอย่างง่ายเบื้องตั้น
@@ -294,7 +298,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกเวลาเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_starttime"required>
+                                <input class="input" type="time" id="starttime" min="<?php echo $starttime; ?>" max="<?php echo $endtime; ?>" onchange="respondtotime()" name="event_starttime" required>
                             </p>
 
                         </div>
@@ -303,7 +307,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกเวลาสิ้นสุด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="time" name="event_endtime" required>
+                                <input class="input" type="time" max="<?php echo $endtime; ?>" id="endtime" name="event_endtime" required>
                             </p>
                         </div>
                     </div>
@@ -732,6 +736,18 @@ function respondtodate(){
     da = document.getElementById('startdate').value;
     document.getElementById('enddate').setAttribute("min", da);
 }
+
+
+function respondtotime(){
+    if (document.getElementById('endtime').value < document.getElementById('starttime').value){
+        document.getElementById('endtime').value = document.getElementById('starttime').value;
+    }
+    var ta = new Date();
+    ta = document.getElementById('starttime').value;
+    console.log (ta);
+    document.getElementById('endtime').setAttribute("min", ta);
+}
+
 function toggledisable(target){
     if (document.getElementById(target).hasAttribute("disabled")){
         document.getElementById(target).removeAttribute("disabled");

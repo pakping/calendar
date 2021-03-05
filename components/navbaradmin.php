@@ -33,7 +33,9 @@
       <a class="navbar-item" href="../admin/view-room.php">
         จัดการห้องประชุม
       </a>
-      
+      <a class="navbar-item" href="../app/calendar.php">
+        ตารางปฏิทิน
+      </a>
       <a class="navbar-item" href="../admin/statusroomadmin.php">
         อนุมัติการจองห้องประชุม
       <?php 
