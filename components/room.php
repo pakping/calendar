@@ -1,6 +1,6 @@
 <main>
   <section class="section">
-	<div class="box has-background-warning">
+	<div class="box">
     <h4 class="title is-size-6-mobile is-size-2-tablet">ห้องประชุม</h4>
     <div class="columns is-mobile is-multiline is-variable is-1">
    

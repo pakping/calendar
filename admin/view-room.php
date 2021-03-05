@@ -19,8 +19,10 @@ include '../auth/Sessionpersist.php';
   ?>
 
   <section class="section">
-  <div class="box has-background-light">
-    <h2 class="title is-size-6-mobile is-size-2-tablet">ห้องประชุม</h2>
+  <div class="box">
+  <div class="notification is-primary">
+            <strong>จัดการห้องประชุม</strong>
+        </div>
     <div class="columns is-mobile is-multiline is-variable is-1">
       <?php
       require "../DB/connect.php";

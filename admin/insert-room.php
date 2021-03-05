@@ -20,7 +20,7 @@ include '../auth/Sessionpersist.php';
   include '../components/navbaradmin.php';
   ?>
   <section class="section">
-    <div class="container">
+    <div class="box container">
       <div class="notification is-primary">
         <strong>เพิ่มห้องประชุม</strong>
       </div>

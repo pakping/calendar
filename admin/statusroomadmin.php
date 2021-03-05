@@ -25,7 +25,7 @@ include '../auth/Sessionpersist.php';
     ?>
     <!-- Navigation -->
     <br><br>
-    <div class="container is-fullhd">
+    <div class="box container is-fullhd">
         <div class="notification is-primary">
             <strong>สถานะการจอง</strong>
         </div>

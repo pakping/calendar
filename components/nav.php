@@ -9,7 +9,7 @@
 <nav class="navbar is-light" role="navigation" aria-label="main navigation" style="height: 85px;">
   <div class="navbar-brand">
     <a class="navbar-item" href="#">
-      <h5 class="title-indigo is-5 ">ระบบจองห้องประชุม UP-MED</h5>
+      <h5 class="title  is-indigo is-5 ">ระบบจองห้องประชุม UP-MED</h5>
     </a>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
@@ -41,7 +41,7 @@
     
       <div class="navbar-item">
 
-        <div class="navbar-item has-dropdown is-hoverable">
+        <div class="box navbar-item has-dropdown is-hoverable">
 
           <a class="navbar-link">
             คุณ <?php
@@ -53,7 +53,7 @@
             <!-- Other navbar items -->
             <form action="../auth/logout.php" method="post">
 
-              <button type="submit" class="button is-light">ออกจากระบบ</button>
+              <button type="submit" class="button is-white">ออกจากระบบ</button>
             </form>
           </div>
         </div>
@@ -91,7 +91,7 @@
   });
 </script>
 <style>
-  .title-indigo {
+  .is-indigo {
     color: rgba(141, 56, 201);
     font-size: 1.5rem;
     font-weight: 500;
