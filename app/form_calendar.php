@@ -316,7 +316,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" name="people" type="number" placeholder="กรอกจำนวนผู้เข้าประชุม">
+                                <input class="input" name="people" type="number" placeholder="กรอกจำนวนผู้เข้าประชุม" required>
                             </div>
                         </div>
                     </div>
@@ -354,7 +354,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="control">
                             <label class="radio">
-                                <input type="radio" name="tool" value="yes">
+                                <input type="radio" name="tool" value="yes" required>
                                 ใช้งาน ตามที่มีในห้อง
                             </label>
                             <label class="radio">
