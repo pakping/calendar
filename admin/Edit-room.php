@@ -21,6 +21,7 @@ include '../auth/Sessionpersist.php';
   ?>
 
   <section class="section">
+  <div class="box">
     <div class="container">
       <div class="notification is-primary">
         <strong>เพิ่มห้องประชุม</strong>
@@ -106,23 +107,17 @@ include '../auth/Sessionpersist.php';
                     <label class="radio">
                       <input type="radio" name="mic" value='1' <?php if ($room['mic'] == '1') {
                                                                   echo "checked";
-                                                                } ?>        
-                      >Yes</label>
+                                                                } ?>>Yes</label>
                     <label class="radio">
                       <input type="radio" name="mic" value='0' <?php if ($room['mic'] == '0') {
                                                                   echo "checked";
-                                                                } ?>
-                      >No</label>
+                                                                } ?>>No</label>
                   </div>
                 </div>
-
               </div>
             </div>
-
-
             <div class="field is-horizontal">
               <div class="field-label">
-
                 <label class="label">มีจอทีวีหรือไม่</label>
               </div>
               <div class="field-body">
@@ -152,31 +147,35 @@ include '../auth/Sessionpersist.php';
         }
       }
         ?>
+        <hr>
         <div class="field is-horizontal">
           <div class="field-label">
             <!-- Left empty for spacing -->
           </div>
           <div class="field-body">
             <div class="field">
+
+              <p class="control is-expanded has-icons-left">
               <div class="control">
-                <button class="button is-primary">
-                  Send
-                </button>
+                <button class="button  is-link "> อัพเดท</button>
+                </p>
               </div>
-          </form>
-          <br>
-          <form action="../function/deleteroom.php" method="POST">
-            <div class="field">
-              <button class="button is-primary">
-                Delete
-              </button>
             </div>
-            <input type="hidden" value="<?php echo $setid; ?>" name="delid">
           </form>
+
+          <div class="field">
+            <p class="control is-expanded has-icons-left has-icons-right">
+            <form action="../function/deleteroom.php" method="POST">
+              <button class="button is-danger ">
+                ลบ
+              </button>
+              <input type="hidden" value="<?php echo $setid; ?>" name="delid">
+            </form>
+            </p>
+          </div>
     </div>
     </div>
-    </div>
-    </div>
+      </div>
   </section>
 
 
