@@ -23,7 +23,7 @@ include '../components/navbaradmin.php';
 
 	<section class="section">
 		<form action="../DB/dbregister.php" class="mb-3" method="POST">
-			<div class="container">
+			<div class="box container">
 				<div class="notification is-primary">
 					<strong>ระบบสมัครสมาชิก </strong>
 				</div>

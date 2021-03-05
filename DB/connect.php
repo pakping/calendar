@@ -9,6 +9,7 @@ $userPassword	  = "";
 $dbName	  = "fullcalendar";
 
 $con = mysqli_connect($serverName, $userName, $userPassword, $dbName);
+$con->set_charset('utf8');
 
 if (mysqli_connect_errno()) {
 	echo "Database Connect Failed : " . mysqli_connect_error();

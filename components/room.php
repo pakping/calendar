@@ -1,7 +1,9 @@
 <main>
   <section class="section">
-	<div class="box has-background-warning">
-    <h4 class="title is-size-6-mobile is-size-2-tablet">ห้องประชุม</h4>
+	<div class="box">
+  <div class="notification is-primary">
+            <strong>จัดการห้องประชุม</strong>
+        </div>
     <div class="columns is-mobile is-multiline is-variable is-1">
    
       <?php
