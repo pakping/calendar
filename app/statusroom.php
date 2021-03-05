@@ -58,7 +58,7 @@ $user = $_SESSION['Username'];
                             $stat = '<span class="tag is-warning">รอดำเนินการ</span>';
                         } elseif ($row['statid'] == '3') {
                             $stat = '<span class="tag is-danger">ยกเลิก</span>';
-                        }
+                        } 
                 ?>
                         <tr>
                             <th><?php echo $a; ?></th>

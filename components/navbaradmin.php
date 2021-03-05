@@ -6,21 +6,7 @@
   </div>
 </nav>
 <style>
-.notification {
-  background-color: #555;
-  color: white;
-  text-decoration: none;
-  padding: 15px 26px;
-  position: relative;
-  display: inline-block;
-  border-radius: 2px;
-}
-
-.notification:hover {
-  background: red;
-}
-
-.navbar-item .badge {
+.badge {
   position: absolute;
   top: -10px;
   right: -10px;
