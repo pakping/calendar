@@ -127,8 +127,8 @@ include '../auth/Sessionpersist.php';
                                             </div>
                                         </div>
                                     </form> -->
-                                    <form action="../app/editdetail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-warning is-outlined control" type="submit">แก้ไข</button></form>
-                                    <form action="../function/delete.php" method="post"><input type="hidden" name="id_event" value="<?php echo $row['event_id']; ?>"><button class="button is-danger is-outlined control" type="submit">ลบ</button></form>
+<!--                                     <form action="../app/editdetail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-warning is-outlined control" type="submit">แก้ไข</button></form>
+                                    <form action="../function/delete.php" method="post"><input type="hidden" name="id_event" value="<?php echo $row['event_id']; ?>"><button class="button is-danger is-outlined control" type="submit">ลบ</button></form> -->
                                     <form action="../app/detail.php" method="post"><input type="hidden" name="eventid" value="<?php echo $row['event_id']; ?>"><button class="button is-primary is-outlined control" type="submit">รายละเอียด</button></form>
                                     
                                 </div>

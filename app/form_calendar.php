@@ -17,7 +17,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
     $peoplenum =  $_POST['people'];
     $description = $_POST['desc'];
-    $regname = $_POST['reg'];
+    
     $tool = $_POST['tool'];
     $stat = $_POST['statid'];
     if (isset($_POST['statid'])) {
@@ -305,7 +305,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     </div>
                 </div>
 
-                <div class="field is-horizontal">
+                <!-- <div class="field is-horizontal">
                     <div class="field-label is-normal">
                         <label class="label">ชื่อผู้จอง</label>
                     </div>
@@ -315,7 +315,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                             </p>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
@@ -331,7 +331,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 <input type="radio" name="tool" value="no">
                                 ไม่ใช้งาน
                             </label>
-                            <a href="">ดูรายละเอียดอุปกรณ์ในห้อง</a>
+                            <!-- <a href="">ดูรายละเอียดอุปกรณ์ในห้อง</a> -->
                         </div>
                     </div>
                 </div>

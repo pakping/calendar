@@ -4,6 +4,9 @@ include '../auth/Sessionpersist.php';
 if (isset($_POST['eventid'])) {
     echo ($_POST['eventid']);
     $eventid = $_POST['eventid'];
+    $_SESSION['eventid']=$eventid;
+}else if(isset($_SESSION['eventid'])){
+    $eventid = $_SESSION['eventid'];
 }
 $today = date("Y-m-d");
 ?>
@@ -34,12 +37,13 @@ $today = date("Y-m-d");
     <!-- Navigation -->
     <?php
     require '../DB/connect.php';
-    $result = mysqli_query($con, "SELECT * FROM tbl_event left join room ON tbl_event.roomid=room.roomid left join stat ON tbl_event.statid=stat.statid Where event_id = '$eventid'");
+    $result = mysqli_query($con, "SELECT * FROM tbl_event left join room ON tbl_event.roomid=room.roomid left join stat ON tbl_event.statid=stat.statid left join user ON tbl_event.Username=user.Username Where event_id = '$eventid'");
 
     if ($result) {
         $row = mysqli_fetch_array($result);
     }
     ?>
+    
     <section class="section">
         <div class="container">
             <div class="notification is-primary">
@@ -147,7 +151,7 @@ $today = date("Y-m-d");
                 <div class="field-body">
                     <div class="field">
                         <div class="control">
-                            <textarea class="textarea is-static" name="desc" placeholder="กรอกรายละเอียด" value="" readonly><?php echo $row['description'] ?></textarea>
+                            <textarea class="textarea is-static" name="desc" placeholder="กรอกรายละเอียด" value="" readonly><?php echo $row['event_detail'] ?></textarea>
                         </div>
                     </div>
                 </div>
@@ -159,7 +163,7 @@ $today = date("Y-m-d");
                 </div>
                 <div class="field-body">
                     <div class="field">
-                        <input class="input is-static" name="reg" type="text" placeholder="กรอกชื่อ" value="<?php echo $row['reguser'] ?>" readonly>
+                        <input class="input is-static" name="reg" type="text" placeholder="กรอกชื่อ" value="<?php echo $row['fname'] . "   " . $row['lname'] ?>" readonly>
 
                     </div>
                 </div>
@@ -181,7 +185,7 @@ $today = date("Y-m-d");
                             </p>
 
                         <?php } ?>
-                        <a href="">ดูรายละเอียดอุปกรณ์ในห้อง</a>
+                        <!-- <a href="">ดูรายละเอียดอุปกรณ์ในห้อง</a> -->
                     </div>
                 </div>
             </div>

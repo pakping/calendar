@@ -6,7 +6,7 @@
    
       <?php
       require "../DB/connect.php";
-      $Squery = "SELECT * FROM room";
+      $Squery = "SELECT * FROM room Order by roomname";
       if ($result = mysqli_query($con, $Squery)) {
         while ($room = mysqli_fetch_array($result)) {
       ?>
