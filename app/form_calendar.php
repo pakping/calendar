@@ -109,7 +109,6 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
         while ($ok = mysqli_fetch_array($result)) {
             $bgcolor = $ok['bgcolor'] ;
             $roomid = $ok['roomid'];
-            
         }
     }
     $sql = "
@@ -125,7 +124,6 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     event_bgcolor='" . $bgcolor . "',
     people='" . $peoplenum . "',
     event_detail='" . $description . "',
-    reguser='" . $regname . "',
     tool='" . $tool . "',
     Scup='" . $Scup . "',
     Bcup='" . $Bcup . "',
@@ -144,12 +142,44 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     statid='" . $stat . "',
     Username='" . $Username . "',
     other='" . $other . "'
-    ";
-    if ($mysqli->query($sql)){
-    /* echo $sql; */
-    /* exit; */
-    echo '<script>alert("New data inserted")
-                window.location.href ="../app/calendar.php"</script>';
+    ";    
+    $sqla = "Select * from tbl_event where (event_startdate Between '$p_event_startdate' and '$p_event_enddate') and (event_enddate Between '$p_event_startdate' and '$p_event_enddate') and (event_starttime Between '$p_event_starttime' and '$p_event_endtime')and (event_endtime Between '$p_event_starttime' and '$p_event_endtime') and (statid ='2' or '1') ";
+    $result2 = mysqli_query($con, $sqla);
+    /* echo $sqla; */
+    
+    if ( $rowcount=mysqli_num_rows($result2) == 0 ){
+        if ($mysqli->query($sql)){
+            echo '<script>alert("New data inserted")
+            window.location.href ="../app/form_calendar.php"</script>';
+            }
+    }else{        
+        $z = 0; 
+        while ($data = mysqli_fetch_array($result2)) {
+            $id[$z] = $data['roomid'];
+            $stime[$z] = $data['event_starttime'];
+            $etime[$z] = $data['event_endtime'];
+                
+            /* echo $id[$z] . "<br>";
+            echo $stime[$z] . "<br>";
+            echo $etime[$z] . "<br>"; */
+                $z = $z +1;
+        }
+        if (in_array($roomid,$id)){
+            echo '<script>alert("วันเวลาที่เลือกไม่สามารถจองได้เนื่องจากมีผู้จองก่อนแล้ว (case1)")
+            window.location.href ="../app/form_calendar.php"</script>';
+        }else{
+            if ( $hasDuplicates = count($id) > count(array_unique($id)) )
+            {
+                echo '<script>alert("วันเวลาที่เลือกไม่สามารถจองได้เนื่องจากมีผู้จองก่อนแล้ว (case2)")
+                window.location.href ="../app/form_calendar.php"</script>';
+            }
+            else{
+                if ($mysqli->query($sql)){
+                    echo '<script>alert("New data inserted!!")
+                    window.location.href ="../app/calendar.php"</script>';
+                }
+            }
+        }
     }
 }
 ?>

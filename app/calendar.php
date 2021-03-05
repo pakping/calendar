@@ -25,6 +25,12 @@ if (isset($_POST['roomid'])){
 	$roomid = '0';
 	$roomname = 'เลือกห้องที่ต้องการดู';
 }
+if ($roomid == '0'){ 
+	$sql ="SELECT * FROM tbl_event";
+}else{
+	$sql ="SELECT * FROM tbl_event where roomid='$roomid'";   
+}
+$_SESSION['sql'] =$sql;
 /* echo 'roomid =' . $roomid . '<br>';
 echo 'roomname ='  . $roomname ; */
 ?>                                         

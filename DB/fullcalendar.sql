@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 03, 2021 at 07:42 AM
+-- Generation Time: Mar 05, 2021 at 05:30 AM
 -- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
+-- PHP Version: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -43,9 +43,9 @@ CREATE TABLE `room` (
 --
 
 INSERT INTO `room` (`roomid`, `roomname`, `roomcap`, `com`, `screen`, `mic`, `roomimg`, `bgcolor`) VALUES
-(1, 'ห้องประชุมศาสตราจารย์พิเศษ ดร.มณฑล สงวนเสริมศรี (60ที่นั่ง)', 60, 1, 0, 1, '', ''),
-(2, 'ห้องประชุม OPD 3 (30ที่นั่ง)', 30, 0, 1, 0, '', ''),
-(12, 'Jeerachon01', 10, 0, 0, 1, '../img/roomimg/title_imgJeerachon01.jpeg', '#17e708');
+(12, 'Jeerachon01', 10, 0, 0, 1, '../img/roomimg/title_imgJeerachon01.jpeg', '#17e708'),
+(13, 'Jeerachon02', 50, 1, 1, 0, '../img/roomimg/title_imgJeerachon02.jpg', '#1505f0'),
+(14, 'Jeerachon03', 60, 1, 1, 1, '../img/roomimg/title_imgJeerachon03.jpg', '#eeff00');
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ INSERT INTO `room` (`roomid`, `roomname`, `roomcap`, `com`, `screen`, `mic`, `ro
 
 CREATE TABLE `stat` (
   `statid` int(11) NOT NULL,
-  `state` varchar(10) DEFAULT NULL
+  `state` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -65,7 +65,9 @@ CREATE TABLE `stat` (
 INSERT INTO `stat` (`statid`, `state`) VALUES
 (1, 'ผ่าน'),
 (2, 'รอดำเนินกา'),
-(3, 'ยกเลิก');
+(3, 'สิ้นสุด'),
+(4, 'ไม่ผ่าน'),
+(5, 'ยกเลิก');
 
 -- --------------------------------------------------------
 
@@ -89,7 +91,6 @@ CREATE TABLE `tbl_event` (
   `event_allday` tinyint(1) NOT NULL,
   `event_createdate` timestamp NOT NULL DEFAULT current_timestamp(),
   `people` int(3) NOT NULL,
-  `description` text NOT NULL,
   `reguser` varchar(255) NOT NULL,
   `tool` int(1) NOT NULL,
   `Scup` int(3) NOT NULL,
@@ -107,7 +108,7 @@ CREATE TABLE `tbl_event` (
   `boiler` int(3) NOT NULL,
   `basket` int(3) NOT NULL,
   `other` varchar(20) NOT NULL,
-  `statid` int(11) DEFAULT NULL,
+  `statid` int(11) DEFAULT 2,
   `Username` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -115,8 +116,11 @@ CREATE TABLE `tbl_event` (
 -- Dumping data for table `tbl_event`
 --
 
-INSERT INTO `tbl_event` (`event_id`, `event_title`, `roomid`, `event_detail`, `event_startdate`, `event_enddate`, `event_starttime`, `event_endtime`, `event_color`, `event_bgcolor`, `event_url`, `event_repeatday`, `event_allday`, `event_createdate`, `people`, `description`, `reguser`, `tool`, `Scup`, `Bcup`, `longcup`, `drinkcup`, `softdrink`, `othercup`, `hotbot`, `tray`, `dishcup`, `jug`, `boxcup`, `tea`, `boiler`, `basket`, `other`, `statid`, `Username`) VALUES
-(16, 'fsfdsfsd', 2, '', '2021-03-06', '2021-03-06', '15:37:00', '18:35:00', '#FFFFFF', '', '', '', 0, '2021-03-03 06:35:26', 150, 'dsadsa', 'dsadadsadqw', 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'Mojung');
+INSERT INTO `tbl_event` (`event_id`, `event_title`, `roomid`, `event_detail`, `event_startdate`, `event_enddate`, `event_starttime`, `event_endtime`, `event_color`, `event_bgcolor`, `event_url`, `event_repeatday`, `event_allday`, `event_createdate`, `people`, `reguser`, `tool`, `Scup`, `Bcup`, `longcup`, `drinkcup`, `softdrink`, `othercup`, `hotbot`, `tray`, `dishcup`, `jug`, `boxcup`, `tea`, `boiler`, `basket`, `other`, `statid`, `Username`) VALUES
+(17, 'Games Review Today', 12, 'ลองเกม', '2021-03-07', '2021-03-08', '10:00:00', '12:00:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-04 01:57:29', 20, 'Jeerachon', 0, 3, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon'),
+(18, 'Future of gaming', 12, 'คุยเรื่อยเปี่อย', '2021-03-26', '2021-03-30', '10:00:00', '12:20:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-04 01:59:39', 30, 'Jeerachon', 0, 20, 5, 0, 30, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon'),
+(19, 'This is the test', 13, 'Would you agree?', '2021-03-20', '2021-03-22', '10:00:00', '18:00:00', '#FFFFFF', '#1505f0', '', '', 0, '2021-03-05 02:13:33', 50, '', 0, 12, 0, 0, 50, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon'),
+(28, 'This is the test2', 12, 'dia', '2021-03-26', '2021-03-30', '12:29:00', '13:29:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-05 04:29:54', 3, '', 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon');
 
 -- --------------------------------------------------------
 
@@ -141,10 +145,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access`, `fname`, `lname`, `email`, `pnum`) VALUES
-('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '2021-03-03 13:41:17', 0, 'user', '', '', '', 0),
+('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '2021-03-05 11:29:54', 0, 'user', 'Jeerachon', 'Tummasorn', 'Humgee@Hum.co.th', 123456789),
 ('Mojung', '81dc9bdb52d04dc20036dbd8313ed055', '0000-00-00 00:00:00', 0, 'user', 'Mr', 'Mojung', 'mojung@jung.com', 999999999),
-('phoomin', 'e35cf7b66449df565f93c607d5a81d09', '0000-00-00 00:00:00', 0, 'user', '', '', '', 0),
-('sirichai', 'c33367701511b4f6020ec61ded352059', '0000-00-00 00:00:00', 0, 'admin', '', '', '', 0);
+('phoomin', 'e35cf7b66449df565f93c607d5a81d09', '0000-00-00 00:00:00', 0, 'user', 'Phoomin', 'Boonanan', 'Min@hum.co.th', 987654321),
+('sirichai', 'c33367701511b4f6020ec61ded352059', '0000-00-00 00:00:00', 0, 'admin', 'Sirichai', 'Benjamakom', 'Den@hum.co.th', 696969696);
 
 --
 -- Indexes for dumped tables
@@ -167,7 +171,9 @@ ALTER TABLE `stat`
 --
 ALTER TABLE `tbl_event`
   ADD PRIMARY KEY (`event_id`),
-  ADD KEY `fk_roomid` (`roomid`);
+  ADD KEY `fk_roomid` (`roomid`),
+  ADD KEY `fk_username` (`Username`),
+  ADD KEY `fk_statid` (`statid`);
 
 --
 -- Indexes for table `user`
@@ -183,19 +189,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
-  MODIFY `roomid` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `roomid` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `stat`
 --
 ALTER TABLE `stat`
-  MODIFY `statid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `statid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
@@ -205,7 +211,9 @@ ALTER TABLE `tbl_event`
 -- Constraints for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  ADD CONSTRAINT `fk_roomid` FOREIGN KEY (`roomid`) REFERENCES `room` (`roomid`);
+  ADD CONSTRAINT `fk_roomid` FOREIGN KEY (`roomid`) REFERENCES `room` (`roomid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_statid` FOREIGN KEY (`statid`) REFERENCES `stat` (`statid`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_username` FOREIGN KEY (`Username`) REFERENCES `user` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

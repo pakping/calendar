@@ -6,12 +6,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
  require_once("../DB/dbconnect.php");
  session_start();
 $json_data = array();
-$x=$_SESSION['roomid'];
-if ($x != '0'){ 
-    $sql ="SELECT * FROM tbl_event where roomid='$x'";
-}else{
-    $sql ="SELECT * FROM tbl_event";
-}
+$sql =$_SESSION['sql'];
 $result = $mysqli->query($sql);
 if(isset($result) && $result->num_rows>0){
     while($row = $result->fetch_assoc()){
