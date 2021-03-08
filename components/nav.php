@@ -32,6 +32,9 @@
       <a class="navbar-item" href="../app/form_calendar.php">
         จองห้อง
       </a>
+      <a class="navbar-item" href="../app/form_car.php">
+        จองรถยนต์
+      </a>
       <a class="navbar-item" href="../app/statusroom.php">
         สถานะการจอง
       </a>
