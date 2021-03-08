@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	require_once("../DB/userdb.php");
+	require_once("../DB/connnet.php");
 
 	//*** Update Status
 	$sql = "UPDATE User SET LoginStatus = '0', LastUpdate = '0000-00-00 00:00:00' WHERE Username = '".$_SESSION["Username"]."' ";
