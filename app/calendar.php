@@ -4,36 +4,36 @@ $content = 'everyone';
 require "../DB/connect.php";
 include '../auth/Sessionpersist.php';
 
-if (isset($_POST['roomid'])){
+if (isset($_POST['roomid'])) {
 	$roomid = $_POST['roomid'];
-	if ($_POST['roomid']!= '0'){
+	if ($_POST['roomid'] != '0') {
 		$Squery = "SELECT * FROM room where roomid = '$roomid' ";
-			if ($result = mysqli_query($con, $Squery)) {
-				while ($room = mysqli_fetch_array($result)) {
-					$roomname = $room['roomname'];
-				}
+		if ($result = mysqli_query($con, $Squery)) {
+			while ($room = mysqli_fetch_array($result)) {
+				$roomname = $room['roomname'];
 			}
-	}else{
+		}
+	} else {
 		$roomname = 'ห้องทั้งหมด';
 	}
 	$_SESSION['roomid'] = $roomid;
 	$_SESSION['roomname'] = $roomname;
-}else if(isset($_SESSION['roomid'])){
+} else if (isset($_SESSION['roomid'])) {
 	$roomid = $_SESSION['roomid'];
 	$roomname = $_SESSION['roomname'];
-}else{
+} else {
 	$roomid = '0';
 	$roomname = 'เลือกห้องที่ต้องการดู';
 }
-if ($roomid == '0'){ 
-	$sql ="SELECT * FROM tbl_event where (statid = '1' or statid = '3')";
-}else{
-	$sql ="SELECT * FROM tbl_event where roomid='$roomid' and (statid = '1' and statid = '3')";   
+if ($roomid == '0') {
+	$sql = "SELECT * FROM tbl_event where (statid = '1' or statid = '3')";
+} else {
+	$sql = "SELECT * FROM tbl_event where roomid='$roomid' and (statid = '1' and statid = '3')";
 }
-$_SESSION['sql'] =$sql;
+$_SESSION['sql'] = $sql;
 /* echo 'roomid =' . $roomid . '<br>';
 echo 'roomname ='  . $roomname ; */
-?>                                         
+?>
 
 <!doctype html>
 <html lang="en">
@@ -76,37 +76,42 @@ echo 'roomname ='  . $roomname ; */
 
 <body>
 	<?php
-	include '../components/nav.php';
+	if ($_SESSION['type'] == 'admin') {
+		include '../components/navbaradmin.php';
+	} else {
+		include '../components/nav.php';
+	}
+	
 	?>
 	<br>
 	<br>
 	<div class="container">
-
 		<div class="box has-background">
 			<div class="container is-max-desktop">
-			<div class="control is-expanded">
-                                <div class="select is-fullwidth">
-                                   <form action="" method="POST">
-								<select name="roomid" onchange="this.form.submit()">
-									<?php  if ($roomid == '0'){ ?>
+				<div class="control is-expanded">
+					<div class="select is-fullwidth">
+						<form action="" method="POST">
+							<select name="roomid" onchange="this.form.submit()">
+								<?php if ($roomid == '0') { ?>
 									<option value="0" selected>ห้องทั้งหมด</option>
-									<?php }else{ ?>
-									<option value="<?php echo $roomid;?>" selected><?php echo $roomname;?></option>
+								<?php } else { ?>
+									<option value="<?php echo $roomid; ?>" selected><?php echo $roomname; ?></option>
 									<option value="0">ห้องทั้งหมด</option>
-									<?php } ?>
-                                        <?php
-                                    
-                                    $Squery = "SELECT * FROM room where roomid !='$roomid' ";
-                                    if ($result = mysqli_query($con, $Squery)) {
-                                        while ($room = mysqli_fetch_array($result)) {
-?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
-											  
-<?php }}
-?>                                       
-                                    </select>
-								   </form>
-								</div>
-                            </div>
+								<?php } ?>
+								<?php
+
+								$Squery = "SELECT * FROM room where roomid !='$roomid' ";
+								if ($result = mysqli_query($con, $Squery)) {
+									while ($room = mysqli_fetch_array($result)) {
+								?> <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
+
+								<?php }
+								}
+								?>
+							</select>
+						</form>
+					</div>
+				</div>
 			</div>
 			<br>
 			<div id='calendar'></div>
@@ -133,7 +138,6 @@ echo 'roomname ='  . $roomname ; */
 				</div>
 			</div>
 		</div>
-
 	</div>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
@@ -185,17 +189,16 @@ echo 'roomname ='  . $roomname ; */
 			$("#calendarmodal").modal(); // แสดง modal
 		}
 	</script>
-<style>
-  .tag:not(body).is-purple {
-    background-color: hsl(294, 71%, 79%);
-    color: #fff;
-  }
- 
-</style>
+	<style>
+		.tag:not(body).is-purple {
+			background-color: hsl(294, 71%, 79%);
+			color: #fff;
+		}
+	</style>
 
-<?php
-  include '../components/footer.php';
-?>
+	<?php
+	include '../components/footer.php';
+	?>
 </body>
 
 </html>
