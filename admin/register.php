@@ -30,7 +30,7 @@ include '../components/navbaradmin.php';
 
 				<div class="field is-horizontal">
 					<div class="field-label is-normal">
-						<label class="label">ชื่อของคุณ</label>
+						<label class="label">ชื่อ-นามสกุล</label>
 					</div>
 					<div class="field-body">
 						<div class="field">
@@ -67,7 +67,7 @@ include '../components/navbaradmin.php';
 					<div class="field-body">
 						<div class="field">
 							<div class="control has-icons-left has-icons-right">
-								<input class="input" name="uname" id="name" type="text" placeholder="exampleuser" required>
+								<input class="input" name="uname" id="name" type="text" placeholder="Username" required>
 								<span class="icon is-small is-left">
 									<i class="fa fa-user"></i>
 								</span>
@@ -88,7 +88,7 @@ include '../components/navbaradmin.php';
 						<div class="field">
 							<div class="control has-icons-left has-icons-right">
 
-								<input class="input" name="psw" id="password" type="password" placeholder="password" required>
+								<input class="input" name="psw" id="password" type="password" placeholder="Password" required>
 								<span class="icon is-small is-left">
 									<i class="fa fa-lock"></i>
 								</span>
@@ -100,7 +100,7 @@ include '../components/navbaradmin.php';
 						<div class="field">
 							<div class="control has-icons-left has-icons-right">
 
-								<input class="input" name="psw-repeat" id="p-repeat" type="password" placeholder="password" required>
+								<input class="input" name="psw-repeat" id="p-repeat" type="password" placeholder="Confirm Password" required>
 								<span class="icon is-small is-left">
 									<i class="fa fa-lock"></i>
 								</span>
@@ -121,7 +121,7 @@ include '../components/navbaradmin.php';
 						<div class="field">
 							<div class="control has-icons-left has-icons-right">
 
-								<input class="input" name="email" id="email" type="email" placeholder="Email input" required>
+								<input class="input" name="email" id="email" type="email" placeholder="Email" required>
 								<span class="icon is-small is-left">
 									<i class="fa fa-envelope"></i>
 								</span>
