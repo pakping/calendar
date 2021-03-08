@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '../DB/connect.php';
+require '../DB/userdb.php';
 if (isset($_SESSION)) {
     if ($content =='everyone'){
         if ($_SESSION['type']=='user' || 'admin'){

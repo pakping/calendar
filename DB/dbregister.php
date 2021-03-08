@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'connect.php';
+require 'userdb.php';
 $name = $_POST['uname'];
 $pass = hash('md5',$_POST['psw']);
 $pass2 = hash('md5',$_POST['psw-repeat']);

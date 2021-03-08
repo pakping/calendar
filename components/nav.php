@@ -23,9 +23,9 @@
         หน้าหลัก
       </a>
 
-      <a class="navbar-item" href="">
+      <!-- <a class="navbar-item" href="">
         ห้องประชุม
-      </a>
+      </a> -->
       <a class="navbar-item" href="../app/calendar.php">
         ตารางปฏิทิน
       </a>

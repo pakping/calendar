@@ -31,8 +31,8 @@ if ($roomid == '0'){
 	$sql ="SELECT * FROM tbl_event where roomid='$roomid' and (statid = '1' and statid = '3')";   
 }
 $_SESSION['sql'] =$sql;
-/* echo 'roomid =' . $roomid . '<br>';
-echo 'roomname ='  . $roomname ; */
+echo 'roomid =' . $roomid . '<br>';
+echo 'roomname ='  . $roomname ;
 ?>                                         
 
 <!doctype html>
@@ -91,14 +91,11 @@ echo 'roomname ='  . $roomname ; */
 									<?php }else{ ?>
 									<option value="<?php echo $roomid;?>" selected><?php echo $roomname;?></option>
 									<option value="0">ห้องทั้งหมด</option>
-									<?php } ?>
-                                        <?php
-                                    
-                                    $Squery = "SELECT * FROM room where roomid !='$roomid' ";
+									<?php }
+                                    $Squery = "SELECT * FROM room";
                                     if ($result = mysqli_query($con, $Squery)) {
                                         while ($room = mysqli_fetch_array($result)) {
-?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname']; ?></option>
-											  
+?>                                            <option value="<?php echo $room['roomid']; ?>"><?php echo $room['roomname'];?></option>									  
 <?php }}
 ?>                                       
                                     </select>
