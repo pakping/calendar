@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 05, 2021 at 05:30 AM
+-- Generation Time: Mar 08, 2021 at 08:17 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `fullcalendar`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cars_event`
+--
+
+CREATE TABLE `cars_event` (
+  `event_id` int(3) NOT NULL,
+  `event_title` varchar(80) NOT NULL,
+  `event_detail` text NOT NULL,
+  `event_startdate` date NOT NULL,
+  `event_enddate` date NOT NULL,
+  `event_starttime` time NOT NULL,
+  `event_color` varchar(15) NOT NULL DEFAULT '#FFFFFF',
+  `event_bgcolor` varchar(15) NOT NULL DEFAULT '#03a9f4',
+  `event_createdate` timestamp NOT NULL DEFAULT current_timestamp(),
+  `people` int(3) NOT NULL,
+  `statid` int(3) NOT NULL,
+  `regname` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -117,10 +138,11 @@ CREATE TABLE `tbl_event` (
 --
 
 INSERT INTO `tbl_event` (`event_id`, `event_title`, `roomid`, `event_detail`, `event_startdate`, `event_enddate`, `event_starttime`, `event_endtime`, `event_color`, `event_bgcolor`, `event_url`, `event_repeatday`, `event_allday`, `event_createdate`, `people`, `reguser`, `tool`, `Scup`, `Bcup`, `longcup`, `drinkcup`, `softdrink`, `othercup`, `hotbot`, `tray`, `dishcup`, `jug`, `boxcup`, `tea`, `boiler`, `basket`, `other`, `statid`, `Username`) VALUES
-(17, 'Games Review Today', 12, 'ลองเกม', '2021-03-07', '2021-03-08', '10:00:00', '12:00:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-04 01:57:29', 20, 'Jeerachon', 0, 3, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon'),
-(18, 'Future of gaming', 12, 'คุยเรื่อยเปี่อย', '2021-03-26', '2021-03-30', '10:00:00', '12:20:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-04 01:59:39', 30, 'Jeerachon', 0, 20, 5, 0, 30, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon'),
-(19, 'This is the test', 13, 'Would you agree?', '2021-03-20', '2021-03-22', '10:00:00', '18:00:00', '#FFFFFF', '#1505f0', '', '', 0, '2021-03-05 02:13:33', 50, '', 0, 12, 0, 0, 50, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon'),
-(28, 'This is the test2', 12, 'dia', '2021-03-26', '2021-03-30', '12:29:00', '13:29:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-05 04:29:54', 3, '', 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon');
+(17, 'Games Review Today', 12, 'ลองเกม', '2021-03-07', '2021-03-08', '10:00:00', '12:00:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-04 01:57:29', 20, 'Jeerachon', 0, 3, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 5, 'jeerachon'),
+(18, 'Future of gaming', 12, 'คุยเรื่อยเปี่อย', '2021-03-26', '2021-03-30', '10:00:00', '12:20:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-04 01:59:39', 30, 'Jeerachon', 0, 20, 5, 0, 30, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 5, 'jeerachon'),
+(19, 'This is the test', 13, 'Would you agree?', '2021-03-20', '2021-03-22', '10:00:00', '18:00:00', '#FFFFFF', '#1505f0', '', '', 0, '2021-03-05 02:13:33', 50, '', 0, 12, 0, 0, 50, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 1, 'jeerachon'),
+(28, 'This is the test2', 12, 'dia', '2021-03-26', '2021-03-30', '12:29:00', '13:29:00', '#FFFFFF', '#17e708', '', '', 0, '2021-03-05 04:29:54', 3, '', 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon'),
+(29, 'DDD', 14, '32', '2021-03-06', '2021-03-12', '17:18:00', '19:18:00', '#FFFFFF', '#eeff00', '', '', 0, '2021-03-05 08:19:03', 11, '', 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 0, 0, 0, 0, 0, 'none', 2, 'jeerachon');
 
 -- --------------------------------------------------------
 
@@ -145,7 +167,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access`, `fname`, `lname`, `email`, `pnum`) VALUES
-('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '2021-03-05 11:29:54', 0, 'user', 'Jeerachon', 'Tummasorn', 'Humgee@Hum.co.th', 123456789),
+('jeerachon', 'e10adc3949ba59abbe56e057f20f883e', '0000-00-00 00:00:00', 0, 'user', 'Jeerachon', 'Tummasorn', 'Humgee@Hum.co.th', 123456789),
 ('Mojung', '81dc9bdb52d04dc20036dbd8313ed055', '0000-00-00 00:00:00', 0, 'user', 'Mr', 'Mojung', 'mojung@jung.com', 999999999),
 ('phoomin', 'e35cf7b66449df565f93c607d5a81d09', '0000-00-00 00:00:00', 0, 'user', 'Phoomin', 'Boonanan', 'Min@hum.co.th', 987654321),
 ('sirichai', 'c33367701511b4f6020ec61ded352059', '0000-00-00 00:00:00', 0, 'admin', 'Sirichai', 'Benjamakom', 'Den@hum.co.th', 696969696);
@@ -153,6 +175,12 @@ INSERT INTO `user` (`Username`, `Password`, `Lastupdate`, `LoginStatus`, `Access
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `cars_event`
+--
+ALTER TABLE `cars_event`
+  ADD PRIMARY KEY (`event_id`);
 
 --
 -- Indexes for table `room`
@@ -186,6 +214,12 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `cars_event`
+--
+ALTER TABLE `cars_event`
+  MODIFY `event_id` int(3) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `room`
 --
 ALTER TABLE `room`
@@ -201,7 +235,7 @@ ALTER TABLE `stat`
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
-  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- Constraints for dumped tables
