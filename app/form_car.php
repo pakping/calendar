@@ -20,19 +20,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
     $peoplenum =  $_POST['people'];
     $description = $_POST['desc'];
-    
-    $tool = $_POST['tool'];
-    $stat = $_POST['statid'];
-    if (isset($_POST['statid'])) {
-        $stat = 2;
-    }
-    if (isset($_POST['Username'])) {
-        $Username = $_POST['Username'];
-    }
-    
-    $roomname = $_POST['roomname'];
     $bgcolor = '0';
-    $roomid = '0';
     $sqlq = "Select * from room where roomname = '$roomname'";
     if ($result = mysqli_query($con, $sqlq)) {
         while ($ok = mysqli_fetch_array($result)) {
@@ -40,8 +28,17 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
             $roomid = $ok['roomid'];
         }
     }
+    $max = 'select max(event_id) from cars_event';
+    $eventid = '0';
+    if ($resultmax = mysqli_query($con, $max)) {
+        while ($maxi = mysqli_fetch_array($resultmax)) {
+            $eventid=$maxi['max(event_id)']+1;
+        }
+    }
     $sql = "
     INSERT INTO tbl_event SET
+    event_id = '". $eventid ."',
+    cars_id = '". $cars_id ."',
     event_title='" . $p_event_title . "',
     roomid ='" . $roomid . "',
     event_startdate='" . $p_event_startdate . "',
