@@ -11,84 +11,62 @@ $endtime = date("21:00:00");
 <?php
 // การบันทึกข้อมูลอย่างง่ายเบื้องตั้น
 if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
+    $event_id = '0';
+
+    $regname = $_POST['regname'];
+    $agency = $_POST['agency'];
+    $description = $_POST['desc'];
     $p_event_title = (isset($_POST['event_title'])) ? $_POST['event_title'] : "";
+    $peoplenum =  $_POST['people'];
+    $car = $_POST['car'];
+    $caroption = $_POST['caroption'];
     $p_event_startdate = (isset($_POST['event_startdate'])) ? $_POST['event_startdate'] : "0000-00-00";
     $p_event_enddate = (isset($_POST['event_enddate'])) ? $_POST['event_enddate'] : "0000-00-00";
     $p_event_starttime = (isset($_POST['event_starttime'])) ? $_POST['event_starttime'] : "00:00:00";
-    $p_event_endtime = (isset($_POST['event_endtime'])) ? $_POST['event_endtime'] : "00:00:00";
-    $p_event_repeatday = (isset($_POST['event_repeatday'])) ? $_POST['event_repeatday'] : "";
-    $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
-    $peoplenum =  $_POST['people'];
-    $description = $_POST['desc'];
-    
-    $tool = $_POST['tool'];
-    $stat = $_POST['statid'];
-    if (isset($_POST['statid'])) {
-        $stat = 2;
-    }
-    if (isset($_POST['Username'])) {
-        $Username = $_POST['Username'];
-    }
-    
-    $roomname = $_POST['roomname'];
-    $bgcolor = '0';
-    $roomid = '0';
-    $sqlq = "Select * from room where roomname = '$roomname'";
-    if ($result = mysqli_query($con, $sqlq)) {
-        while ($ok = mysqli_fetch_array($result)) {
-            $bgcolor = $ok['bgcolor'] ;
-            $roomid = $ok['roomid'];
-        }
-    }
+    $location = $_POST['location'];
     $sql = "
-    INSERT INTO tbl_event SET
+    INSERT INTO cars_event SET
+    regname='" . $regname . "',
+    agency='" . $agency . "',
+    event_detail='" . $description . "',
     event_title='" . $p_event_title . "',
-    roomid ='" . $roomid . "',
+    people='" . $peoplenum . "',
+    carnum ='" . $car . "',
     event_startdate='" . $p_event_startdate . "',
     event_enddate='" . $p_event_enddate . "',
     event_starttime='" . $p_event_starttime . "',
-    event_endtime='" . $p_event_endtime . "',
-    event_repeatday='" . $p_event_repeatday . "',
-    event_allday='" . $p_event_allday . "',
-    event_bgcolor='" . $bgcolor . "',
-    people='" . $peoplenum . "',
-    event_detail='" . $description . "',
-    statid='" . $stat . "',
-    Username='" . $Username . "',
-    other='" . $other . "'
-    ";    
-    $sqla = "Select * from tbl_event where (event_startdate Between '$p_event_startdate' and '$p_event_enddate') and (event_enddate Between '$p_event_startdate' and '$p_event_enddate') and (event_starttime Between '$p_event_starttime' and '$p_event_endtime')and (event_endtime Between '$p_event_starttime' and '$p_event_endtime') and (statid ='2' or statid = '1') ";
+    location ='" . $location . "'
+    ";
+    $sqla = "Select * from cars_event";
     $result2 = mysqli_query($con, $sqla);
-    /* echo $sqla; */
-    
-    if ( $rowcount=mysqli_num_rows($result2) == 0 ){
-        if ($mysqli->query($sql)){
+    echo $sqla;
+
+    if ($rowcount = mysqli_num_rows($result2) == 0) {
+        if ($mysqli->query($sql)) {
             echo '<script>alert("New data inserted")
-            window.location.href ="../app/form_calendar.php"</script>';
-            }
-    }else{        
-        $z = 0; 
+            window.location.href ="../app/form_car.php"</script>';
+        }
+    } else {
+        $z = 0;
         while ($data = mysqli_fetch_array($result2)) {
-            $id[$z] = $data['roomid'];
+            $id[$z] = $data['event_id'];
             $stime[$z] = $data['event_starttime'];
-            $etime[$z] = $data['event_endtime'];
-                
+
+
             /* echo $id[$z] . "<br>";
             echo $stime[$z] . "<br>";
             echo $etime[$z] . "<br>"; */
-                $z = $z +1;
+            $z = $z + 1;
         }
-        if (in_array($roomid,$id)){
+        if (in_array($event_id, $id)) {
             echo '<script>alert("วันเวลาที่เลือกไม่สามารถจองได้เนื่องจากมีผู้จองก่อนแล้ว (case1)")
-            window.location.href ="../app/form_calendar.php"</script>';
-        }else{
-            if ( $hasDuplicates = count($id) > count(array_unique($id)) )
-            {
+            window.location.href ="../app/form_car.php"</script>';
+        } else {
+            if ($hasDuplicates = count($id) > count(array_unique($id))) {
                 echo '<script>alert("วันเวลาที่เลือกไม่สามารถจองได้เนื่องจากมีผู้จองก่อนแล้ว (case2)")
-                window.location.href ="../app/form_calendar.php"</script>';
-            }
-            else{
-                if ($mysqli->query($sql)){
+                window.location.href ="../app/form_car.php"</script>';
+            } else {
+                if ($mysqli->query($sql)) {
                     echo '<script>alert("New data inserted!!")
                     window.location.href ="../app/calendar.php"</script>';
                 }
@@ -139,7 +117,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" name="name" type="text" placeholder="กรอกชื่อ" required>
+                                <input class="input" name="regname" type="text" placeholder="กรอกชื่อ" required>
                             </div>
                         </div>
                     </div>
@@ -152,7 +130,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" name="people" type="text" placeholder="กรอกสังกัด" required>
+                                <input class="input" name="agency" type="text" placeholder="กรอกสังกัด" required>
                             </div>
                         </div>
                     </div>
@@ -173,28 +151,82 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label">รถยนต์</label>
+                        <label class="label">เพื่อ</label>
                     </div>
                     <div class="field-body">
-                        <div class="field has-addons">
-                            <div class="control is-expanded">
-                                <div class="select is-fullwidth">
-                                    <select name="roomname" required>
-                                        <option value="">เลือกรถยนต์</option>
-                                        <?php
-                                    require "../DB/connect.php";
-                                    $Squery = "SELECT * FROM car";
-                                    if ($result = mysqli_query($con, $Squery)) {
-                                        while ($car = mysqli_fetch_array($result)) {
-?>                                            <option value="<?php echo $car['car_type'] .' '.$car['car_name']; ?>"><?php echo $car['car_type'] .' '. $car['car_name']; ?></option>
-<?php }}
-?>                                       
-                                    </select>
-                                </div>
-                            </div>
-
+                        <div class="field">
                             <div class="control">
-                                <button type="submit" class="button is-primary">Choose</button>
+                                <input class="input" name="event_title" type="text" placeholder="กรอกจุดประสงค์" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">จำนวนคน</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="control">
+                                <input class="input" name="people" type="number" placeholder="กรอกจำนวนคน" required>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">จำนวนรถยนต์</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="select is-fullwidth">
+                                <select name="numcar" require>
+                                    <option value="">เลือกจำนวนรถยนต์ที่ใช้</option>
+                                    <?php
+                                    require "../DB/connect.php";
+                                    $sqlcarr="SELECT * FROM car ORDER BY car_id";
+                                    if ($resultcar=mysqli_query($con,$sqlcarr)) {
+                                        $rowcount=mysqli_num_rows($resultcar);
+                                        $b = 1;
+                                        while ($b <= $rowcount) {
+                                    ?>
+                                            <option value="<?php echo $b; ?>"><?php echo $b; ?></option>
+                                    <?php
+                                    $b += 1;
+                                        }
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <!-- <input class="input" name="car" type="number" placeholder="กรอกจำนวนรถยต์ที่ใช้" required> -->
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                        <label class="label">จำนวนรถยนต์</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <div class="select is-fullwidth">
+                                <select name="caroption" require>
+                                    <option value="">เลือกรถยนต์</option>
+                                    <?php
+                                    require "../DB/connect.php";
+                                    $sqlcar = "SELECT * FROM car";
+                                    if ($car = mysqli_query($con, $sqlcar)) {
+                                        while ($cars = mysqli_fetch_array($car)) {
+                                    ?>
+                                            <option value="<?php echo $cars['car_id']; ?>"><?php echo $cars['car_type'] . ' ' . $cars['car_detail']; ?></option>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -210,7 +242,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" id="startdate" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31" onchange="respondtodate()" required>
+                                <input class="input" type="date" id="startdate" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" onchange="respondtodate()" required>
                             </p>
 
                         </div>
@@ -227,7 +259,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                        <label class="label">เลือกเวลาในการประชุม</label>
+                        <label class="label">เลือกเวลาในการออกเดินทาง</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
@@ -239,14 +271,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                             </p>
 
                         </div>
-                        <div class="field">
-                            <label class="checkbox">
-                                เลือกเวลาสิ้นสุด
-                            </label>
-                            <p class="control is-expanded ">
-                                <input class="input" type="time" max="<?php echo $endtime; ?>" id="endtime" name="event_endtime" required>
-                            </p>
-                        </div>
+
                     </div>
                 </div>
 
@@ -257,7 +282,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <input class="input" name="people" type="text" placeholder="กรอกสถานที่" required>
+                                <input class="input" name="location" type="text" placeholder="กรอกสถานที่" required>
                             </div>
                         </div>
                     </div>
@@ -265,10 +290,8 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 
                 <div class="field is-horizontal">
                     <div class="field-label">
-                    <!-- stat -->
-                    <input type="hidden" value="2" name="statid">
-                    <!-- Username -->
-                    <input type="hidden" name="Username" value="<?php echo $_SESSION['Username']; ?>">
+                        <!-- Username -->
+                        <input type="hidden" name="Username" value="<?php echo $_SESSION['Username']; ?>">
                         <!-- Left empty for spacing -->
                     </div>
                     <div class="field-body">
@@ -286,7 +309,6 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     </form>
 
     <script type="text/javascript">
-
         var calendars = bulmaCalendar.attach('[type="date"]', {
             startDate: new Date('10/24/2019')
         });
@@ -308,50 +330,47 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
             });
         }
     </script>
-<script>
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+    <script>
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
 
-today = yyyy + '-' + mm + '-' + dd;
-document.getElementById('enddate').setAttribute("min", today);
-console.log(today);
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById('enddate').setAttribute("min", today);
+        console.log(today);
 
-function respondtodate(){
-    if (document.getElementById('enddate').value < document.getElementById('startdate').value){
-        document.getElementById('enddate').value = document.getElementById('startdate').value;
-    }
-    var da = new Date();
-    da = document.getElementById('startdate').value;
-    document.getElementById('enddate').setAttribute("min", da);
-}
-
-
-function respondtotime(){
-    if (document.getElementById('endtime').value < document.getElementById('starttime').value){
-        document.getElementById('endtime').value = document.getElementById('starttime').value;
-    }
-    var ta = new Date();
-    ta = document.getElementById('starttime').value;
-    console.log (ta);
-    document.getElementById('endtime').setAttribute("min", ta);
-}
-
-function toggledisable(target){
-    if (document.getElementById(target).hasAttribute("disabled")){
-        document.getElementById(target).removeAttribute("disabled");
-        console.log("i did it")
-    }
-    else {
-        document.getElementById(target).setAttribute("disabled","true")
-        console.log("nani")
-    }
-    
-}
+        function respondtodate() {
+            if (document.getElementById('enddate').value < document.getElementById('startdate').value) {
+                document.getElementById('enddate').value = document.getElementById('startdate').value;
+            }
+            var da = new Date();
+            da = document.getElementById('startdate').value;
+            document.getElementById('enddate').setAttribute("min", da);
+        }
 
 
-</script>
+        function respondtotime() {
+            if (document.getElementById('endtime').value < document.getElementById('starttime').value) {
+                document.getElementById('endtime').value = document.getElementById('starttime').value;
+            }
+            var ta = new Date();
+            ta = document.getElementById('starttime').value;
+            console.log(ta);
+            document.getElementById('endtime').setAttribute("min", ta);
+        }
+
+        function toggledisable(target) {
+            if (document.getElementById(target).hasAttribute("disabled")) {
+                document.getElementById(target).removeAttribute("disabled");
+                console.log("i did it")
+            } else {
+                document.getElementById(target).setAttribute("disabled", "true")
+                console.log("nani")
+            }
+
+        }
+    </script>
 
 </body>
 
