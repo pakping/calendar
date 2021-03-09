@@ -164,5 +164,8 @@ include '../components/navbaradmin.php';
 			</div>
 		</form>
 	</section>
+	<?php
+    include '../components/footer.php';
+    ?>
 </body>
 </html>

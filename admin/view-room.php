@@ -77,10 +77,11 @@ include '../auth/Sessionpersist.php';
         }
       }
       ?>
-
-
     </div>
   </section>
+  <?php
+    include '../components/footer.php';
+    ?>
 </body>
 
 </html>

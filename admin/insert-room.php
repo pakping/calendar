@@ -182,8 +182,13 @@ include '../auth/Sessionpersist.php';
     </div>
   </section>
   </form>
+  <?php
+    include '../components/footer.php';
+    ?>
 </body>
 </html>
+
+
 <script>
   const fileInput = document.querySelector('#file-js-example input[type=file]');
   fileInput.onchange = () => {

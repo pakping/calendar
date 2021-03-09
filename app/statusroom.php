@@ -28,7 +28,7 @@ $user = $_SESSION['Username'];
     ?>
     <!-- Navigation -->
     <br><br>
-    <div class="container is-fullhd">
+    <div class="box container is-fullhd">
         <p class="is-size-2">
             สถานะการจอง
         </p>

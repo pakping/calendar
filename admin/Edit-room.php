@@ -178,5 +178,8 @@ include '../auth/Sessionpersist.php';
     </div>
       </div>
   </section>
+  <?php
+    include '../components/footer.php';
+    ?>
 </body>
 </html>
