@@ -8,7 +8,7 @@ $com = $_POST['com'];
 $screen = $_POST['screen'];
 $mic = $_POST['mic'];
 
-$sql = "Update room set roomname ='$roomname' , roomcap='$roomcap' , com='$com' , screen='$screen', mic='$mic',roomimg='$newpath' WHERE roomid = '$roomid'";
+$sql = "Update room set roomname ='$roomname' , roomcap='$roomcap' , com='$com' , screen='$screen', mic='$mic' WHERE roomid = '$roomid'";
 $result=mysqli_query($con,$sql);
 if ($result){
     echo '<script>alert("Data updated")
