@@ -64,7 +64,10 @@
       require '../DB/connect.php';
       $result = mysqli_query($con, "SELECT count(*) as total from tbl_event where statid = '2'");
       $data = mysqli_fetch_assoc($result);
-      if ($data['total'] > 0) {
+      $result2 = mysqli_query($con,"SELECT count(*) as total2 from cars_event where statid = '2'");
+      $data2 = mysqli_fetch_assoc($result2);
+      $sum = $data['total'] + $data2['total2'];
+      if ($sum > 0) {
       ?>
       <a class="navbar-item" href="../admin/statusroomadmin.php">
       
@@ -73,7 +76,7 @@
   
       <div class="tags has-addons">
         <span class="tag is-Tomato">มีคำร้องข้อจองห้องประชุม  </span> 
-        <span class="tag is-warning "> <?php echo $data['total']; ?> </span> 
+        <span class="tag is-warning "> <?php echo $sum; ?> </span> 
       </span>
 
       </div>
