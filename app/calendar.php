@@ -188,6 +188,7 @@ echo 'roomname ='  . $roomname ; */
 				var event = calendar.getEventById(id) // ดึงข้อมูล ผ่าน api
 				$("#calendarmodal-title").html(event.title);
 				$("#calendarmodal-detail").html(event.extendedProps.detail); // ข้อมูลเพิ่มเติมจะเรียกผ่าน extendedProps
+				
 			});
 			$("#calendarmodal").modal('show'); // แสดง modal
 		}
