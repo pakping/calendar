@@ -129,8 +129,8 @@ echo 'roomname ='  . $roomname ; */
       <p class="modal-card "  id="calendarmodal-title">Modal title</p>
       <button class="delete" aria-label="close"  data-bs-dismiss="modal"></button>
     </header>
-    <section class="box modal-card-body"" id="calendarmodal-detail">
-      <!-- Content ... -->
+    <section class="box modal-card-body" id="calendarmodal-detail">
+    
     </section>
     <footer class="modal-foot">
       <button class="button is-primary"  data-bs-dismiss="modal">Cancel</button>
