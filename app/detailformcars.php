@@ -163,12 +163,10 @@ if (isset($_POST['eventid'])) {
 
                                     <?php $qqq = "SELECT * FROM cars_event left join cars ON cars_event.cars_id=cars.cars_id Where event_id = '$eventid'";
                                     if ($carsss = mysqli_query($con, $qqq)) {
-                                        $z = 1;
                                         $allcar = '';
-                                        while ($gotcar = mysqli_fetch_array($carsss)) {
-                                            $gotcar = $gotcar['cars_name'];
-                                            $allcar = " $allcar , $gotcar";
-                                            $z = $z + 1;
+                                        while ($gocar = mysqli_fetch_array($carsss)) {
+                                            $gotcar = $gocar['cars_name'];
+                                            $allcar = $allcar .  $gotcar . " , ";
                                         }
                                     ?>
 

@@ -1,12 +1,11 @@
 <?php
 session_start();
-if (isset($_SESSION['Username'])){
-    if ($_SESSION['type'] == 'user'){
-      header('location:app/home.php');
-    }
-    else if ($_SESSION['type']=='admin'){
-      header('location:admin/view-room.php');
-    }
+if (isset($_SESSION['Username'])) {
+  if ($_SESSION['type'] == 'user') {
+    header('location:app/home.php');
+  } else if ($_SESSION['type'] == 'admin') {
+    header('location:admin/view-room.php');
+  }
 }
 
 ?>
@@ -55,20 +54,20 @@ if (isset($_SESSION['Username'])){
                   </span>
                 </p>
               </div>
-              <div class="field">
+              <!-- <div class="field">
                 <label class="checkbox"><input type="checkbox" id="customCheck1" />Remember me</label>
-              </div>
+              </div> -->
               <button class="button is-block is-info is-large is-fullwidth" type="submit">Login</button><br />
 
             </form>
           </div>
-          <div class="box">
+          <!-- <div class="box">
             <p class="has-text-primary">
               <a class="has-text-primary" href="#">Sign Up</a> &nbsp;·&nbsp;
               <a class="has-text-danger" href="#">Forgot Password</a> &nbsp;·&nbsp;
               <a class="has-text-link" href="#">Need Help?</a>
             </p>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

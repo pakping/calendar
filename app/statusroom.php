@@ -52,8 +52,11 @@ $user = $_SESSION['Username'];
 
             <div class="container section">
                 <div id="WebDev" class="content-tab">
-                    <p class="is-size-2">จองห้อง</p>
-                    <br>
+                    <div class="notification is-primary">
+                        <strong>สถานะการจองห้อง</strong>
+                    </div>
+                    <!-- <p class="is-size-2">จองห้อง</p>
+                    <br> -->
                     <table id="myTable" class="table is-fullwidth is-hoverable">
                         <thead>
                             <tr>
@@ -109,8 +112,11 @@ $user = $_SESSION['Username'];
                     </table>
                 </div>
                 <div id="WebAud" class="content-tab" style="display:none">
-                    <p class="is-size-2">จองรถยนต์</p>
-                    <br>
+
+                    <!-- <p class="is-size-2">จอง</p> -->
+                    <div class="notification is-primary">
+                        <strong>สถานะการจองรถยนต์</strong>
+                    </div>
 
                     <table id="myTable2" class="table is-fullwidth is-hoverable">
                         <thead>
@@ -132,8 +138,16 @@ $user = $_SESSION['Username'];
                             $enddate = date('d/m/Y');
                             if ($result) {
                                 $a = 1;
+                                $b = 1;
+                                $c = 'cat';
                                 while ($row = mysqli_fetch_array($result)) {
-
+                                    if ($c == $row['event_title']) {
+                                        $b = 0;
+                                    } else {
+                                        $b = 1;
+                                        $c = $row['event_title'];
+                                    }
+                                    $c = $row['event_title'];
                                     if ($row['statid'] == '1') {
                                         $stat = '<span class="tag is-success">ผ่าน</span>';
                                     } elseif ($row['statid'] == '2') {
@@ -153,7 +167,9 @@ $user = $_SESSION['Username'];
                                             $sdate = date('d/m/Y', $phpdate);
                                             $ephpdate = strtotime($row['event_enddate']);
                                             $edate = date('d/m/Y', $ephpdate); ?></th>
-                                        <td><?php echo $row['event_title']; ?></td>
+                                        <td><?php if ($b == 1) {
+                                                echo $row['event_title'];
+                                            } ?></td>
                                         <td><?php echo $row['cars_type'] . ' ' . $row['cars_name']; ?></td>
                                         <td><?php echo  $sdate . ' ถึง ' . $edate; ?></td>
                                         <td>

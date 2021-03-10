@@ -49,7 +49,7 @@ include '../auth/Sessionpersist.php';
         <div class="container section">
             <div id="WebDev" class="content-tab">
                 <div class="notification is-primary">
-                    <strong>สถานะการจอง</strong>
+                    <strong>สถานะการจองห้อง</strong>
                 </div>
                 <!-- <p class="is-size-2">
             สถานะการจอง
@@ -132,6 +132,9 @@ include '../auth/Sessionpersist.php';
                 </table>
             </div>
             <div id="WebAud" class="content-tab" style="display:none">
+                <div class="notification is-primary">
+                    <strong>สถานะการจองรถยนต์</strong>
+                </div>
                 <table id="myTable2" class="table is-fullwidth is-hoverable">
                     <thead>
                         <tr>
@@ -158,7 +161,6 @@ include '../auth/Sessionpersist.php';
                             while ($row = mysqli_fetch_array($result)) {
                                 if ($c == $row['event_title']) {
                                     $b = 0;
-                                    
                                 } else {
                                     $b = 1;
                                     $c = $row['event_title'];
