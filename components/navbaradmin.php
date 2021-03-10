@@ -27,7 +27,7 @@
         ตารางปฏิทิน
       </a>
       <a class="navbar-item" href="../admin/statusroomadmin.php">
-        อนุมัติการจองห้องประชุม
+        อนุมัติการจอง
 
 
       </a>

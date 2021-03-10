@@ -21,7 +21,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $p_event_allday = (isset($_POST['event_allday'])) ? 1 : 0;
     $peoplenum =  $_POST['people'];
     $description = $_POST['desc'];
-    
+
     $tool = $_POST['tool'];
     $stat = $_POST['statid'];
     if (isset($_POST['statid'])) {
@@ -30,79 +30,79 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     if (isset($_POST['Username'])) {
         $Username = $_POST['Username'];
     }
-    if (isset($_POST['coffeesmallcup'])){
+    if (isset($_POST['coffeesmallcup'])) {
         $Scup = $_POST['Scup'];
-    }else{
+    } else {
         $Scup = '0';
     }
-    if (isset($_POST['coffeebigcup'])){
+    if (isset($_POST['coffeebigcup'])) {
         $Bcup = $_POST['Bcup'];
-    }else{
+    } else {
         $Bcup = '0';
     }
-    if (isset($_POST['islongcup'])){
+    if (isset($_POST['islongcup'])) {
         $longcup = $_POST['longcup'];
-    }else{
+    } else {
         $longcup = '0';
     }
-    if (isset($_POST['isdrinkcup'])){
+    if (isset($_POST['isdrinkcup'])) {
         $drinkcup = $_POST['drinkcup'];
-    }else{
+    } else {
         $drinkcup = '0';
     }
-    if (isset($_POST['issoftdrink'])){
+    if (isset($_POST['issoftdrink'])) {
         $softdrink = $_POST['softdrink'];
-    }else{
+    } else {
         $softdrink = '0';
     }
-    if (isset($_POST['isothercup'])){
+    if (isset($_POST['isothercup'])) {
         $othercup = $_POST['othercup'];
-    }else{
+    } else {
         $othercup = 'none';
     }
-    if (isset($_POST['ishotbot'])){
+    if (isset($_POST['ishotbot'])) {
         $hotbot = $_POST['hotbot'];
-    }else{
+    } else {
         $hotbot = '0';
     }
-    if (isset($_POST['istray'])){
+    if (isset($_POST['istray'])) {
         $tray = $_POST['tray'];
-    }else{
+    } else {
         $tray = '0';
     }
-    if (isset($_POST['isdishcup'])){
+    if (isset($_POST['isdishcup'])) {
         $dishcup = $_POST['dishcup'];
-    }else{
+    } else {
         $dishcup = '0';
     }
-    if (isset($_POST['isjug'])){
+    if (isset($_POST['isjug'])) {
         $jug = $_POST['jug'];
-    }else{
+    } else {
         $jug = '0';
     }
-    if (isset($_POST['isboxcup'])){
+    if (isset($_POST['isboxcup'])) {
         $boxcup = $_POST['boxcup'];
-    }else{
+    } else {
         $boxcup = '0';
     }
-    if (isset($_POST['istea'])){
+    if (isset($_POST['istea'])) {
         $tea = $_POST['tea'];
-    }else{
+    } else {
         $tea = '0';
     }
-    if (isset($_POST['isboiler'])){
+    if (isset($_POST['isboiler'])) {
         $boiler = $_POST['boiler'];
-    }else{
+    } else {
         $boiler = '0';
     }
-    if (isset($_POST['isbasket'])){
+    if (isset($_POST['isbasket'])) {
         $basket = $_POST['basket'];
-    }else{
+    } else {
         $basket = '0';
     }
-    if (isset($_POST['isothertool'])){
+    if (isset($_POST['isothertool'])) {
         $other = $_POST['other'];
-    }else{
+    } else {
         $other = 'none';
     }
     $roomname = $_POST['roomname'];
@@ -111,7 +111,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $sqlq = "Select * from room where roomname = '$roomname'";
     if ($result = mysqli_query($con, $sqlq)) {
         while ($ok = mysqli_fetch_array($result)) {
-            $bgcolor = $ok['bgcolor'] ;
+            $bgcolor = $ok['bgcolor'];
             $roomid = $ok['roomid'];
         }
     }
@@ -146,39 +146,37 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     statid='" . $stat . "',
     Username='" . $Username . "',
     other='" . $other . "'
-    ";    
+    ";
     $sqla = "Select * from tbl_event where (event_startdate Between '$p_event_startdate' and '$p_event_enddate') and (event_enddate Between '$p_event_startdate' and '$p_event_enddate') and (event_starttime Between '$p_event_starttime' and '$p_event_endtime')and (event_endtime Between '$p_event_starttime' and '$p_event_endtime') and (statid ='2' or statid = '1') ";
     $result2 = mysqli_query($con, $sqla);
     /* echo $sqla; */
-    
-    if ( $rowcount=mysqli_num_rows($result2) == 0 ){
-        if ($mysqli->query($sql)){
+
+    if ($rowcount = mysqli_num_rows($result2) == 0) {
+        if ($mysqli->query($sql)) {
             echo '<script>alert("New data inserted")
             window.location.href ="../app/form_calendar.php"</script>';
-            }
-    }else{        
-        $z = 0; 
+        }
+    } else {
+        $z = 0;
         while ($data = mysqli_fetch_array($result2)) {
             $id[$z] = $data['roomid'];
             $stime[$z] = $data['event_starttime'];
             $etime[$z] = $data['event_endtime'];
-                
+
             /* echo $id[$z] . "<br>";
             echo $stime[$z] . "<br>";
             echo $etime[$z] . "<br>"; */
-                $z = $z +1;
+            $z = $z + 1;
         }
-        if (in_array($roomid,$id)){
+        if (in_array($roomid, $id)) {
             echo '<script>alert("วันเวลาที่เลือกไม่สามารถจองได้เนื่องจากมีผู้จองก่อนแล้ว (case1)")
             window.location.href ="../app/form_calendar.php"</script>';
-        }else{
-            if ( $hasDuplicates = count($id) > count(array_unique($id)) )
-            {
+        } else {
+            if ($hasDuplicates = count($id) > count(array_unique($id))) {
                 echo '<script>alert("วันเวลาที่เลือกไม่สามารถจองได้เนื่องจากมีผู้จองก่อนแล้ว (case2)")
                 window.location.href ="../app/form_calendar.php"</script>';
-            }
-            else{
-                if ($mysqli->query($sql)){
+            } else {
+                if ($mysqli->query($sql)) {
                     echo '<script>alert("New data inserted!!")
                     window.location.href ="../app/calendar.php"</script>';
                 }
@@ -217,7 +215,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     ?>
     <form action="" method="post" accept-charset="utf-8">
         <section class="section">
-            <div class="container">
+            <div class="box container">
                 <div class="notification is-primary">
                     <strong>สร้างการประชุม</strong>
                 </div>
@@ -229,7 +227,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                     <div class="field-body">
                         <div class="field">
                             <input class="input" type="text" name="event_title" placeholder="กรอกหัวข้อการประชุม" required>
-    
+
                         </div>
                     </div>
                 </div>
@@ -245,13 +243,14 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                     <select name="roomname" required>
                                         <option value="">เลือกหัวข้อห้องประชุม</option>
                                         <?php
-                                    require "../DB/connect.php";
-                                    $Squery = "SELECT * FROM room";
-                                    if ($result = mysqli_query($con, $Squery)) {
-                                        while ($room = mysqli_fetch_array($result)) {
-?>                                            <option value="<?php echo $room['roomname']; ?>"><?php echo $room['roomname']; ?></option>
-<?php }}
-?>                                       
+                                        require "../DB/connect.php";
+                                        $Squery = "SELECT * FROM room";
+                                        if ($result = mysqli_query($con, $Squery)) {
+                                            while ($room = mysqli_fetch_array($result)) {
+                                        ?> <option value="<?php echo $room['roomname']; ?>"><?php echo $room['roomname']; ?></option>
+                                        <?php }
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
@@ -273,7 +272,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 เลือกวันเริ่ม
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="date" id="startdate" name="event_startdate" min="<?php echo $today;?>" max="2050-12-31" onchange="respondtodate()" required>
+                                <input class="input" type="date" id="startdate" name="event_startdate" min="<?php echo $today; ?>" max="2050-12-31" onchange="respondtodate()" required>
                             </p>
 
                         </div>
@@ -387,7 +386,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                                <input type="checkbox" name="coffeesmallcup" id="coffeesmallcup" onchange="toggledisable('Scup')"> 
+                                <input type="checkbox" name="coffeesmallcup" id="coffeesmallcup" onchange="toggledisable('Scup')">
                                 ชุดกาแฟ ตรา ศ.รพ.มพ. (ถาดรองแก้วเล็ก)
                             </label>
                             <p class="control is-expanded ">
@@ -431,8 +430,8 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                             </p>
                         </div>
                         <div class="field">
-                        <label class="checkbox">
-                        <input type="checkbox" name="isothercup" onchange="toggledisable('othercup')">
+                            <label class="checkbox">
+                                <input type="checkbox" name="isothercup" onchange="toggledisable('othercup')">
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
@@ -447,7 +446,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         <label class="label">อุปกรณ์อื่นๆ</label>
                     </div>
                     <div class="field-body">
-                        
+
                         <div class="field">
                             <label class="checkbox">
                                 <input type="checkbox" name="ishotbot" onchange="toggledisable('hotbot')">
@@ -463,7 +462,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                                 ถาด
                             </label>
                             <p class="control is-expanded ">
-                                <input class="input" type="number" name="tray" id ="tray" placeholder="จำนวนถาด" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
+                                <input class="input" type="number" name="tray" id="tray" placeholder="จำนวนถาด" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
                         <div class="field">
@@ -477,7 +476,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isjug" onchange="toggledisable('jug')">
+                                <input type="checkbox" name="isjug" onchange="toggledisable('jug')">
                                 เหยือกน้ำ
                             </label>
                             <p class="control is-expanded ">
@@ -486,7 +485,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isboxcup" onchange="toggledisable('boxcup')">
+                                <input type="checkbox" name="isboxcup" onchange="toggledisable('boxcup')">
                                 ลังใส่แก้ว
                             </label>
                             <p class="control is-expanded ">
@@ -495,7 +494,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="istea" onchange="toggledisable('tea')">
+                                <input type="checkbox" name="istea" onchange="toggledisable('tea')">
                                 กาใส่ชา
                             </label>
                             <p class="control is-expanded ">
@@ -504,24 +503,24 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         </div>
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isboiler" onchange="toggledisable('boiler')">
+                                <input type="checkbox" name="isboiler" onchange="toggledisable('boiler')">
                                 หม้อต้มน้ำร้อน
                             </label>
                             <p class="control is-expanded ">
                                 <input class="input" type="number" name="boiler" id="boiler" placeholder="จำนวนหม้อต้มน้ำร้อน" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
-                        
+
                         <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isbasket" onchange="toggledisable('basket')">
+                                <input type="checkbox" name="isbasket" onchange="toggledisable('basket')">
                                 ตะกร้า
                             </label>
                             <p class="control is-expanded ">
                                 <input class="input" type="number" name="basket" id="basket" placeholder="จำนวนตระกร้า" value="" min="0" oninput="this.value = Math.round(this.value);" disabled>
                             </p>
                         </div>
-                        
+
                     </div>
                 </div>
 
@@ -530,9 +529,9 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                         <label class="label"></label>
                     </div>
                     <div class="field-body">
-                    <div class="field">
+                        <div class="field">
                             <label class="checkbox">
-                            <input type="checkbox" name="isothertool" onchange="toggledisable('other')">
+                                <input type="checkbox" name="isothertool" onchange="toggledisable('other')">
                                 อื่นๆ
                             </label>
                             <p class="control is-expanded ">
@@ -544,10 +543,10 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 
                 <div class="field is-horizontal">
                     <div class="field-label">
-                    <!-- stat -->
-                    <input type="hidden" value="2" name="statid">
-                    <!-- Username -->
-                    <input type="hidden" name="Username" value="<?php echo $_SESSION['Username']; ?>">
+                        <!-- stat -->
+                        <input type="hidden" value="2" name="statid">
+                        <!-- Username -->
+                        <input type="hidden" name="Username" value="<?php echo $_SESSION['Username']; ?>">
                         <!-- Left empty for spacing -->
                     </div>
                     <div class="field-body">
@@ -718,50 +717,49 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
             });
         }
     </script>
-<script>
-var today = new Date();
-var dd = String(today.getDate()).padStart(2, '0');
-var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-var yyyy = today.getFullYear();
+    <script>
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
 
-today = yyyy + '-' + mm + '-' + dd;
-document.getElementById('enddate').setAttribute("min", today);
-console.log(today);
+        today = yyyy + '-' + mm + '-' + dd;
+        document.getElementById('enddate').setAttribute("min", today);
+        console.log(today);
 
-function respondtodate(){
-    if (document.getElementById('enddate').value < document.getElementById('startdate').value){
-        document.getElementById('enddate').value = document.getElementById('startdate').value;
-    }
-    var da = new Date();
-    da = document.getElementById('startdate').value;
-    document.getElementById('enddate').setAttribute("min", da);
-}
-
-
-function respondtotime(){
-    if (document.getElementById('endtime').value < document.getElementById('starttime').value){
-        document.getElementById('endtime').value = document.getElementById('starttime').value;
-    }
-    var ta = new Date();
-    ta = document.getElementById('starttime').value;
-    console.log (ta);
-    document.getElementById('endtime').setAttribute("min", ta);
-}
-
-function toggledisable(target){
-    if (document.getElementById(target).hasAttribute("disabled")){
-        document.getElementById(target).removeAttribute("disabled");
-        console.log("i did it")
-    }
-    else {
-        document.getElementById(target).setAttribute("disabled","true")
-        console.log("nani")
-    }
-    
-}
+        function respondtodate() {
+            if (document.getElementById('enddate').value < document.getElementById('startdate').value) {
+                document.getElementById('enddate').value = document.getElementById('startdate').value;
+            }
+            var da = new Date();
+            da = document.getElementById('startdate').value;
+            document.getElementById('enddate').setAttribute("min", da);
+        }
 
 
-</script>
+        function respondtotime() {
+            if (document.getElementById('endtime').value < document.getElementById('starttime').value) {
+                document.getElementById('endtime').value = document.getElementById('starttime').value;
+            }
+            var ta = new Date();
+            ta = document.getElementById('starttime').value;
+            console.log(ta);
+            document.getElementById('endtime').setAttribute("min", ta);
+        }
+
+        function toggledisable(target) {
+            if (document.getElementById(target).hasAttribute("disabled")) {
+                document.getElementById(target).removeAttribute("disabled");
+                console.log("i did it")
+            } else {
+                document.getElementById(target).setAttribute("disabled", "true")
+                console.log("nani")
+            }
+
+        }
+    </script>
+
+
 
 </body>
 

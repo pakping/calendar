@@ -11,6 +11,7 @@ include '../auth/Sessionpersist.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+  <link rel="stylesheet" type="text/css" href="../css/color.css">
 
 </head>
 
@@ -181,11 +182,11 @@ include '../auth/Sessionpersist.php';
     </div>
   </section>
   </form>
-
+  <?php
+    include '../components/footer.php';
+    ?>
 </body>
-
 </html>
-
 
 
 <script>

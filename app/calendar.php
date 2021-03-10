@@ -45,6 +45,9 @@ echo 'roomname ='  . $roomname ; */
 	<meta charset='utf-8' />
 	<title>UP Calendar</title>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+	<!-- link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+	<link rel="stylesheet" type="text/css" href="../css/color.css">
+
 	<link href='<?= $fullcalendar_path ?>/core/main.css' rel='stylesheet' />
 	<link href='<?= $fullcalendar_path ?>/daygrid/main.css' rel='stylesheet' />
 
@@ -82,7 +85,6 @@ echo 'roomname ='  . $roomname ; */
 	
 	?>
 	<br>
-	<br>
 	<div class="container">
 		<div class="box has-background">
 			<div class="container is-max-desktop">
@@ -114,31 +116,34 @@ echo 'roomname ='  . $roomname ; */
 			<br>
 			<div id='calendar'></div>
 		</div>
-		<!-- Modal -->
-		<div class="modal fade" id="calendarmodal" tabindex="-1" role="dialog">
-			<!--กำหนด id ให้กับ modal-->
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="calendarmodal-title">Modal title</h5>
-						<!--กำหนด id ให้ส่วนหัวข้อ-->
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body" id="calendarmodal-detail"> ก
-						<!--ำหนด id ให้ส่วนรายละเอียด-->
-						Modal detail
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+		
+<br>
+ <div class="modal" id="calendarmodal">
+ <div class="modal-dialog">
+
+  <div class="modal-background"></div>
+  <div class="modal-card">
+  <div class="box">
+  <div class="card-content">
+    <header class="modal-card-head">
+      <p class="modal-card "  id="calendarmodal-title">Modal title</p>
+      <button class="delete" aria-label="close"  data-bs-dismiss="modal"></button>
+    </header>
+    <section class="box modal-card-body"" id="calendarmodal-detail">
+      <!-- Content ... -->
+    </section>
+    <footer class="modal-foot">
+      <button class="button is-primary"  data-bs-dismiss="modal">Cancel</button>
+    </footer>
+  </div>
+</div>
+ </div>
+ </div>
+ </div>
+ </div>
+
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+	
 	<script type="text/javascript">
 		var calendar; // สร้างตัวแปรไว้ด้านนอก เพื่อให้สามารถอ้างอิงแบบ global ได้
 		$(function() {
@@ -184,7 +189,7 @@ echo 'roomname ='  . $roomname ; */
 				$("#calendarmodal-title").html(event.title);
 				$("#calendarmodal-detail").html(event.extendedProps.detail); // ข้อมูลเพิ่มเติมจะเรียกผ่าน extendedProps
 			});
-			$("#calendarmodal").modal(); // แสดง modal
+			$("#calendarmodal").modal('show'); // แสดง modal
 		}
 	</script>
 	<style>
