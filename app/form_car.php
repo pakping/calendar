@@ -175,7 +175,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     ?>
     <form action="" method="post" accept-charset="utf-8">
         <section class="section">
-            <div class="container">
+            <div class="container box">
                 <div class="notification is-primary">
                     <strong>ขอใช้รถยนต์</strong>
                 </div>

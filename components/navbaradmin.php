@@ -23,13 +23,14 @@
       <a class="navbar-item" href="../admin/view-room.php">
         จัดการห้องประชุม
       </a>
+      <a class="navbar-item" href="../app/form_calendar.php">
+        จองห้อง
+      </a>
       <a class="navbar-item" href="../app/calendar.php">
         ตารางปฏิทิน
       </a>
       <a class="navbar-item" href="../admin/statusroomadmin.php">
         อนุมัติการจอง
-
-
       </a>
       <a class="navbar-item" href="../admin/register.php">
         สมัครสมาชิก
@@ -75,7 +76,7 @@
   <div class="container">
   
       <div class="tags has-addons">
-        <span class="tag is-Tomato">มีคำร้องข้อจองห้องประชุม  </span> 
+        <span class="tag is-Tomato">มีคำร้องขอจอง  </span> 
         <span class="tag is-warning "> <?php echo $sum; ?> </span> 
       </span>
 

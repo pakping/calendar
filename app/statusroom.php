@@ -52,8 +52,11 @@ $user = $_SESSION['Username'];
 
             <div class="container section">
                 <div id="WebDev" class="content-tab">
-                    <p class="is-size-2">จองห้อง</p>
-                    <br>
+                    <div class="notification is-primary">
+                        <strong>สถานะการจองห้อง</strong>
+                    </div>
+                    <!-- <p class="is-size-2">จองห้อง</p>
+                    <br> -->
                     <table id="myTable" class="table is-fullwidth is-hoverable">
                         <thead>
                             <tr>
@@ -109,8 +112,11 @@ $user = $_SESSION['Username'];
                     </table>
                 </div>
                 <div id="WebAud" class="content-tab" style="display:none">
-                    <p class="is-size-2">จองรถยนต์</p>
-                    <br>
+
+                    <!-- <p class="is-size-2">จอง</p> -->
+                    <div class="notification is-primary">
+                        <strong>สถานะการจองรถยนต์</strong>
+                    </div>
 
                     <table id="myTable2" class="table is-fullwidth is-hoverable">
                         <thead>
