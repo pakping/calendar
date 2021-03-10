@@ -158,7 +158,7 @@ $today = date("Y-m-d");
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
-                                <textarea class="textarea" name="desc" placeholder="กรอกรายละเอียด" value=""><?php echo $row['description'] ?></textarea>
+                                <textarea class="textarea" name="desc" placeholder="กรอกรายละเอียด" value=""><?php echo $row['event_detail'] ?></textarea>
                             </div>
                         </div>
                     </div>

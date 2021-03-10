@@ -2,7 +2,7 @@
 $content = 'everyone';
 include '../auth/Sessionpersist.php';
 if (isset($_POST['eventid'])) {
-    echo ($_POST['eventid']);
+    /* echo ($_POST['eventid']); */
     $eventid = $_POST['eventid'];
     $_SESSION['eventid']=$eventid;
 }else if(isset($_SESSION['eventid'])){
@@ -402,7 +402,7 @@ $today = date("Y-m-d");
 
     <script type="text/javascript">
         function back() {
-            user = '<?php $_SESSION['type']; ?>';
+            user = '<?php echo$_SESSION['type']; ?>';
             if ( user == "user" ) {
                 window.location.href = "../app/statusroom.php"
             } else {

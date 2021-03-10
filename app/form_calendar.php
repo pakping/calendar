@@ -261,7 +261,7 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
                             </div>
 
                             <div class="control">
-                                <button type="submit" class="button is-primary">Choose</button>
+                               <!--  <button type="submit" class="button is-primary">Choose</button> -->
                             </div>
                         </div>
                     </div>

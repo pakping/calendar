@@ -209,7 +209,12 @@ if (isset($_POST['eventid'])) {
                         <div class="field">
                             <div class="control">
                                 <input class="input" name="location" type="text" value="<?php echo $row['location'] ?>" readonly>
+                                
                             </div>
+                            <br>
+                            <div class="buttons">
+                            <button class="button is-danger" type="button" onclick="back()">กลับ</button>
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -218,6 +223,17 @@ if (isset($_POST['eventid'])) {
     </form>
 
     <script type="text/javascript">
+    function back() {
+            user = '<?php echo$_SESSION['type']; ?>';
+            if ( user == "user" ) {
+                window.location.href = "../app/statusroom.php"
+            } else {
+                window.location.href = "../admin/statusroomadmin.php"
+            }
+
+        }
+
+
         var calendars = bulmaCalendar.attach('[type="date"]', {
             startDate: new Date('10/24/2019')
         });

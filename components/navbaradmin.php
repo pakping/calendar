@@ -76,7 +76,7 @@
   <div class="container">
   
       <div class="tags has-addons">
-        <span class="tag is-Tomato">มีคำร้องขอจอง  </span> 
+        <span class="tag is-Tomato">มีคำร้องขอจองห้องประชุมหรือรถยนต์ </span> 
         <span class="tag is-warning "> <?php echo $sum; ?> </span> 
       </span>
 
