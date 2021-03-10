@@ -211,7 +211,12 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
 <body>
 
     <?php
-    include '../components/nav.php';
+    if ($_SESSION['type'] == 'admin') {
+        include '../components/navbaradmin.php';
+    } else {
+        include '../components/nav.php';
+    }
+    
     ?>
     <form action="" method="post" accept-charset="utf-8">
         <section class="section">
