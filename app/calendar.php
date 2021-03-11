@@ -83,7 +83,7 @@ echo 'roomname ='  . $roomname ; */
 	} else {
 		include '../components/nav.php';
 	}
-	
+
 	?>
 	<br>
 	<div class="container">
@@ -117,34 +117,34 @@ echo 'roomname ='  . $roomname ; */
 			<br>
 			<div id='calendar'></div>
 		</div>
-		
-<br>
- <div class="modal" id="calendarmodal">
- <div class="modal-dialog">
 
-  <div class="modal-background"></div>
-  <div class="modal-card">
-  <div class="box">
-  <div class="card-content">
-    <header class="modal-card-head">
-      <p class="modal-card "  id="calendarmodal-title">Modal title</p>
-      <button class="delete" aria-label="close"  data-bs-dismiss="modal"></button>
-    </header>
-    <section class="box modal-card-body" id="calendarmodal-detail">
-    
-    </section>
-    <footer class="modal-foot">
-      <button class="button is-primary"  data-bs-dismiss="modal">Cancel</button>
-    </footer>
-  </div>
-</div>
- </div>
- </div>
- </div>
- </div>
+		<br>
+		<div class="modal" id="calendarmodal">
+			<div class="modal-dialog">
+
+				<div class="modal-background"></div>
+				<div class="modal-card">
+					<div class="box">
+						<div class="card-content">
+							<header class="modal-card-head">
+								<p class="modal-card " id="calendarmodal-title">Modal title</p>
+								<button class="delete" aria-label="close" data-bs-dismiss="modal"></button>
+							</header>
+							<section class="box modal-card-body" id="calendarmodal-detail">
+
+							</section>
+							<footer class="modal-foot">
+								<button class="button is-primary" data-bs-dismiss="modal">Cancel</button>
+							</footer>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
-	
+
 	<script type="text/javascript">
 		var calendar; // สร้างตัวแปรไว้ด้านนอก เพื่อให้สามารถอ้างอิงแบบ global ได้
 		$(function() {
@@ -181,18 +181,27 @@ echo 'roomname ='  . $roomname ; */
 			calendar.render();
 
 		});
-	</script>
-	<script type="text/javascript">
+
 		function viewdetail(id) {
 			// ก่อนที่ modal จะแสดง
 			$('#calendarmodal').on('show.bs.modal', function(e) {
 				var event = calendar.getEventById(id) // ดึงข้อมูล ผ่าน api
 				$("#calendarmodal-title").html(event.title);
 				$("#calendarmodal-detail").html(event.extendedProps.detail); // ข้อมูลเพิ่มเติมจะเรียกผ่าน extendedProps
-				
+
 			});
 			$("#calendarmodal").modal('show'); // แสดง modal
 		}
+		// แสดงปฏิทิน 
+		calendar.render();
+		// ซ่อนเวลาตามเงื่อนไขปฏิทินที่แสดง
+		calendar.on('viewSkeletonRender', function(info) {
+			if (info.view.type == 'dayGridMonth') {
+				calendar.setOption('displayEventTime', false);
+			} else {
+				calendar.setOption('displayEventTime', true);
+			}
+		});
 	</script>
 	<style>
 		.tag:not(body).is-purple {

@@ -9,7 +9,7 @@
 <nav class="navbar is-light" role="navigation" aria-label="main navigation" style="height: 85px;">
   <div class="navbar-brand">
     <a class="navbar-item" href="#">
-      <h5 class="title  is-indigo  is-5 ">ระบบจองห้องประชุม UP-MED</h5>
+      <h5 class="title  is-indigo  is-5 ">ระบบจองห้องประชุมและขอใช้รถยนต์ UP-MED</h5>
     </a>
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
       <span aria-hidden="true"></span>
