@@ -22,7 +22,11 @@ if (isset($_POST['btn_add']) && $_POST['btn_add'] != "") {
     $peoplenum =  $_POST['people'];
     $description = $_POST['desc'];
 
-    $tool = $_POST['tool'];
+    if ($_POST['tool']== 'yes') {
+        $tool = 'ใช้';
+    }else{
+        $tool ='ไม่ใช้'; 
+    }
     $stat = $_POST['statid'];
     if (isset($_POST['statid'])) {
         $stat = 2;
